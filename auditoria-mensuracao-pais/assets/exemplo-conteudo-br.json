@@ -1,0 +1,4261 @@
+{
+ "DEPENDENCIAS": [
+  {
+   "id": "D-01",
+   "item": "Organização Google Marketing Platform e grupos de usuários (acesso de leitura)",
+   "porque": "86 identidades leem a 360 sem permissão na conta",
+   "destrava": "SF-GOV-08 · A-021"
+  },
+  {
+   "id": "D-02",
+   "item": "Os totens seguem em operação? Por que a subpropriedade Totem foi pausada em 10/06/2026?",
+   "porque": "Os dados mostram totem ativo na propriedade principal; falta o motivo da pausa e o destino desejado",
+   "destrava": "SF-DUP-05 · SF-DUP-01 · A-006"
+  },
+  {
+   "id": "D-03",
+   "item": "Quem é o titular de smartfit-go.com",
+   "porque": "O registro está sob proxy; define se é correção de DNS ou medida de marca",
+   "destrava": "SF-GOV-05 · A-019"
+  },
+  {
+   "id": "D-04",
+   "item": "Contas donas de G-JEYJQXGSE3, G-SYM9X5SJ5D, G-PF6XYWPP2Y, GTM-WCQLTN8G e GTM-WC5Q663",
+   "porque": "Dados do site saem para contas fora do inventário",
+   "destrava": "V-07 · V-08 · V-09"
+  },
+  {
+   "id": "D-05",
+   "item": "Domínio onde roda o \"smart contrata\" (GTM-WXP5BRK9)",
+   "porque": "Sem domínio não dá para confirmar uso",
+   "destrava": "V-10 · SF-GOV-10"
+  },
+  {
+   "id": "D-06",
+   "item": "Acesso Admin nas contas GA Smart Nutri (220152254) e Autosserviço (280371851)",
+   "porque": "Sem Admin não lemos usuários nem histórico; as propriedades delas estão paradas ou só com ruído",
+   "destrava": "§5.7 · SF-GOV-07 · SF-GOV-10"
+  },
+  {
+   "id": "D-07",
+   "item": "A dara.medeiros segue na empresa?",
+   "porque": "É criadora e Admin da conta Smart System, sem sinal desde 21/07/2025",
+   "destrava": "SF-GOV-06 · A-018"
+  },
+  {
+   "id": "D-08",
+   "item": "Validação das listas de remoção de acessos (§5.7) e de desativação de ativos (§5.6)",
+   "porque": "\"Remover\" e \"Desativar\" são recomendação: só a Smart Fit conhece o contexto de cada pessoa e ativo",
+   "destrava": "A-020 · A-023"
+  },
+  {
+   "id": "D-09",
+   "item": "Logs do Cloud Run do sGTM (leitura no projeto 563505473543 ou export), a pedir ao fim das 3 fases",
+   "porque": "O TikTok Events Manager (19/10) confirmou o checkout pelo servidor; os logs medem a fração de sessões no braço do service worker e descartam o GTM-TSFP4W8",
+   "destrava": "SF-FIN-04 · A-024"
+  },
+  {
+   "id": "D-10",
+   "item": "Uma compra controlada por plano (Smart, Black e com cupom), com estorno combinado",
+   "porque": "18 tags só disparam com compra concluída desses planos e ficaram como não testáveis",
+   "destrava": "§5.8 · SF-DUP-06"
+  }
+ ],
+ "META": {
+  "titulo": "Auditoria de mensuração Smart Fit Brasil: conta principal",
+  "rodada": "Rodada 1",
+  "versao": "v1.5",
+  "data_doc": "19/10/2026",
+  "reuniao": "14/10/2026",
+  "periodo": "13/09/2026 a 12/10/2026 (30 dias)",
+  "extraido": "13/10/2026",
+  "escopo": "GTM-TCXTCQ5 (web smartfit.com.br) · GTM-5J2HW2RB (server-side) · GA4 360 175020184 \"Smartfit | GA4\" e 8 subpropriedades · uso de 33 propriedades GA e 16 containers · acessos GA (4 contas) e GTM · validação de disparo das 268 tags ativas do GTM-TCXTCQ5",
+  "autores": "Monks · Data & Martech",
+  "confidencialidade": "Confidencial: Smart Fit e Monks. Contém evidências técnicas; tokens e dados pessoais redigidos.",
+  "decisoes_ate": "15/10/2026",
+  "prazo_final": "26/10/2026",
+  "inicio": "15/10/2026",
+  "fases": {
+   "Now": "Fase 1 · 15 a 20/10",
+   "Next": "Fase 2 · 21 a 23/10",
+   "Later": "Fase 3 · até 26/10"
+  },
+  "pais": "Brasil",
+  "cc": "br",
+  "moeda": "R$",
+  "cliente": "Smart Fit",
+  "lei_dados": "LGPD",
+  "escopo_curto": "GTM web + sGTM + GA4 360 (175020184) e subpropriedades",
+  "titulo_deck": "Auditoria de mensuração Smart Fit BR: conta principal",
+  "periodo_curto": "13/09–12/10/2026",
+  "combinado": "Combinado: começar somente pela conta principal, validar o formato e depois escalar para as demais contas.",
+  "plano_intro": "Plano inteiro concluído até 26/10/2026, em três fases.",
+  "prazo_texto": "para começar a fase 1 em 15/10 e fechar o plano até 26/10",
+  "nota_pendente": "acessos mapeados com o Admin de 13/10"
+ },
+ "EVIDENCIAS": [
+  {
+   "id": "E-01",
+   "titulo": "GTM-TCXTCQ5: versão live v597 (tags, triggers, variáveis, templates)",
+   "tipo": "Tag Manager API v2",
+   "arquivo": "evidencias/gtm/GTM-TCXTCQ5/2026-10-13/live_version.json",
+   "periodo": "estado em 13/10/2026",
+   "extraido": "13/10/2026 11:01"
+  },
+  {
+   "id": "E-02",
+   "titulo": "GTM-5J2HW2RB (sGTM): versão live v28 \"Teste Volta\"",
+   "tipo": "Tag Manager API v2",
+   "arquivo": "evidencias/gtm/GTM-5J2HW2RB/2026-10-13/live_version.json",
+   "periodo": "estado em 13/10/2026",
+   "extraido": "13/10/2026 11:05",
+   "restrito": true
+  },
+  {
+   "id": "E-03",
+   "titulo": "GA4 175020184: configuração (property, streams, key events, subpropriedades, dimensões, públicos, links)",
+   "tipo": "GA Admin API v1beta",
+   "arquivo": "evidencias/ga4/175020184/2026-10-13/*.json",
+   "periodo": "estado em 13/10/2026",
+   "extraido": "13/10/2026 11:04"
+  },
+  {
+   "id": "E-04",
+   "titulo": "purchase × transactionId × platform (eventCount, purchaseRevenue)",
+   "tipo": "GA Data API runReport",
+   "arquivo": "evidencias/ga4/175020184/purchase_by_transaction_30d.json",
+   "periodo": "13/09–12/10/2026",
+   "extraido": "13/10/2026 11:05",
+   "query": {
+    "dimensions": [
+     "transactionId",
+     "platform"
+    ],
+    "metrics": [
+     "eventCount",
+     "purchaseRevenue"
+    ],
+    "dimensionFilter": "eventName = purchase",
+    "limit": 100000
+   }
+  },
+  {
+   "id": "E-05",
+   "titulo": "purchase sem transaction_id por hostName",
+   "tipo": "GA Data API runReport",
+   "arquivo": "evidencias/ga4/175020184/2026-10-13/dataapi/E_purchase_by_host_txid_30d.json",
+   "periodo": "13/09–12/10/2026",
+   "extraido": "13/10/2026",
+   "query": {
+    "dimensions": [
+     "hostName",
+     "transactionId"
+    ],
+    "metrics": [
+     "eventCount",
+     "purchaseRevenue"
+    ],
+    "dimensionFilter": "eventName = purchase AND transactionId = (not set)"
+   }
+  },
+  {
+   "id": "E-06",
+   "titulo": "purchase do totem: páginas /totem/v3/success, navegador, série diária",
+   "tipo": "GA Data API runReport",
+   "arquivo": "evidencias/ga4/175020184/2026-10-13/dataapi/E_purchase_totem_30d.json · E_purchase_appsmartfit_pages_30d.json · E_purchase_appsmartfit_browser_30d.json (amostrado 12%) · E_purchase_daily_30d.json",
+   "periodo": "13/09–12/10/2026",
+   "extraido": "13/10/2026",
+   "query": {
+    "dimensions": [
+     "hostName | pagePath | browser,deviceCategory | date,hostName"
+    ],
+    "metrics": [
+     "eventCount",
+     "totalUsers"
+    ],
+    "dimensionFilter": "eventName = purchase AND hostName = app.smartfit.com.br"
+   }
+  },
+  {
+   "id": "E-07",
+   "titulo": "Volume por evento e por stream (inclui click e content)",
+   "tipo": "GA Data API runReport",
+   "arquivo": "evidencias/ga4/175020184/2026-10-13/dataapi/E_events_30d.json · E_events_by_stream_name_30d.json · E_click_content_by_stream_30d.json · E_click_7d.json",
+   "periodo": "13/09–12/10/2026 (click 7d: 06–12/10)",
+   "extraido": "13/10/2026",
+   "query": {
+    "dimensions": [
+     "eventName",
+     "streamName"
+    ],
+    "metrics": [
+     "eventCount"
+    ],
+    "limit": 500
+   }
+  },
+  {
+   "id": "E-08",
+   "titulo": "Key events com volume em 30 dias",
+   "tipo": "GA Data API runReport",
+   "arquivo": "evidencias/ga4/175020184/2026-10-13/dataapi/E_keyevents_30d.json",
+   "periodo": "13/09–12/10/2026",
+   "extraido": "13/10/2026",
+   "query": {
+    "dimensions": [
+     "eventName"
+    ],
+    "metrics": [
+     "keyEvents",
+     "eventCount"
+    ],
+    "metricFilter": "keyEvents > 0"
+   }
+  },
+  {
+   "id": "E-09",
+   "titulo": "PII em parâmetros e URL: contagens (nenhum valor extraído)",
+   "tipo": "GA Data API runReport",
+   "arquivo": "evidencias/ga4/175020184/2026-10-13/dataapi/E_pii_customdim_email_30d.json · E_pii_customdim_email_daily_30d.json · E_pii_pagelocation_email_events_30d.json · E_pii_customdim_phone_30d.json · E_pii_pagelocation_cpf_30d.json",
+   "periodo": "13/09–12/10/2026",
+   "extraido": "13/10/2026",
+   "query": {
+    "dimensions": [
+     "eventName",
+     "platform | date | hostName"
+    ],
+    "metrics": [
+     "eventCount"
+    ],
+    "dimensionFilter": "customEvent:email CONTAINS \"@\" | pageLocation ~ \".*(%40|@)[a-zA-Z0-9-]+\\..*\""
+   }
+  },
+  {
+   "id": "E-10",
+   "titulo": "purchase do Espaço do Cliente por página",
+   "tipo": "GA Data API runReport",
+   "arquivo": "evidencias/ga4/175020184/2026-10-13/dataapi/E_purchase_ec_pages_30d.json · E_purchase_ec_txid_vs_noid_30d.json",
+   "periodo": "13/09–12/10/2026",
+   "extraido": "13/10/2026",
+   "query": {
+    "dimensions": [
+     "pagePath"
+    ],
+    "metrics": [
+     "eventCount",
+     "purchaseRevenue"
+    ],
+    "dimensionFilter": "eventName = purchase AND hostName = espacodocliente.smartfit.com.br"
+   }
+  },
+  {
+   "id": "E-11",
+   "titulo": "Sessões web por navegador/SO",
+   "tipo": "GA Data API runReport",
+   "arquivo": "evidencias/ga4/175020184/2026-10-13/dataapi/E_browser_web_30d.json",
+   "periodo": "13/09–12/10/2026",
+   "extraido": "13/10/2026",
+   "query": {
+    "dimensions": [
+     "browser",
+     "operatingSystem"
+    ],
+    "metrics": [
+     "sessions"
+    ],
+    "dimensionFilter": "platform = web",
+    "limit": 15
+   }
+  },
+  {
+   "id": "E-12",
+   "titulo": "Funil completo no Chrome com compra de teste 46031495 (hits GA4/sGTM decodificados)",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/ga4_eventos_funil.json · hits_funil_completo.json",
+   "periodo": "13/10/2026 ~11h",
+   "extraido": "13/10/2026 11:27",
+   "restrito": true
+  },
+  {
+   "id": "E-13",
+   "titulo": "Lead e /checkout/person: console (ReferenceError), localStorage/sessionStorage, hit cadastroLoginSucesso",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/recaptura/E-13_*",
+   "periodo": "13/10/2026",
+   "extraido": "13/10/2026"
+  },
+  {
+   "id": "E-14",
+   "titulo": "Home: rede, peso, gtm.js, Lighthouse e banner de cookies",
+   "tipo": "Chrome DevTools + Lighthouse",
+   "arquivo": "evidencias/chrome/2026-10-13/recaptura/E-14_*",
+   "periodo": "13/10/2026",
+   "extraido": "13/10/2026"
+  },
+  {
+   "id": "E-15",
+   "titulo": "Unidade /academias/augusta: select_item ao clicar \"Começar agora\"",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/recaptura/E-15_*",
+   "periodo": "13/10/2026",
+   "extraido": "13/10/2026"
+  },
+  {
+   "id": "E-16",
+   "titulo": "Upsell: Smart Coach marcado × items de e-commerce",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/recaptura/E-16_*",
+   "periodo": "13/10/2026",
+   "extraido": "13/10/2026"
+  },
+  {
+   "id": "E-17",
+   "titulo": "Sinais de consentimento (gcs/gcd, google_tag_data.ics) nos hits GA4 e sGTM",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/recaptura/E-17_consent.json",
+   "periodo": "13/10/2026",
+   "extraido": "13/10/2026 12:25"
+  },
+  {
+   "id": "E-18",
+   "titulo": "Endereço e /checkout/wallet sem finalizar; propriedade de teste; sGTM por página; console; pixels Meta/TikTok",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/recaptura/E-18_wallet.json · PROP-TESTE_G-HSLN2EKMHS_hits.json · V-01_sgtm_por_pagina.json · V-02_err_name_not_resolved.json · V-03_meta_pixel.json",
+   "periodo": "13/10/2026 12:08–12:26",
+   "extraido": "13/10/2026 12:25"
+  },
+  {
+   "id": "E-19",
+   "titulo": "Inventário de contas: 35 containers visíveis (16 na conta Smart Fit Brasil) e propriedades GA",
+   "tipo": "Tag Manager API v2 + GA Admin API",
+   "arquivo": "evidencias/gtm/_inventario_containers.json · evidencias/ga4/_account_summaries.json",
+   "periodo": "estado em 13/10/2026",
+   "extraido": "13/10/2026 11:00"
+  },
+  {
+   "id": "E-20",
+   "titulo": "Conta GA 9925058: permissões (conta e 25 propriedades), Data Access Report e Change History; consolidado por usuário",
+   "tipo": "GA Admin API v1beta/v1alpha",
+   "arquivo": "evidencias/ga4/_acessos/2026-10-13/9925058/accessBindings_account.json · evidencias/ga4/_acessos/2026-10-13/9925058/accessBindings_properties.json · evidencias/ga4/_acessos/2026-10-13/9925058/accessReport_account.json · evidencias/ga4/_acessos/2026-10-13/9925058/changeHistory.json · evidencias/ga4/_acessos/2026-10-13/9925058/usuarios_consolidado.json",
+   "periodo": "log de uso 23/10/2024–13/10/2026 (24 meses); histórico de alterações 11/10/2024–30/09/2026",
+   "extraido": "13/10/2026 13:50",
+   "endpoint": [
+    [
+     "POST",
+     "https://analyticsadmin.googleapis.com/v1beta/accounts/9925058:runAccessReport",
+     {
+      "dimensions": [
+       "userEmail",
+       "accessedPropertyName",
+       "accessedPropertyId",
+       "accessorAppName",
+       "mostRecentAccessEpochTimeMicros"
+      ],
+      "metrics": [
+       "accessCount"
+      ],
+      "dateRanges": [
+       {
+        "startDate": "2020-01-01",
+        "endDate": "today"
+       }
+      ],
+      "limit": 100000
+     }
+    ],
+    [
+     "GET",
+     "https://analyticsadmin.googleapis.com/v1alpha/accounts/9925058/accessBindings  (e properties/<id>/accessBindings para as 25)",
+     null
+    ],
+    [
+     "POST",
+     "https://analyticsadmin.googleapis.com/v1alpha/accounts/9925058:searchChangeHistoryEvents",
+     {
+      "pageSize": 200
+     }
+    ]
+   ]
+  },
+  {
+   "id": "E-21",
+   "titulo": "Contas GA Standard 314140441 (Nova), 358023210 (Smart System) e 305065292 (Totem): permissões e Change History; uso inferido",
+   "tipo": "GA Admin API v1alpha",
+   "arquivo": "evidencias/ga4/_acessos/2026-10-13/314140441/*.json · evidencias/ga4/_acessos/2026-10-13/358023210/*.json · evidencias/ga4/_acessos/2026-10-13/305065292/*.json · evidencias/ga4/_acessos/2026-10-13/secundarias_consolidado.json",
+   "periodo": "estado em 13/10/2026; histórico desde a criação ou fev–mai/2025",
+   "extraido": "13/10/2026 14:32",
+   "endpoint": [
+    [
+     "GET",
+     "https://analyticsadmin.googleapis.com/v1alpha/accounts/<id>/accessBindings",
+     null
+    ],
+    [
+     "POST",
+     "https://analyticsadmin.googleapis.com/v1alpha/accounts/<id>:searchChangeHistoryEvents",
+     {
+      "pageSize": 200
+     }
+    ]
+   ]
+  },
+  {
+   "id": "E-22",
+   "titulo": "Conta GTM 6003531403 \"Smart Fit Brasil\": permissões de 49 usuários × 16 containers",
+   "tipo": "Tag Manager API v2",
+   "arquivo": "evidencias/gtm/_acessos/2026-10-13/6003531403/user_permissions.json · evidencias/gtm/_acessos/2026-10-13/6003531403/usuarios_consolidado.json",
+   "periodo": "estado em 13/10/2026 (a API não traz log de uso)",
+   "extraido": "13/10/2026 14:06",
+   "endpoint": [
+    [
+     "GET",
+     "https://tagmanager.googleapis.com/tagmanager/v2/accounts/6003531403/user_permissions",
+     null
+    ]
+   ]
+  },
+  {
+   "id": "E-23",
+   "titulo": "Uso das 33 propriedades GA acessíveis: eventos por mês desde 2015, streams com dados em 30 dias, último evento, vínculos; totem e Smart System revalidados",
+   "tipo": "GA Data API runReport + Admin API",
+   "arquivo": "evidencias/_uso_ativos/2026-10-13/ga/*.json · evidencias/_uso_ativos/2026-10-13/classificacao.json · evidencias/_uso_ativos/2026-10-13/revalidacao/totem_na_principal_mensal.json",
+   "periodo": "08/2015–13/10/2026 (mensal); 30 dias até 12/10/2026",
+   "extraido": "13/10/2026 14:23 (totem: ~15h)",
+   "endpoint": [
+    [
+     "POST",
+     "https://analyticsdata.googleapis.com/v1beta/properties/<id>:runReport",
+     {
+      "dimensions": [
+       "yearMonth"
+      ],
+      "metrics": [
+       "eventCount",
+       "activeUsers"
+      ],
+      "dateRanges": [
+       {
+        "startDate": "2015-08-14",
+        "endDate": "today"
+       }
+      ]
+     }
+    ],
+    [
+     "POST",
+     "https://analyticsdata.googleapis.com/v1beta/properties/<id>:runReport",
+     {
+      "dimensions": [
+       "streamName",
+       "streamId"
+      ],
+      "metrics": [
+       "eventCount",
+       "activeUsers",
+       "keyEvents"
+      ],
+      "dateRanges": [
+       {
+        "startDate": "30daysAgo",
+        "endDate": "yesterday"
+       }
+      ]
+     }
+    ],
+    [
+     "POST",
+     "https://analyticsdata.googleapis.com/v1beta/properties/175020184:runReport",
+     {
+      "dimensions": [
+       {
+        "name": "yearMonth"
+       }
+      ],
+      "metrics": [
+       {
+        "name": "eventCount"
+       },
+       {
+        "name": "activeUsers"
+       }
+      ],
+      "dateRanges": [
+       {
+        "startDate": "2025-11-01",
+        "endDate": "2026-10-12"
+       }
+      ],
+      "dimensionFilter": {
+       "filter": {
+        "fieldName": "pagePath",
+        "stringFilter": {
+         "matchType": "CONTAINS",
+         "value": "/totem"
+        }
+       }
+      },
+      "limit": 100
+     }
+    ],
+    [
+     "GET",
+     "https://analyticsadmin.googleapis.com/v1beta/properties/<id>/dataStreams · googleAdsLinks · firebaseLinks; v1alpha bigQueryLinks",
+     null
+    ]
+   ]
+  },
+  {
+   "id": "E-24",
+   "titulo": "Uso dos 16 containers da conta BR: versão live, workspaces, histórico de versões, tags ativas e IDs de destino",
+   "tipo": "Tag Manager API v2",
+   "arquivo": "evidencias/_uso_ativos/2026-10-13/gtm/*.json · evidencias/_uso_ativos/2026-10-13/classificacao.json",
+   "periodo": "estado em 13/10/2026",
+   "extraido": "13/10/2026 14:20",
+   "restrito": true,
+   "endpoint": [
+    [
+     "GET",
+     "https://tagmanager.googleapis.com/tagmanager/v2/accounts/6003531403/containers/<id>/versions:live",
+     null
+    ],
+    [
+     "GET",
+     ".../containers/<id>/workspaces · .../containers/<id>/version_headers",
+     null
+    ]
+   ]
+  },
+  {
+   "id": "E-25",
+   "titulo": "Checagem HTTP, DNS e whois dos domínios e dos tagging servers",
+   "tipo": "curl / dig / whois",
+   "arquivo": "evidencias/_uso_ativos/2026-10-13/site_check.json · evidencias/_uso_ativos/2026-10-13/revalidacao/http_check.json",
+   "periodo": "13/10/2026 (duas rodadas, ~14h e ~15h)",
+   "extraido": "13/10/2026 15:00",
+   "endpoint": [
+    [
+     "CLI",
+     "curl -sIL -A 'Mozilla/5.0' https://www.smartfit-go.com ; dig +short sfbrasil.smartfit.com.br ; whois smartfit-go.com ; curl -w %{http_code} <tagging server>/healthy",
+     null
+    ]
+   ]
+  },
+  {
+   "id": "E-26",
+   "titulo": "Inventário das 268 tags ativas × volume por evento (Data API 30/90 dias) × regras de evento (Admin API) × sGTM; consolidado por tag",
+   "tipo": "Tag Manager API v2 + GA Data/Admin API",
+   "arquivo": "evidencias/gtm/GTM-TCXTCQ5/2026-10-13/inventario_tags.json · cruzamento_tags_dataapi.json · validacao_tags_final.json · evidencias/ga4/175020184/2026-10-13/dataapi/E_eventos_*.json · evidencias/ga4/175020184/2026-10-13/regras_evento_e_sgtm.json",
+   "periodo": "13/09–12/10/2026 (30 dias) e 90 dias; configuração em 13/10/2026",
+   "extraido": "13/10/2026 ~17h",
+   "query": {
+    "dimensions": [
+     "eventName",
+     "streamName"
+    ],
+    "metrics": [
+     "eventCount"
+    ],
+    "dimensionFilter": "streamId = 4148363495 (web G-BJP7473VFF)",
+    "limit": 10000
+   },
+   "endpoint": [
+    [
+     "POST",
+     "https://analyticsdata.googleapis.com/v1beta/properties/175020184:runReport",
+     {
+      "dimensions": [
+       "eventName",
+       "streamName"
+      ],
+      "metrics": [
+       "eventCount"
+      ],
+      "dateRanges": [
+       {
+        "startDate": "2026-09-13",
+        "endDate": "2026-10-12"
+       }
+      ]
+     }
+    ],
+    [
+     "POST",
+     "https://analyticsdata.googleapis.com/v1beta/properties/175020184:runReport",
+     {
+      "dimensions": [
+       "eventName",
+       "hostName"
+      ],
+      "metrics": [
+       "eventCount"
+      ],
+      "dateRanges": [
+       {
+        "startDate": "2026-09-13",
+        "endDate": "2026-10-12"
+       }
+      ],
+      "nota": "amostrada (~12%): volume por host é estimativa"
+     }
+    ],
+    [
+     "GET",
+     "https://analyticsadmin.googleapis.com/v1alpha/properties/175020184/dataStreams/4148363495/eventEditRules · eventCreateRules",
+     null
+    ],
+    [
+     "GET",
+     "https://tagmanager.googleapis.com/tagmanager/v2/accounts/6003531403/containers/<GTM-TCXTCQ5>/versions:live  (e GTM-5J2HW2RB)",
+     null
+    ]
+   ]
+  },
+  {
+   "id": "E-27",
+   "titulo": "Chrome B2: checkout da unidade Augusta até /checkout/wallet, sem finalizar (89 tags); requests por destino, New Relic e sGTM",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/tags/b2_resultado.json · b2_requests.json · b2_newrelic.json · b2_*.png · b5_1*.png",
+   "periodo": "13/10/2026",
+   "extraido": "13/10/2026 ~16h",
+   "restrito": true
+  },
+  {
+   "id": "E-28",
+   "titulo": "Chrome B1: home, /academias, unidade, /planos e tags globais (79 tags)",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/tags/b1_resultado.json · b1_requests.json · b1_*.png · b5_5*.png",
+   "periodo": "13/10/2026",
+   "extraido": "13/10/2026 ~15h"
+  },
+  {
+   "id": "E-29",
+   "titulo": "Chrome B3: LPs, parceiros (/vantagens), vagas, Coach e origem dos eventos leads_*/smartRun_* (39 tags)",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/tags/b3_resultado.json · b3_requests.json · b3_*.png · b5_2*.png · b5_4*.png · evidencias/ga4/175020184/2026-10-13/dataapi/E_paginas_lead_parceiros_30d.json",
+   "periodo": "13/10/2026; páginas 13/09–12/10/2026",
+   "extraido": "13/10/2026 ~16h"
+  },
+  {
+   "id": "E-30",
+   "titulo": "Chrome B4: Espaço do Cliente/login, Croct e containers por host (7 tags)",
+   "tipo": "Chrome DevTools (MCP)",
+   "arquivo": "evidencias/chrome/2026-10-13/tags/b4_resultado.json · b4_requests.json · b4_*.png · b5_3*.png",
+   "periodo": "13/10/2026",
+   "extraido": "13/10/2026 ~16h"
+  },
+  {
+   "id": "E-31",
+   "titulo": "TikTok Events Manager (pixel Smart_Fit) × GA4 web: setup, fonte primária e volume por evento",
+   "tipo": "Prints do TikTok Events Manager + GA Data API",
+   "arquivo": "evidencias/tiktok/2026-10-19/README.md · 01_overview_tendencia_browser_server.png · 02_eventos_pagina1.png · 03_eventos_pagina2.png · 04_purchase_diagnostico_content_id.png · ga4_web_eventos_13a19out.json · ga4_web_checkout_por_host.json · ga4_web_purchase_por_host.json",
+   "periodo": "13 a 19/10/2026",
+   "extraido": "19/10/2026"
+  },
+  {
+   "id": "E-32",
+   "titulo": "Remedição 19/10: purchase do app por versão e dia (A-009) e do Espaço do Cliente por página (A-010); pushes de purchase no _app.js do Espaço do Cliente; Preview do contorno da variável 1240",
+   "tipo": "GA Data API runReport + Chrome DevTools (MCP)",
+   "arquivo": "evidencias/ga4/175020184/2026-10-19/remedicao/A009_resumo_por_versao_2026-10-05_2026-10-18.json · A009_purchase_app_dia_versao_txid_2026-10-05_2026-10-18.json · A010_purchase_ec_dia_pagina_txid_2026-09-13_2026-10-18.json · A010_purchase_ec_stream_pagina_2026-10-05_2026-10-18.json · evidencias/chrome/2026-10-19/a010_ec_purchase_pushes.json · a010_ec_bundle_purchase.json · a010_preview_variavel.json · a010_ta_t2_fallback_raiz.png",
+   "periodo": "13/09 a 18/10/2026 (app por versão: 05 a 18/10, consulta diária sem amostragem)",
+   "extraido": "19/10/2026"
+  },
+  {
+   "id": "E-33",
+   "titulo": "Chrome 19/10: /academias/augusta na live v597 e no Preview do workspace 773 (Kwai EVENT_CONTENT_VIEW e TikTok ViewContent); diff live × workspace 773",
+   "tipo": "Chrome DevTools (MCP) + Tag Manager API",
+   "arquivo": "evidencias/chrome/2026-10-19/a027/net_04_unidade_view_item.json · augusta_k1023.network-request · evidencias/gtm/GTM-TCXTCQ5/2026-10-19/workspace_fase2/diff_live_x_ws773.json",
+   "periodo": "19/10/2026",
+   "extraido": "19/10/2026"
+  }
+ ],
+ "PILARES": {
+  "FIN": "Financeiro / Licenciamento",
+  "INT": "Duplicidade & Integridade",
+  "PG": "Performance & Governança"
+ },
+ "ACHADOS": [
+  {
+   "id": "SF-DUP-01",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 3,
+    "PG": 2
+   },
+   "I": 3,
+   "P": 3,
+   "mods": [
+    "+1 se purchase for importado como conversão primária no Ads (a validar)"
+   ],
+   "crit": "ALTA",
+   "conf": "Alta (API; fora do funil web testado)",
+   "titulo": "59% dos purchase da propriedade principal vêm do totem, sem transaction_id e com valor R$ 0",
+   "curto": "Purchase do totem sem ID e sem valor",
+   "ativo": "GA4 175020184 · stream web G-BJP7473VFF · hostName app.smartfit.com.br/totem/v3/success/<hash> · container de origem provável GTM-5C6DKGH (Totem)",
+   "evid": [
+    "E-05",
+    "E-06",
+    "E-03"
+   ],
+   "condicao": "Em 30 dias, 204.518 eventos purchase chegaram de app.smartfit.com.br sem transaction_id e com receita R$ 0, o equivalente a 58,7% de todos os 348.652 purchase da propriedade. Pelo menos 147.966 páginas de sucesso distintas (/totem/v3/success/<hash>), 3.106 dispositivos, ~99% Firefox desktop (padrão de totem de autoatendimento). O disparo se repete na mesma página de sucesso (até 7 eventos por página). O volume caiu de ~7,1 mil/dia (13/09–02/10) para ~880/dia (03–12/10) sem mudança registrada que explique.",
+   "obs_esp": [
+    [
+     "purchase sem transaction_id e sem value",
+     "1 purchase por venda, com transaction_id, value e currency"
+    ],
+    [
+     "Até 7 disparos na mesma página de sucesso",
+     "1 disparo por página de sucesso"
+    ],
+    [
+     "Venda do totem misturada ao stream do site na propriedade ligada a 6 contas Ads",
+     "Totem em propriedade/subpropriedade própria (já existe a conta \"Smarfit - Totem GA4\")"
+    ]
+   ],
+   "criterio": "GA4 deduplica e concilia compras por transaction_id; sem ele, a compra não é deduplicável nem retratável no Google Ads (ajustes de conversão exigem order ID).",
+   "fontes": [
+    [
+     "GA4: Measure ecommerce (transaction_id)",
+     "https://support.google.com/analytics/answer/12313109"
+    ],
+    [
+     "Google Ads: conversion adjustments",
+     "https://support.google.com/google-ads/answer/7686447"
+    ]
+   ],
+   "causa": "A página de sucesso do totem dispara purchase sem os parâmetros de e-commerce (sem transaction_id/value) e sem trava de disparo único. A subpropriedade Web já exclui /totem (filtro existente), mas a propriedade principal, que tem as 6 contas Ads vinculadas, continua recebendo.",
+   "efeito": "A contagem de compras e a taxa de conversão da propriedade principal ficam infladas: só 27% dos eventos purchase são transações únicas identificáveis. A venda do totem fica sem valor, então a receita desse canal é invisível no GA4. Se purchase for conversão importada no Google Ads, o lance aprende com volume que não corresponde a vendas atribuíveis à mídia.",
+   "impacto": {
+    "formula": "% contagem distorcida = N_totem / N_purchase = 204.518 / 348.652",
+    "valor": "58,7% dos purchase sem ID nem valor; se importado no Ads: i_n = N_esp/N_real e CPA_real = CPA_painel × (1 + i_n)",
+    "premissa": "A natureza das vendas (reais no totem?) e o motivo da queda em 03/10 precisam ser confirmados pela Smart Fit. Ainda não sabemos se purchase é conversão primária no Ads."
+   },
+   "reproduzir": [
+    "Data API: runReport com eventName=purchase e transactionId=(not set), dimensão hostName (E-05)",
+    "Repetir com pagePath BEGINS_WITH /totem/ (E-06)",
+    "Série diária por hostName (E-06): ver a queda em 03/10"
+   ],
+   "rec_raiz": "No totem: enviar purchase com transaction_id (ID do pedido), value e currency, com trava de disparo único por pedido; mandar o totem para a propriedade própria (conta \"Smarfit - Totem GA4\") ou para a subpropriedade Totem.",
+   "rec_contorno": "Imediato: não usar purchase da propriedade principal como conversão no Ads enquanto o totem não for separado; documentar o que mudou em 03/10.",
+   "pronto": "Data API (mesma query de E-05), 7 dias após o deploy: purchase com hostName=app.smartfit.com.br e transactionId=(not set) = 0, e eventCount(purchase) = countDistinct(transactionId) ± 0,5%.",
+   "acao": "A-006",
+   "deck": {
+    "oque": "6 em cada 10 \"compras\" registradas na propriedade principal vêm dos totens das academias, sem número do pedido e sem valor.",
+    "quanto": "204,5 mil eventos em 30 dias (58,7% dos purchase). Só 27% dos eventos de compra são vendas únicas identificáveis. Volume caiu ~88% desde 03/10, sem explicação documentada.",
+    "fazer": "Totem envia pedido + valor e passa a ir para a propriedade do totem (já existe). Confirmar se purchase é conversão no Google Ads.",
+    "grafico_titulo": "purchase por dia do totem (app.smartfit.com.br), sem ID e sem valor",
+    "grafico": {
+     "tipo": "barras",
+     "serie": [
+      [
+       "13/09",
+       2001.0
+      ],
+      [
+       "14/09",
+       11250.0
+      ],
+      [
+       "15/09",
+       9391.0
+      ],
+      [
+       "16/09",
+       8005.0
+      ],
+      [
+       "17/09",
+       6098.0
+      ],
+      [
+       "18/09",
+       4268.0
+      ],
+      [
+       "19/09",
+       2469.0
+      ],
+      [
+       "20/09",
+       1931.0
+      ],
+      [
+       "21/09",
+       12789.0
+      ],
+      [
+       "22/09",
+       10277.0
+      ],
+      [
+       "23/09",
+       8131.0
+      ],
+      [
+       "24/09",
+       6389.0
+      ],
+      [
+       "25/09",
+       5066.0
+      ],
+      [
+       "26/09",
+       2818.0
+      ],
+      [
+       "27/09",
+       2151.0
+      ],
+      [
+       "28/09",
+       11760.0
+      ],
+      [
+       "29/09",
+       10023.0
+      ],
+      [
+       "30/09",
+       11058.0
+      ],
+      [
+       "01/10",
+       9683.0
+      ],
+      [
+       "02/10",
+       6771.0
+      ],
+      [
+       "03/10",
+       850.0
+      ],
+      [
+       "04/10",
+       1044.0
+      ],
+      [
+       "05/10",
+       845.0
+      ],
+      [
+       "06/10",
+       921.0
+      ],
+      [
+       "07/10",
+       1127.0
+      ],
+      [
+       "08/10",
+       1107.0
+      ],
+      [
+       "09/10",
+       967.0
+      ],
+      [
+       "10/10",
+       755.0
+      ],
+      [
+       "11/10",
+       686.0
+      ],
+      [
+       "12/10",
+       525.0
+      ]
+     ],
+     "destaque": [
+      "13/09",
+      "14/09",
+      "15/09",
+      "16/09",
+      "17/09",
+      "18/09",
+      "19/09",
+      "20/09",
+      "21/09",
+      "22/09",
+      "23/09",
+      "24/09",
+      "25/09",
+      "26/09",
+      "27/09",
+      "28/09",
+      "29/09",
+      "30/09",
+      "01/10",
+      "02/10"
+     ],
+     "marco": "03/10",
+     "marco_txt": "03/10: queda de patamar"
+    }
+   },
+   "vitrine": true,
+   "ordem_vitrine": 0,
+   "tecnico": [
+    {
+     "tipo": "barras",
+     "serie": [
+      [
+       "13/09",
+       2001.0
+      ],
+      [
+       "14/09",
+       11250.0
+      ],
+      [
+       "15/09",
+       9391.0
+      ],
+      [
+       "16/09",
+       8005.0
+      ],
+      [
+       "17/09",
+       6098.0
+      ],
+      [
+       "18/09",
+       4268.0
+      ],
+      [
+       "19/09",
+       2469.0
+      ],
+      [
+       "20/09",
+       1931.0
+      ],
+      [
+       "21/09",
+       12789.0
+      ],
+      [
+       "22/09",
+       10277.0
+      ],
+      [
+       "23/09",
+       8131.0
+      ],
+      [
+       "24/09",
+       6389.0
+      ],
+      [
+       "25/09",
+       5066.0
+      ],
+      [
+       "26/09",
+       2818.0
+      ],
+      [
+       "27/09",
+       2151.0
+      ],
+      [
+       "28/09",
+       11760.0
+      ],
+      [
+       "29/09",
+       10023.0
+      ],
+      [
+       "30/09",
+       11058.0
+      ],
+      [
+       "01/10",
+       9683.0
+      ],
+      [
+       "02/10",
+       6771.0
+      ],
+      [
+       "03/10",
+       850.0
+      ],
+      [
+       "04/10",
+       1044.0
+      ],
+      [
+       "05/10",
+       845.0
+      ],
+      [
+       "06/10",
+       921.0
+      ],
+      [
+       "07/10",
+       1127.0
+      ],
+      [
+       "08/10",
+       1107.0
+      ],
+      [
+       "09/10",
+       967.0
+      ],
+      [
+       "10/10",
+       755.0
+      ],
+      [
+       "11/10",
+       686.0
+      ],
+      [
+       "12/10",
+       525.0
+      ]
+     ],
+     "legenda": "purchase/dia do totem (E-06)"
+    },
+    {
+     "tipo": "query",
+     "arquivo": "evidencias/ga4/175020184/2026-10-13/dataapi/E_purchase_by_host_txid_30d.json"
+    }
+   ]
+  },
+  {
+   "id": "SF-DUP-02",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 2,
+    "INT": 3,
+    "PG": 1
+   },
+   "I": 3,
+   "P": 3,
+   "mods": [],
+   "crit": "ALTA",
+   "conf": "Alta (API)",
+   "titulo": "23% das compras do app são registradas mais de uma vez: ~R$ 808 mil de receita inflada em 30 dias",
+   "curto": "Purchase repetido nos apps",
+   "ativo": "GA4 175020184 · streams SmartFit App (iOS 1206254860) e Smart Fit App (Android 1206330767) · Firebase SDK (fora do GTM)",
+   "evid": [
+    "E-04",
+    "E-32"
+   ],
+   "revisao": "19/10/2026 (E-32): corrigido no app a partir da versão 4.9.20. De 05 a 18/10, 0,3% das transações das versões 4.9.20 em diante têm mais de um purchase (Android 0 de 2.242, iOS 18 de 3.075), contra 25% até a 4.9.19. Desde 15/10, 88% das compras do app vêm de versões corrigidas e a repetição diária caiu de ~25% para 0 a 3%. O achado continua válido para o período medido; fecha com o reteste de 7 dias no total do app.",
+   "condicao": "9.074 das 38.962 transações do app (23,3%) têm mais de um purchase, até 103 eventos para o mesmo transaction_id. São 38.623 eventos extras. Nas transações repetidas que têm valor, a mediana por disparo é R$ 129,90, ou seja, cada repetição carrega o valor cheio.",
+   "obs_esp": [
+    [
+     "Mesmo transaction_id com 2 a 103 purchase",
+     "1 purchase por transaction_id"
+    ],
+    [
+     "Receita app no GA4: R$ 1,75 mi",
+     "Receita app deduplicada: ~R$ 0,94 mi"
+    ]
+   ],
+   "criterio": "O GA4 deduplica transaction_id só em web streams, não em app streams. No app, a deduplicação é responsabilidade de quem envia.",
+   "fontes": [
+    [
+     "GA4: deduplicação só para web streams",
+     "https://support.google.com/analytics/answer/12313109"
+    ]
+   ],
+   "causa": "O app dispara purchase a cada exibição/retorno da tela de confirmação (ou reenvio), sem registrar que aquele transaction_id já foi enviado.",
+   "efeito": "A receita do app aparece ~1,86× maior que a deduplicada. Comparações web × app e qualquer decisão de investimento em mídia de app (ROAS) partem de um número inflado. Destinos que leem o GA4 (BigQuery, Ads, públicos) recebem a duplicata.",
+   "impacto": {
+    "formula": "V_esp = Σ valor × (n−1)/n nas transações repetidas; i_v = V_esp / (V_app − V_esp); ROAS_real = ROAS_painel ÷ (1 + i_v)",
+    "valor": "V_esp ≈ R$ 807,8 mil em 30 dias; i_v ≈ 86%",
+    "premissa": "Valor igual em cada repetição (sustentado pela mediana R$ 129,90 por disparo). Calibrar com a receita de backend do app."
+   },
+   "reproduzir": [
+    "Data API: purchase por transactionId × platform (E-04)",
+    "Filtrar platform ∈ {iOS, Android} e eventCount > 1"
+   ],
+   "rec_raiz": "No app: guardar localmente os transaction_id já enviados e disparar purchase uma única vez por pedido (idealmente a partir da confirmação do backend).",
+   "rec_contorno": "Enquanto isso, em relatórios e BigQuery, usar receita deduplicada por transaction_id para o app.",
+   "pronto": "Data API (E-04), 7 dias após a nova versão do app atingir ≥ 80% da base: transações app com eventCount > 1 ≤ 0,5%.",
+   "acao": "A-009",
+   "deck": {
+    "oque": "No app, a mesma compra é registrada várias vezes (até 103).",
+    "quanto": "23% das compras do app; ~R$ 808 mil inflados em 30 dias: a receita do app aparece ~1,9× a real deduplicada.",
+    "fazer": "App registra cada pedido uma única vez. Até lá, relatórios de app usam receita deduplicada."
+   }
+  },
+  {
+   "id": "SF-DUP-03",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 3,
+    "PG": 1
+   },
+   "I": 3,
+   "P": 3,
+   "mods": [],
+   "crit": "ALTA",
+   "conf": "Alta (API)",
+   "titulo": "R$ 780,6 mil (66%) da receita do Espaço do Cliente chegam sem transaction_id e não podem ser conciliados",
+   "curto": "Espaço do Cliente sem transaction_id",
+   "ativo": "GA4 175020184 · espacodocliente.smartfit.com.br (/my-plan/upgrade e /addons) · GTM-TCXTCQ5, tags de purchase 2505 e 2702 (stream G-BJP7473VFF) e variável 1240 \"DL - Purchase - Transaction ID\"",
+   "evid": [
+    "E-05",
+    "E-10",
+    "E-32"
+   ],
+   "revisao": "19/10/2026 (E-32): causa confirmada no código público do Espaço do Cliente (_app.js). Os pushes upgradePurchase e addonPurchase põem transaction_id na raiz do evento, fora de ecommerce; a recompra põe dentro de ecommerce e chega com ID (3.503 de 3.507 purchase de 05 a 18/10). No período medido, /my-plan/upgrade teve R$ 620,6 mil sem ID e 0 com ID, e as páginas /addons/* somaram ~R$ 160 mil sem ID; /buying-again/success teve 5.485 purchase com ID e 7 sem. Contorno no GTM validado em Preview (workspace 773, aguardando publicação pela Smart Fit).",
+   "condicao": "4.776 purchase do Espaço do Cliente sem transaction_id somam R$ 780.619,73, ou 66,2% dos R$ 1,18 mi de receita do EC no período. As maiores páginas de receita são /my-plan/upgrade (R$ 619 mil, todo sem transaction_id) e /pt-BR/my-plan/buying-again/success (R$ 401 mil, com transaction_id); o restante sem ID vem das páginas /addons/*.",
+   "obs_esp": [
+    [
+     "purchase com value, sem transaction_id",
+     "purchase com transaction_id único por pedido"
+    ]
+   ],
+   "criterio": "Sem transaction_id, o GA4 não deduplica e o Google Ads não permite retratação/reformulação da conversão.",
+   "fontes": [
+    [
+     "GA4: transaction_id",
+     "https://support.google.com/analytics/answer/12313109"
+    ],
+    [
+     "Google Ads: transaction ID",
+     "https://support.google.com/google-ads/answer/6386790"
+    ]
+   ],
+   "causa": "No upgrade de plano e na compra de adicionais, o dataLayer do Espaço do Cliente envia transaction_id na raiz do evento, fora de ecommerce. A variável 1240 do GTM-TCXTCQ5 lê só ecommerce.transaction_id, então o purchase sai sem ID. Na recompra, o campo vem dentro de ecommerce e chega.",
+   "efeito": "Receita de upgrade e de adicionais sem como deduplicar, conciliar com o financeiro ou corrigir retroativamente nas mídias.",
+   "impacto": {
+    "formula": "% receita não deduplicável = V_sem_id / V_EC",
+    "valor": "R$ 780,6 mil / R$ 1,18 mi = 66,2% (7,5% de toda a receita purchase da propriedade)",
+    "premissa": "Receita registrada no GA4; não confirmada com o financeiro."
+   },
+   "reproduzir": [
+    "Data API: purchase × hostName com transactionId=(not set) (E-05)",
+    "Data API: purchase × pagePath no host do EC (E-10)"
+   ],
+   "rec_raiz": "Dev do Espaço do Cliente: mover transaction_id (ID do pedido) para dentro de ecommerce nos pushes upgradePurchase e addonPurchase, e garantir que venha preenchido.",
+   "rec_contorno": "No GTM-TCXTCQ5, a variável 1240 passa a ler ecommerce.transaction_id e, se vazio, o transaction_id da raiz do evento. Mesmo nome, então as tags que a usam não mudam. Pronto e validado em Preview no workspace 773 (A-010).",
+   "pronto": "Data API (E-05), 7 dias após o deploy: purchase com hostName=espacodocliente.smartfit.com.br e transactionId=(not set) = 0.",
+   "acao": "A-010",
+   "deck": {
+    "oque": "Dois terços da receita do Espaço do Cliente (upgrade de plano e adicionais) chegam sem número do pedido.",
+    "quanto": "R$ 780,6 mil em 30 dias sem como conciliar com o financeiro ou corrigir nas mídias.",
+    "fazer": "Incluir o ID do pedido no evento de compra do Espaço do Cliente (correção pequena)."
+   }
+  },
+  {
+   "id": "SF-DUP-04",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 2,
+    "INT": 2,
+    "PG": 1
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [
+    "+1 se a conversão Ads de add_to_cart for usada em lance (a validar)"
+   ],
+   "crit": "MÉDIA",
+   "conf": "Alta (reproduzido no Chrome + GTM)",
+   "titulo": "Marcar um adicional no checkout conta o carrinho duas vezes: add_to_cart soma R$ 339,70 para um carrinho de R$ 189,80 e gera 2 conversões no Google Ads",
+   "curto": "Carrinho contado 2× e parâmetros inconsistentes",
+   "ativo": "GTM-TCXTCQ5 v597 · add_to_cart para G-BJP7473VFF, conversão Google Ads AW-998758695, AddToCart Meta (2 pixels) e TikTok · página /addons",
+   "evid": [
+    "E-16",
+    "E-15",
+    "E-12",
+    "E-01",
+    "E-27"
+   ],
+   "condicao": "(a) O carregamento de /addons dispara add_to_cart do plano (R$ 149,90); marcar o Smart Coach dispara outro add_to_cart com o carrinho inteiro (plano + adesão + coach = R$ 189,80). Um carrinho de R$ 189,80 vira R$ 339,70 em add_to_cart e 2 conversões AW-998758695; Meta e TikTok recebem 2 AddToCart. Desmarcar e marcar de novo repete. (b) Cada adicional marcado gera mais um page_view (replaceState), e /checkout/person gera 2 page_view por propriedade. (c) promotion_name/promo_name é a promoção do Plano BLACK num carrinho e numa compra Fit (compra 46031495). (d) item_list_id/item_list_name diferem entre view_item (\"Gimnasio - Planos\"), select_item (\"Gimnasios - Planos\") e carrinho (\"List Cart - Plano fit\"), em espanhol. (e) Na compra 46031495, o purchase saiu com o plano Fit e a adesão; o adicional não aparece em items. Validação de 13/10 (E-27): add_to_cart sai no load do /addons e de novo em cada adicional com o carrinho inteiro (149,90 e depois 189,80), e o reload repete.",
+   "obs_esp": [
+    [
+     "2 add_to_cart (R$ 149,90 + R$ 189,80) para 1 carrinho",
+     "1 add_to_cart por item adicionado (só o coach, R$ 39,90), ou view_cart no load"
+    ],
+    [
+     "2 conversões Google Ads por carrinho",
+     "1 conversão por ação real"
+    ],
+    [
+     "promo do Plano BLACK em compra Fit",
+     "promo aplicada ao plano escolhido"
+    ],
+    [
+     "item_list em ES e diferente a cada etapa",
+     "Mesma lista (ID e nome em PT) em todo o funil"
+    ]
+   ],
+   "criterio": "GA4 e-commerce: add_to_cart representa itens adicionados; value deve corresponder a esses itens. Google Ads conta cada disparo de tag como conversão, salvo deduplicação por ID.",
+   "fontes": [
+    [
+     "GA4: Measure ecommerce",
+     "https://developers.google.com/analytics/devguides/collection/ga4/ecommerce"
+    ],
+    [
+     "Google Ads: transaction ID",
+     "https://support.google.com/google-ads/answer/6386790"
+    ]
+   ],
+   "causa": "O dataLayer de /addons publica o carrinho completo como add_to_cart no load e a cada mudança, em vez de publicar só o item adicionado. A variável de promoção lê a promoção da vitrine (Black), não a do plano escolhido; nomenclatura herdada do site em espanhol.",
+   "efeito": "Valor e contagem de add_to_cart inflados no GA4, no Google Ads, na Meta e no TikTok sempre que há adicional. Se a conversão de add_to_cart do Ads ou o AddToCart da Meta forem sinais de otimização, a mídia aprende com carrinhos contados em dobro. Análise de promoção atribui vendas Fit à campanha Black.",
+   "impacto": {
+    "formula": "i_v(carrinho) = (149,90 + 189,80) / 189,80 − 1; volume: add_to_cart web 894.535 eventos/30 d (E-07)",
+    "valor": "+79% de valor e 2× conversões por carrinho com 1 adicional",
+    "premissa": "Proporção de carrinhos com adicional a medir; uso da conversão add_to_cart em lance a confirmar (pergunta 1)."
+   },
+   "reproduzir": [
+    "Chrome: /academias/augusta → \"Começar agora\" (Fit) → em /addons marcar Smart Coach (E-16)",
+    "Network: /ag/g/c com en=add_to_cart e /pagead/ com AW-998758695",
+    "Compra 46031495: pr1..prN e promo_name no purchase (E-12)"
+   ],
+   "rec_raiz": "Publicar add_to_cart só com o item adicionado (e remove_from_cart ao desmarcar); usar view_cart no load; corrigir a variável de promoção; padronizar item_list_id/item_list_name em PT; 1 page_view por etapa.",
+   "rec_contorno": "No Google Ads, manter a conversão de add_to_cart como secundária (fora do lance) até a correção.",
+   "pronto": "Chrome: marcar 1 adicional → 1 add_to_cart com só o adicional (R$ 39,90) e nenhuma conversão Ads extra; compra com adicional → purchase com o adicional em items e value = soma.",
+   "acao": "A-011",
+   "deck": {
+    "oque": "Quando o cliente marca um adicional (ex.: Smart Coach), o site registra o carrinho inteiro de novo.",
+    "quanto": "Um carrinho de R$ 189,80 vira R$ 339,70 e 2 conversões no Google Ads; Meta e TikTok também recebem em dobro. A promoção registrada é a do plano errado.",
+    "fazer": "Ajuste no dataLayer do checkout: registrar só o item adicionado."
+   }
+  },
+  {
+   "id": "SF-PII-04",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 3,
+    "PG": 2
+   },
+   "I": 3,
+   "P": 3,
+   "mods": [
+    "+1 LGPD (dado pessoal a terceiro)"
+   ],
+   "crit": "ALTA",
+   "conf": "Alta (API; no fluxo testado no Chrome o campo veio vazio)",
+   "titulo": "E-mail de cliente chega ao GA4 em texto aberto todos os dias: 14,4 mil eventos em 30 dias",
+   "curto": "E-mail em texto aberto no GA4",
+   "ativo": "GTM-TCXTCQ5 v597 · tag \"40. GA4 - Ecommerce CadastroLoginSucesso\" (parâmetros email, phone_number, nome) · GA4 dimensões personalizadas \"email\" e \"phone\" · page_location em app.smartfit.com.br",
+   "evid": [
+    "E-09",
+    "E-01",
+    "E-03",
+    "E-13",
+    "E-26"
+   ],
+   "condicao": "14.414 eventos cadastroLoginSucesso (13,5% dos 107.020 do período) chegaram com e-mail (valor contendo \"@\") no parâmetro email, ainda ~140 por dia em 12/10. O parâmetro está registrado como dimensão personalizada \"email\" (e \"phone\"), visível em relatórios. Além disso, 3.226 eventos têm e-mail dentro do page_location em app.smartfit.com.br (543 usuários), mais 8 em www e 8 URLs com padrão de CPF. Telefone no parâmetro: 0 em 30 dias. Validação de 13/10 (E-26): a tag 2659 \"40. GA4 - Ecommerce CadastroLoginSucesso\" envia email, phone_number e nome para G-BJP7473VFF (print da UI do GTM). Ver também SF-PII-05.",
+   "obs_esp": [
+    [
+     "ep.email = <e-mail em claro> em 13,5% dos cadastroLoginSucesso",
+     "Nenhum dado pessoal em parâmetro; só user_data com hash"
+    ],
+    [
+     "Dimensões personalizadas \"email\" e \"phone\" ativas",
+     "Dimensões arquivadas"
+    ],
+    [
+     "E-mail no page_location do totem",
+     "URL sem dado pessoal (redaction de query params)"
+    ]
+   ],
+   "criterio": "Política do Google Analytics proíbe enviar PII; a consequência prevista inclui exclusão de dados. LGPD art. 46 (segurança) e compartilhamento com terceiro sem base.",
+   "fontes": [
+    [
+     "GA: evitar envio de PII",
+     "https://support.google.com/analytics/answer/6366371"
+    ],
+    [
+     "GA4: data redaction",
+     "https://support.google.com/analytics/answer/13544947"
+    ],
+    [
+     "LGPD, Lei 13.709/2018",
+     "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    ]
+   ],
+   "causa": "A tag \"40. GA4 - Ecommerce CadastroLoginSucesso\" envia {{e-mail - usuario}}, {{Código do País e tel}} e {{JS - nome}} como parâmetros comuns do evento. Em parte dos fluxos (não no checkout testado) a variável de e-mail resolve e o valor vai em claro. A data redaction de e-mail do stream não cobre este caso.",
+   "efeito": "Dado pessoal de clientes armazenado no Google (e replicado no BigQuery diário). Risco de violação da política do GA (exclusão de dados/conta) e exposição LGPD. Corrigir antes de qualquer procedimento da ANPD é a maior atenuante prevista (−75%, Res. CD/ANPD 4/2023 art. 13).",
+   "impacto": {
+    "formula": "% eventos com PII = 14.414 / 107.020; teto LGPD = min(2% × faturamento BR, R$ 50 mi) por infração",
+    "valor": "13,5% dos cadastroLoginSucesso; ~140 eventos/dia ainda em 12/10",
+    "premissa": "Teto legal é cenário, não multa esperada. A ANPD ainda não aplicou multa por cookies/pixels; o histórico de sanções é baixo."
+   },
+   "reproduzir": [
+    "Data API: eventCount com dimensionFilter customEvent:email CONTAINS \"@\" (E-09) — apenas contagem",
+    "Série diária (E-09)",
+    "GTM API: parâmetros da tag \"40. GA4 - Ecommerce CadastroLoginSucesso\" (E-01)"
+   ],
+   "rec_raiz": "Remover email, phone_number e nome da tag \"40. GA4 - Ecommerce CadastroLoginSucesso\" (manter user_data com hash); arquivar as dimensões \"email\" e \"phone\"; ativar redaction de query params no stream e corrigir a URL do totem.",
+   "rec_contorno": "Abrir data deletion request no GA4 para o parâmetro email do período afetado e limpar a tabela correspondente no BigQuery.",
+   "pronto": "Data API (mesma query de E-09), 7 dias após o deploy: 0 eventos com \"@\" em customEvent:email e em pageLocation; tag \"40. GA4 - Ecommerce CadastroLoginSucesso\" sem os 3 parâmetros na versão live.",
+   "acao": "A-002",
+   "deck": {
+    "oque": "Uma tag do site envia o e-mail do cliente, em texto aberto, para o Google Analytics.",
+    "quanto": "14,4 mil eventos em 30 dias, ainda ~140 por dia. Violação da política do Google (risco de perda de dados) e exposição LGPD.",
+    "fazer": "Remover 3 campos de uma tag e arquivar 2 dimensões: correção em 1 dia. Pedir exclusão do histórico."
+   },
+   "vitrine": true,
+   "ordem_vitrine": 2
+  },
+  {
+   "id": "SF-PII-01",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 3,
+   "mods": [
+    "+1 LGPD (PII em texto aberto no navegador)"
+   ],
+   "crit": "ALTA",
+   "conf": "Alta (reproduzido no Chrome + GTM)",
+   "titulo": "A tag de abandono de checkout para o BigQuery não envia nada e ainda deixa o telefone do cliente gravado no navegador",
+   "curto": "Tag \"Colta dados para bq\" quebrada + PII no localStorage",
+   "ativo": "GTM-TCXTCQ5 v597 · tag \"Colta dados para bq\" (HTML personalizado) · trigger \"cadastroLoginSucesso|begin_checkout\" · destino checkoutsite-563505473543.southamerica-east1.run.app",
+   "evid": [
+    "E-13",
+    "E-01",
+    "E-12"
+   ],
+   "condicao": "No funil, o console registra \"ReferenceError: unidade is not defined\" vindo da tag \"Colta dados para bq\" e há 0 POST para o Cloud Run de destino em todo o funil. Mesmo falhando, a tag grava em localStorage.cadastroLoginSucessoData o telefone em texto aberto (nome/e-mail vazios porque o seletor não acha os campos no shadow DOM).",
+   "obs_esp": [
+    [
+     "ReferenceError; 0 POST ao Cloud Run",
+     "1 POST por lead (se o pipeline for mantido)"
+    ],
+    [
+     "Telefone em claro no localStorage, sem expiração",
+     "Nenhum dado pessoal em Web Storage"
+    ]
+   ],
+   "criterio": "OWASP: não armazenar dado sensível em Web Storage (legível por qualquer script da página). LGPD art. 46.",
+   "fontes": [
+    [
+     "OWASP HTML5 Security Cheat Sheet",
+     "https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html"
+    ]
+   ],
+   "causa": "O script usa as variáveis unidade e location_id sem defini-las; o try/catch engole o erro. A gravação no localStorage acontece antes do envio.",
+   "efeito": "A base de abandono de checkout no BigQuery não recebe dados (perda de histórico para CRM/remarketing). O telefone fica acessível aos 56 scripts HTML ativos e demais terceiros da página.",
+   "impacto": {
+    "formula": "Gap = dias sem dado válido × leads/dia; exposição = nº de scripts de terceiros com acesso",
+    "valor": "100% dos leads desde a quebra; 56 tags HTML ativas na página",
+    "premissa": "Data da quebra a confirmar (histórico de versões/tabela no BigQuery do projeto 563505473543)."
+   },
+   "reproduzir": [
+    "Chrome: preencher o lead → console (E-13)",
+    "Network: filtrar checkoutsite → 0 requests",
+    "Application: localStorage.cadastroLoginSucessoData"
+   ],
+   "rec_raiz": "Desativar a tag \"Colta dados para bq\". Se o pipeline for necessário, reescrever via sGTM/back-end, sem gravar PII no navegador.",
+   "rec_contorno": "Remover a chave cadastroLoginSucessoData no próximo carregamento (script de limpeza).",
+   "pronto": "Chrome, funil completo: console sem ReferenceError; localStorage sem cadastroLoginSucessoData; se mantido, 1 POST 200 por lead.",
+   "acao": "A-003",
+   "deck": {
+    "oque": "Uma tag que deveria mandar o abandono de checkout ao BigQuery está quebrada e deixa o telefone do cliente salvo no navegador.",
+    "quanto": "0 envios: a base de abandono está vazia. Telefone legível por qualquer script de terceiro da página.",
+    "fazer": "Desligar a tag (1 dia) e decidir se o pipeline volta via servidor."
+   }
+  },
+  {
+   "id": "SF-PII-02",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 3,
+   "mods": [
+    "+1 LGPD (PII em texto aberto no navegador)"
+   ],
+   "crit": "ALTA",
+   "conf": "Média (reproduzido no Chrome; sem dado de API)",
+   "titulo": "O SDK de push Indigitall grava o e-mail do cliente em texto aberto no navegador",
+   "curto": "Indigitall: e-mail no sessionStorage",
+   "ativo": "smartfit.com.br · SDK Indigitall · sessionStorage.indigitallExternalCode",
+   "evid": [
+    "E-13"
+   ],
+   "condicao": "Após o lead, sessionStorage.indigitallExternalCode contém o e-mail do usuário em texto aberto.",
+   "obs_esp": [
+    [
+     "externalCode = e-mail em claro",
+     "externalCode = identificador não pessoal (ex.: person_id ou hash)"
+    ]
+   ],
+   "criterio": "OWASP (Web Storage) e LGPD art. 46.",
+   "fontes": [
+    [
+     "OWASP WSTG: Browser Storage",
+     "https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/12-Testing_Browser_Storage"
+    ]
+   ],
+   "causa": "Integração do Indigitall usa o e-mail como externalCode.",
+   "efeito": "E-mail acessível a qualquer script de terceiro carregado na sessão.",
+   "impacto": {
+    "formula": "Exposição = nº de scripts de terceiros na página",
+    "valor": "Toda sessão com lead",
+    "premissa": "Sem envio a terceiros observado; risco de leitura."
+   },
+   "reproduzir": [
+    "Chrome: preencher o lead → Application → sessionStorage (E-13)"
+   ],
+   "rec_raiz": "Configurar o externalCode do Indigitall com person_id (ou hash) em vez do e-mail.",
+   "rec_contorno": "—",
+   "pronto": "Chrome: após o lead, sessionStorage.indigitallExternalCode sem \"@\".",
+   "acao": "A-004",
+   "deck": {
+    "oque": "A ferramenta de push guarda o e-mail do cliente aberto no navegador.",
+    "quanto": "Toda sessão com cadastro; legível por scripts de terceiros.",
+    "fazer": "Trocar o identificador por um código interno."
+   }
+  },
+  {
+   "id": "SF-PII-03",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 3,
+   "mods": [
+    "+1 LGPD (base legal de cookies de publicidade)"
+   ],
+   "crit": "ALTA",
+   "conf": "Alta (Chrome: banner + sinais gcs/gcd)",
+   "titulo": "As tags de mídia disparam antes de qualquer escolha do visitante: o banner é implícito e não há Consent Mode",
+   "curto": "Banner implícito, sem Consent Mode",
+   "ativo": "smartfit.com.br · banner de cookies · hits GA4/sGTM (gcs, gcd)",
+   "evid": [
+    "E-14",
+    "E-17",
+    "E-18",
+    "E-28",
+    "E-29"
+   ],
+   "condicao": "Texto do banner: \"Nós utilizamos cookies para personalizar anúncios e melhorar a sua experiência no site. Ao continuar navegando, você concorda com a nossa política de privacidade.\" Botões OK e Saiba mais, sem opção de recusar. Clicar em OK só grava uma chave no localStorage. Hits GA4 saem com gcs=G1-- e gcd=13l3l3R3l5l1; hits ao sGTM, sem gcs. google_tag_data.ics: nenhum consent default/update. Todas as tags (GA4, 30 contas Google Ads, Meta, TikTok, Kwai, Criteo, Clarity, Bing) disparam antes de qualquer interação, e Meta/TikTok capturam e-mail, telefone e nome dos formulários (com hash) por advanced matching automático. Validação de 13/10 (E-28, E-29): o banner é só informativo, sem opção de recusar; pixels e cookies são gravados antes do OK, e o Consent Mode nunca recebe update.",
+   "obs_esp": [
+    [
+     "\"Ao continuar navegando, você concorda\"",
+     "Aceitar/rejeitar no 1º nível; não essenciais desligados por padrão"
+    ],
+    [
+     "gcs=G1--, sinais não definidos",
+     "Sinais de consentimento refletindo a escolha"
+    ]
+   ],
+   "criterio": "Guia de cookies da ANPD (out/2022, p. 18–19): \"continuar navegando\" não é consentimento válido. Ônus da prova do consentimento é do controlador (LGPD art. 8º §2º).",
+   "fontes": [
+    [
+     "ANPD: Guia orientativo de cookies",
+     "https://www.gov.br/anpd/pt-br/documentos-e-publicacoes/guia-orientativo-cookies-e-protecao-de-dados-pessoais.pdf"
+    ],
+    [
+     "LGPD art. 52 (sanções)",
+     "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    ]
+   ],
+   "causa": "Ausência de CMP com bloqueio prévio e de integração Consent Mode v2 no GTM.",
+   "efeito": "Tratamento de dados para publicidade sem base legal demonstrável. A ANPD não multou nenhuma empresa por cookies até hoje; o risco é regulatório, reputacional e de reclamação de titular. Com Consent Mode, a modelagem do Google recupera parte do sinal perdido.",
+   "impacto": {
+    "formula": "Teto por infração = min(2% × faturamento BR sem tributos, R$ 50 mi) — cenário, não previsão",
+    "valor": "A validar com o jurídico (faturamento BR no RI)",
+    "premissa": "Até hoje não há multa da ANPD por cookies; fiscalização de cookies está na agenda regulatória 2025–2026."
+   },
+   "reproduzir": [
+    "Chrome: abrir a home em janela anônima → ler o banner (E-14)",
+    "Network: hits /ag/g/c → parâmetros gcs/gcd (E-17)"
+   ],
+   "rec_raiz": "Decisão jurídica sobre o modelo de consentimento; CMP com rejeitar no 1º nível e Consent Mode v2 (4 sinais) no GTM, bloqueando tags de mídia até o aceite.",
+   "rec_contorno": "—",
+   "pronto": "Chrome: com \"rejeitar\", 0 requests a doubleclick/facebook/tiktok antes do aceite e hits com gcs/gcd refletindo a escolha.",
+   "acao": "A-005",
+   "deck": {
+    "oque": "O site trata \"continuar navegando\" como aceite de cookies e dispara as tags de mídia antes de qualquer escolha.",
+    "quanto": "Exposição LGPD (a ANPD diz que isso não é consentimento). Nenhuma multa por cookies no Brasil até hoje: o risco é regulatório e reputacional.",
+    "fazer": "Decisão do jurídico + banner com aceitar/rejeitar e Consent Mode."
+   }
+  },
+  {
+   "id": "SF-FIN-01",
+   "pilar": "FIN",
+   "scores": {
+    "FIN": 3,
+    "INT": 1,
+    "PG": 2
+   },
+   "I": 3,
+   "P": 3,
+   "mods": [],
+   "crit": "ALTA",
+   "conf": "Média (volume pela API; ausência de uso fora do GA4, como BigQuery, a confirmar)",
+   "titulo": "1 em cada 4 eventos faturáveis do GA4 360 é um click do app que não alimenta público, conversão ou métrica",
+   "curto": "click do app consome 28% da cota 360",
+   "ativo": "GA4 175020184 · streams Smart Fit App (Android) e SmartFit App (iOS) · Firebase SDK · subpropriedade 337426081 \"Smartfit | App\"",
+   "evid": [
+    "E-07",
+    "E-03"
+   ],
+   "condicao": "O evento click somou 193,7 mi em 30 dias (43,4 mi em 7 dias): 23,4% de todos os 826,6 mi eventos e 28,2% dos faturáveis (excluído user_engagement). 99,8% vêm dos apps. Nenhum dos 21 públicos, nenhum key event e nenhuma métrica personalizada usam click. A subpropriedade App herda todos os eventos de app. O evento content (145,9 mi) tem perfil parecido e está \"a validar\".",
+   "obs_esp": [
+    [
+     "click = 193,7 mi/30 d sem uso configurado",
+     "Eventos faturáveis só com uso analítico definido"
+    ]
+   ],
+   "criterio": "No GA4 360 todo evento é faturável, exceto user_engagement e eventos de sistema; acima de 25 mi/mês cobra-se por faixa.",
+   "fontes": [
+    [
+     "GA 360: billing e uso",
+     "https://support.google.com/marketingplatform/answer/9013858"
+    ],
+    [
+     "Subpropriedades: cobrança 0,5 (Adswerve, conforme contrato)",
+     "https://adswerve.com/blog/everything-you-need-to-know-about-ga4-360-subproperties"
+    ]
+   ],
+   "causa": "O SDK do app registra todo toque como click genérico, sem amostragem nem agregação, e a subpropriedade App não filtra o evento.",
+   "efeito": "Cota 360 paga com evento sem uso; relatórios e BigQuery mais pesados. Se o contrato cobrar 0,5 evento por subpropriedade, o click custa duas vezes.",
+   "impacto": {
+    "formula": "E_fat = E_mês × (1 + 0,5 × n_sub) = 193,7 mi + 0,5 × 193,4 mi ≈ 290 mi/mês; custo = E_fat/10⁶ × preço marginal",
+    "valor": "28,2% dos eventos faturáveis. Ordem de grandeza pela tabela pública de um revendedor (Reino Unido, 2024): £ 0,8 mil a £ 3,5 mil/mês — não é a tarifa da Smart Fit",
+    "premissa": "Tarifa contratual e regra de subpropriedade a confirmar (Admin → Uso)."
+   },
+   "reproduzir": [
+    "Data API: eventCount por eventName e streamName (E-07)",
+    "Admin API: audiences.json, keyEvents.json, customMetrics.json sem referência a click (E-03)"
+   ],
+   "rec_raiz": "Com o time do app: definir se click tem uso (BigQuery/explorações); se não, remover do SDK ou substituir por eventos nomeados de interações relevantes.",
+   "rec_contorno": "Excluir click (e content, se validado) da subpropriedade App via filtro de evento — corta a cobrança duplicada sem mexer no app.",
+   "pronto": "Data API (E-07), 7 dias após a mudança: click ≤ 5% dos eventos faturáveis; Admin → Uso mostra a redução.",
+   "acao": "A-012",
+   "deck": {
+    "oque": "O app registra cada toque na tela como um evento genérico \"click\" que ninguém usa.",
+    "quanto": "28% de tudo o que o GA4 360 cobra; ordem de grandeza de £ 0,8–3,5 mil/mês pela tabela pública de um revendedor (a tarifa real depende do contrato).",
+    "fazer": "Filtrar da subpropriedade App já; depois remover do app com o time de produto.",
+    "grafico_titulo": "Eventos faturáveis do GA4 360 em 30 dias",
+    "grafico": {
+     "tipo": "barra100",
+     "segs": [
+      [
+       "click (app)",
+       193706855,
+       "sem uso em público, conversão ou métrica"
+      ],
+      [
+       "content (app)",
+       145893711,
+       "a validar"
+      ],
+      [
+       "demais eventos faturáveis",
+       346553355,
+       ""
+      ]
+     ]
+    }
+   },
+   "vitrine": true,
+   "ordem_vitrine": 1
+  },
+  {
+   "id": "SF-GOV-03",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 3,
+   "mods": [
+    "+1 se importado no Ads (a validar; já em ALTA)"
+   ],
+   "crit": "ALTA",
+   "conf": "Alta (API)",
+   "titulo": "97,6% dos \"eventos-chave\" do GA4 são screen_view: a métrica de conversões perdeu significado de negócio",
+   "curto": "Key events sem sentido de conversão",
+   "ativo": "GA4 175020184 · 28 key events · 6 contas Google Ads vinculadas (5 com personalização)",
+   "evid": [
+    "E-08",
+    "E-03"
+   ],
+   "condicao": "Dos 162,7 mi eventos-chave em 30 dias, 158,9 mi (97,6%) são screen_view. Estão marcados como evento-chave também click_close_modal, error_checkout, click_login_ec, \"add to cart\" (com espaço), eventFreebrandsClick, entre outros 28. Só 11 dos 28 tiveram volume relevante no período; purchase (348,5 mil) inclui o totem (SF-DUP-01) e as duplicatas do app (SF-DUP-02).",
+   "obs_esp": [
+    [
+     "screen_view, error_checkout, click_close_modal como conversão",
+     "Key events = ações de valor (compra, lead qualificado)"
+    ]
+   ],
+   "criterio": "Key events são a base de \"conversões\" no GA4 e podem ser importados como conversões no Google Ads.",
+   "fontes": [
+    [
+     "GA4: key events",
+     "https://support.google.com/analytics/answer/13128484"
+    ]
+   ],
+   "causa": "Eventos marcados como chave ao longo de 2018–2025 sem revisão.",
+   "efeito": "Taxa de conversão e \"conversões\" do GA4 sem significado; se algum desses eventos for importado no Ads como primário, o lance otimiza para telas vistas ou erros de checkout.",
+   "impacto": {
+    "formula": "% key events sem valor de negócio = 158,9 mi / 162,7 mi",
+    "valor": "97,6%",
+    "premissa": "Lista de conversões importadas nas 6 contas Ads a confirmar."
+   },
+   "reproduzir": [
+    "Data API: keyEvents por eventName (E-08)",
+    "Admin API: keyEvents.json (E-03)"
+   ],
+   "rec_raiz": "Revisar com Mídia a lista de key events (manter só ações de valor) e conferir as conversões importadas em cada conta Ads.",
+   "rec_contorno": "—",
+   "pronto": "Admin API: keyEvents = lista aprovada; Data API (E-08): screen_view com keyEvents = 0.",
+   "acao": "A-007",
+   "deck": {
+    "oque": "O GA4 conta \"ver uma tela do app\" como conversão.",
+    "quanto": "97,6% das \"conversões\" do GA4 são telas vistas; risco de o Ads otimizar para isso.",
+    "fazer": "Mídia aprova a lista de conversões reais; desmarcamos o resto (1 dia)."
+   }
+  },
+  {
+   "id": "SF-PERF-01",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 3
+   },
+   "I": 3,
+   "P": 3,
+   "mods": [],
+   "crit": "ALTA",
+   "conf": "Alta (dados de campo CrUX + trace de laboratório)",
+   "titulo": "No celular, a home responde em 512 ms (INP ruim) e a página da unidade em 466 ms: scripts de terceiros ocupam ~1,9 s da thread principal e 30 contas de Google Ads carregam em cada página",
+   "curto": "Peso de tags piora a resposta no celular",
+   "ativo": "smartfit.com.br (home e /academias/augusta) · GTM-TCXTCQ5 (gtm.js via gateway /txctcq5/) · Google Tags com 30 IDs AW · Clarity, Meta, Amplitude, TikTok, Kwai",
+   "evid": [
+    "E-14",
+    "E-01",
+    "E-28"
+   ],
+   "condicao": "Dados de campo do Chrome (CrUX, p75, mobile): home com INP 512 ms (\"ruim\", > 500 ms) e LCP 1,5 s; /academias/augusta (etapa 3 do funil) com INP 466 ms (\"precisa melhorar\") e LCP 2,0 s. No desktop a home fica em INP 192 ms (bom). Trace mobile emulado: scripts de terceiros somam ~1,86 s na thread principal da home (Clarity 608 ms, Meta 498 ms, Amplitude 213 ms, TikTok 165 ms, Kwai 128 ms) e ~1,6 s na unidade (Meta 548 ms). A home faz 402 requests na carga fria (120 para google.com/.br e 43 para doubleclick.net), carrega 30 IDs de Google Ads distintos e ~18 MB decodificados. O gtm.js tem 231,6 KB transferidos (859 KB descomprimido). Container: 64 tags pausadas e 30 triggers sem uso. Validação de 13/10 (E-28): os googtags AW chamam 30 contas Google Ads em cada página (24 vinculadas dentro do Google tag e invisíveis no GTM), cerca de 60 requests de remarketing por pageview; a tag 2927 faz polling a cada 500 ms sem fim.",
+   "obs_esp": [
+    [
+     "INP p75 mobile 512 ms (home) e 466 ms (unidade)",
+     "INP ≤ 200 ms (\"bom\")"
+    ],
+    [
+     "~1,9 s de terceiros na thread principal (mobile)",
+     "Tags de mídia após o carregamento, consolidadas"
+    ],
+    [
+     "30 IDs Google Ads por página; gtm.js 231,6 KB",
+     "Destinos consolidados; container próximo da mediana (~50 KB)"
+    ]
+   ],
+   "criterio": "Limiares Core Web Vitals (INP bom ≤ 200 ms, ruim > 500 ms, p75). web.dev: correlação entre tamanho do tag manager e INP pior; tags sem uso devem ser removidas.",
+   "fontes": [
+    [
+     "Limiares CWV",
+     "https://web.dev/articles/defining-core-web-vitals-thresholds"
+    ],
+    [
+     "web.dev: tag best practices",
+     "https://web.dev/articles/tag-best-practices"
+    ]
+   ],
+   "causa": "Acúmulo de tags de mídia e analytics disparando no carregamento de todas as páginas (30 contas Google Ads via destinos de Google Tags, pares pausada/ativa, Clarity, pixels Meta/TikTok/Kwai), sem adiamento nem consolidação.",
+   "efeito": "O site demora a responder ao toque no celular justamente nas páginas que levam ao checkout. Referência de mercado (não previsão para a Smart Fit): a brasileira QuintoAndar reduziu o INP em 80%, em parte tirando pixels de terceiros do navegador, e registrou +36% de conversões; a Deloitte mede +8,4% de conversão no varejo para cada 0,1 s ganho no mobile.",
+   "impacto": {
+    "formula": "INP p75 (CrUX) × limiar; tempo de terceiros na thread principal (trace); ΔConv apenas como referência de mercado",
+    "valor": "INP 512 ms (home) e 466 ms (unidade) contra 200 ms; ~1,9 s de terceiros por página no mobile",
+    "premissa": "Ganho de conversão só se mede antes/depois na própria Smart Fit."
+   },
+   "reproduzir": [
+    "Chrome DevTools → Performance (mobile 4× CPU, Slow 4G) na home e em /academias/augusta: painel de dados de campo (CrUX) e Third parties (E-14)",
+    "Network com cache desabilitado na home: contar requests e IDs AW (E-14)"
+   ],
+   "rec_raiz": "Consolidar os destinos Google Ads, remover as 64 pausadas e 30 triggers órfãos, adiar Clarity/pixels para depois da interação ou do load e rever a necessidade de cada pixel por página.",
+   "rec_contorno": "Desligar o Clarity nas páginas do funil enquanto a consolidação não sai.",
+   "pronto": "Trace do Chrome (mobile emulado) após o deploy: INP ≤ 200 ms na home e em /academias/<unidade> e terceiros < 500 ms na thread principal; o CrUX p75 (janela de 28 dias) confirma depois.",
+   "acao": "A-014",
+   "deck": {
+    "oque": "No celular, a página inicial e a da academia demoram a responder ao toque por causa do excesso de tags de mídia.",
+    "quanto": "Home: 512 ms para responder (o Google considera ruim acima de 500 ms). Unidade: 466 ms. ~1,9 s de scripts de terceiros por página, com 30 contas de Google Ads carregando em cada página.",
+    "fazer": "Consolidar e adiar tags; medir antes e depois com o mesmo dado de campo do Google."
+   }
+  },
+  {
+   "id": "SF-PERF-02",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Média (Chrome + API; efeito estimado)",
+   "titulo": "O servidor de tagging roda em domínio do Google nos EUA: no Safari (41% das sessões web) os cookies de mídia duram no máximo 7 dias",
+   "curto": "sGTM fora do domínio first-party",
+   "ativo": "sGTM GTM-5J2HW2RB em server-side-tagging-o5in4ns5xq-uc.a.run.app (us-central1)",
+   "evid": [
+    "E-18",
+    "E-12",
+    "E-11",
+    "E-02",
+    "E-25"
+   ],
+   "condicao": "Os hits para o sGTM vão para *.run.app (não first-party) em us-central1, de 1 a 4 por carga completa de página (o checkout é SPA e não envia nada ao sGTM depois de /addons). O GA4 client já usa o gateway first-party (/txctcq5/), o que está correto. O subdomínio sfbrasil.smartfit.com.br já responde /healthy 200 por domain mapping do Cloud Run (E-25), mas as tags não o usam. 41% das sessões web (entre os 15 principais navegadores/SO) são Safari/Safari in-app.",
+   "obs_esp": [
+    [
+     "sGTM em *.run.app, us-central1",
+     "sGTM em subdomínio próprio (ex.: sgtm.smartfit.com.br), região southamerica-east1"
+    ]
+   ],
+   "criterio": "WebKit ITP: cookies via script ≤ 7 dias; cookies de terceiros bloqueados.",
+   "fontes": [
+    [
+     "WebKit ITP 2.1",
+     "https://webkit.org/blog/8613/intelligent-tracking-prevention-2-1/"
+    ],
+    [
+     "Google tag gateway (+11% sinais, ref.)",
+     "https://support.google.com/google-ads/answer/16214371"
+    ]
+   ],
+   "causa": "sGTM publicado no endereço padrão do Cloud Run, sem mapeamento de domínio.",
+   "efeito": "Meta CAPI/TikTok recebem identificadores mais curtos para quase metade do tráfego web; quem volta depois de 7 dias perde a origem da mídia. Latência extra para usuários no Brasil.",
+   "impacto": {
+    "formula": "Usuários afetados = sessões Safari × % de retornos > 7 dias",
+    "valor": "41% das sessões web em Safari; % de retorno > 7 d a medir",
+    "premissa": "Ganho de first-party só como referência (+11% sinais, Google)."
+   },
+   "reproduzir": [
+    "Chrome: Network filtrando run.app (E-12)",
+    "Data API: sessões por navegador (E-11)"
+   ],
+   "rec_raiz": "Confirmar que sfbrasil.smartfit.com.br serve o mesmo serviço e apontar as tags para ele (ou mapear outro subdomínio próprio); mover para southamerica-east1.",
+   "rec_contorno": "—",
+   "pronto": "Chrome: requests do sGTM para *.smartfit.com.br com cookie first-party definido via Set-Cookie.",
+   "acao": "A-015",
+   "deck": {
+    "oque": "O servidor de tagging usa um endereço do Google nos EUA em vez de um domínio da Smart Fit.",
+    "quanto": "No Safari (41% das sessões web) a memória de origem da mídia dura no máximo 7 dias.",
+    "fazer": "Subdomínio próprio + região São Paulo (projeto de infra)."
+   }
+  },
+  {
+   "id": "SF-FIN-02",
+   "pilar": "FIN",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 1
+   },
+   "I": 1,
+   "P": 2,
+   "mods": [],
+   "crit": "BAIXA",
+   "conf": "Alta para o logType (código dos templates); custo de logging do Cloud Run não medido",
+   "titulo": "O sGTM roda uma versão chamada \"Teste Volta\" e o custo de logging do Cloud Run não é medido; o logType=debug das tags só loga em Preview",
+   "curto": "sGTM: versão de teste e logging não medido",
+   "ativo": "GTM-5J2HW2RB v28 \"Teste Volta\" · tags \"API Meta\", \"API Tik Tok\" e \"TikTok Events API (TESTE)\" (pausada) com logType=debug · Cloud Run server-side-tagging (projeto 563505473543)",
+   "evid": [
+    "E-02",
+    "E-01"
+   ],
+   "condicao": "As tags \"API Meta\" e \"API Tik Tok\" estão com logType=debug na versão live, chamada \"Teste Volta\". Revisado em 16/10/2026: no código dos dois templates (função determinateIsLoggingEnabled), debug só grava log com o container em Preview ou debug; em produção o efeito é o mesmo de \"Do not log\", e o template do TikTok só tem permissão de log no ambiente de debug. O log em BigQuery da API Meta está desligado. O custo de logging que sobra é o log de requisições do próprio Cloud Run, que não depende das tags e não foi medido (sem acesso ao billing).",
+   "obs_esp": [
+    [
+     "Versão live chamada \"Teste Volta\"",
+     "Versão com nome e ID de ação"
+    ],
+    [
+     "Log de requisições do Cloud Run sem medição",
+     "Custo de logging conhecido e, se relevante, filtro de exclusão no Cloud Logging"
+    ]
+   ],
+   "criterio": "Google: logging do Cloud Run acima do free tier é custo relevante no sGTM.",
+   "fontes": [
+    [
+     "sGTM: planejamento de custos",
+     "https://developers.google.com/tag-platform/learn/sst-fundamentals/7-planning-infrastructure"
+    ]
+   ],
+   "causa": "Versão publicada sem processo de nomenclatura; o logging do Cloud Run fica no padrão do serviço.",
+   "efeito": "Custo de Cloud Logging possível, mas não medido; as tags não contribuem para ele em produção. As 16 tags de roteamento do web ficam como estão (decisão de 16/10/2026: alimentam a API Meta e a API Tik Tok); a cobertura delas no checkout está em SF-FIN-04.",
+   "impacto": {
+    "formula": "US$ Cloud Logging do serviço (billing do projeto 563505473543)",
+    "valor": "A validar no billing",
+    "premissa": "Sobe para impacto 2 se o Logging for relevante."
+   },
+   "reproduzir": [
+    "Tag Manager API: parâmetros das tags do sGTM (E-02)",
+    "Código dos templates cvt_5TP8W e cvt_204705587_8: função determinateIsLoggingEnabled"
+   ],
+   "rec_raiz": "Nenhuma mudança nas tags. Medir no billing o Cloud Logging do Cloud Run e, se for relevante, criar um filtro de exclusão para os logs de requisição. Nomear a próxima versão do sGTM com o ID da ação.",
+   "rec_contorno": "—",
+   "pronto": "Billing conferido; filtro de exclusão aplicado se o Logging for relevante.",
+   "acao": "A-013",
+   "deck": {
+    "oque": "O servidor de tagging roda uma versão chamada \"Teste Volta\" e o custo de log do Cloud Run não é medido.",
+    "quanto": "A medir no billing; as tags não geram log em produção.",
+    "fazer": "Conferir o billing e, se preciso, filtrar os logs."
+   }
+  },
+  {
+   "id": "SF-GOV-02",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 1
+   },
+   "I": 1,
+   "P": 3,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Alta (Chrome + GTM)",
+   "titulo": "Uma propriedade chamada \"Brasil UPD Teste\" recebe toda a jornada de compra, inclusive purchase",
+   "curto": "Propriedade de teste em produção",
+   "ativo": "GA4 549057488 \"Brasil UPD Teste\" (G-HSLN2EKMHS, Standard, criada em 07/08/2026 por lucas.a.matos) · tags \"GA4 UPD - Configuração - Client Side\", \"GA4 UPD- Ecommerce - 06. Begin Checkout\" e \"GA4 UPD - Ecommerce - 09. Purchase\"",
+   "evid": [
+    "E-12",
+    "E-18",
+    "E-01",
+    "E-23",
+    "E-20"
+   ],
+   "condicao": "No funil, page_view de todas as páginas, scroll, form_start, begin_checkout (mesmos items e value) e purchase vão também para G-HSLN2EKMHS (compra de teste 46031495 e recaptura de 13/10), com user_data com hash. Pela Data API, a propriedade recebeu 21,0 mi eventos nos últimos 30 dias (25,4 mi em ago e 19,6 mi em set/2026), desde a criação em 07/08/2026 por lucas.a.matos (Change History); tem 6 usuários com permissão direta.",
+   "obs_esp": [
+    [
+     "Jornada inteira duplicada em propriedade de teste",
+     "Propriedade de teste fora de produção ou documentada"
+    ]
+   ],
+   "criterio": "Governança: uma única fonte de verdade por métrica.",
+   "fontes": [],
+   "causa": "Tags de teste publicadas (versão 596 \"UPD - Add user-provided data…\").",
+   "efeito": "Segunda fonte de números de compra com nome de teste; risco de relatórios divergentes e de dados de clientes (com hash) em propriedade sem governança.",
+   "impacto": {
+    "formula": "Eventos 30 d na propriedade de teste (Data API)",
+    "valor": "100% da jornada web duplicada: 21,0 mi eventos em 30 dias",
+    "premissa": "Sobe de nível se alguém consome essa propriedade para decisão."
+   },
+   "reproduzir": [
+    "Chrome: filtrar tid=G-HSLN2EKMHS no funil (E-12)",
+    "Data API na 549057488: eventCount por yearMonth e por stream (E-23)",
+    "Admin API: Change History → CREATED property 549057488 (E-20)"
+   ],
+   "rec_raiz": "Definir com o dono do teste a data de fim; ao encerrar, pausar as 3 tags \"GA4 UPD\" e arquivar a 549057488 (ou documentar finalidade e prazo).",
+   "rec_contorno": "—",
+   "pronto": "Chrome: 0 hits para G-HSLN2EKMHS no funil completo.",
+   "acao": "A-008",
+   "deck": {
+    "oque": "Uma propriedade \"de teste\", criada em agosto, recebe toda a jornada do site, inclusive as compras.",
+    "quanto": "21 mi eventos em 30 dias: duas versões do mesmo número circulando.",
+    "fazer": "Definir o fim do teste; depois, desligar 3 tags e arquivar a propriedade."
+   }
+  },
+  {
+   "id": "SF-GOV-04",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 1
+   },
+   "I": 1,
+   "P": 3,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Alta (APIs)",
+   "titulo": "Container e propriedade acumulam testes e sobras: 64 tags pausadas, 30 triggers sem uso e uma tag de TESTE ativa no purchase",
+   "curto": "Higiene de container e propriedade",
+   "ativo": "GTM-TCXTCQ5 v597 · GTM-5J2HW2RB v28 · GA4 175020184",
+   "evid": [
+    "E-01",
+    "E-02",
+    "E-03",
+    "E-07"
+   ],
+   "condicao": "GTM web: 64 de 332 tags pausadas (19%), 30 de 199 triggers sem uso, tag \"[TESTE] Pixel Meta (Facebook) - 07. Purchase\" ativa no purchase (pixel distinto do principal), pares pausada/ativa de Google Tags, nomes mistos PT/EN/ES. sGTM: versão live chamada \"Teste Volta\" e 3 tags TESTE. GA4: 7 dos 10 streams sem eventos em 30 dias (Nation, Bioritmo, beta, flutter), 2 subpropriedades \"PAUSADO\" com filtro fictício, 100 de 125 dimensões de evento ocupadas.",
+   "obs_esp": [
+    [
+     "Testes e sobras em produção",
+     "Apenas configurações em uso, com nome e dono"
+    ]
+   ],
+   "criterio": "web.dev: pausadas continuam no container; limites 360 de 125 dimensões de evento.",
+   "fontes": [
+    [
+     "GA4 limites",
+     "https://support.google.com/analytics/answer/11202874"
+    ]
+   ],
+   "causa": "Ausência de processo de publicação (revisão, nomenclatura, limpeza).",
+   "efeito": "Manutenção cara, risco de publicar algo errado e container mais pesado (SF-PERF-01).",
+   "impacto": {
+    "formula": "Contagens (API)",
+    "valor": "19% das tags pausadas; 80% das dimensões de evento ocupadas",
+    "premissa": "—"
+   },
+   "reproduzir": [
+    "Tag Manager API (E-01, E-02)",
+    "Admin API + Data API por stream (E-03, E-07)"
+   ],
+   "rec_raiz": "Limpeza única + checklist de publicação (nome de versão, dono, ID de ação) + monitor contínuo das regras-sentinela.",
+   "rec_contorno": "—",
+   "pronto": "Tag Manager API: 0 tags \"TESTE\" ativas, 0 triggers sem uso; versões com nome e ID de ação.",
+   "acao": "A-016",
+   "deck": {
+    "oque": "O container acumula testes e sobras de anos.",
+    "quanto": "1 em cada 5 tags está pausada; uma tag de teste da Meta recebe as compras.",
+    "fazer": "Limpeza + regra de publicação."
+   }
+  },
+  {
+   "id": "SF-DUP-05",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 3,
+   "mods": [],
+   "crit": "ALTA",
+   "conf": "Alta (Admin API + Data API + Data Access Report)",
+   "titulo": "A subpropriedade Totem foi pausada em 10/06/2026, mas os totens seguem ativos: 43,9 a 49,5 mi eventos/mês caem só na propriedade principal, misturados ao site",
+   "curto": "Totem sem visão própria desde junho",
+   "deck_titulo": "A visão do totem no GA foi pausada em 10/06, mas os totens seguem ativos: ~47 mi eventos/mês caem só na propriedade principal",
+   "ativo": "GA4 360 subpropriedade 345869561 \"Smartfit | Web | Totem\" · propriedade principal 175020184 (páginas /totem) · subpropriedade Web 337385445 (exclui /totem) · GTM-5C6DKGH (Totem)",
+   "evid": [
+    "E-03",
+    "E-23",
+    "E-20"
+   ],
+   "condicao": "O filtro da subpropriedade Totem foi trocado para pagePath CONTAINS '__PAUSADO_TOTEM_NAO_USAR__': o último evento dela é de 10/06/2026, depois de 51,0 a 63,4 mi eventos/mês entre jan e mai/2026. Os totens não pararam: a propriedade principal recebeu de 43,9 a 49,5 mi eventos/mês em páginas /totem de jun a set/2026 (18,1 mi só de 01 a 12/10). A subpropriedade Web exclui /totem, então hoje o totem só existe na 175020184, misturado ao site, onde gera os 204,5 mil purchase sem ID e sem valor de SF-DUP-01. Depois da pausa, 7 usuários (pessoas ou painéis com a credencial delas) continuaram abrindo a subpropriedade, a última vez em 13/10/2026. O histórico de alterações não traz a troca de filtro, e não há registro de quem pausou nem por quê.",
+   "obs_esp": [
+    [
+     "Subpropriedade Totem com filtro fictício desde 10/06",
+     "Totem com destino próprio e documentado (subpropriedade ou propriedade)"
+    ],
+    [
+     "43,9–49,5 mi eventos/mês de totem só na principal",
+     "Totem separado do site nos relatórios de compra"
+    ],
+    [
+     "7 usuários abriram a subpropriedade vazia após a pausa",
+     "Usuários avisados ou acesso retirado"
+    ]
+   ],
+   "criterio": "Governança: mudança que tira um canal dos relatórios precisa de dono, motivo e aviso; uma fonte de verdade por canal (mesmo critério de SF-GOV-02).",
+   "fontes": [
+    [
+     "GA Admin API: subpropertyEventFilters",
+     "https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/properties.subpropertyEventFilters"
+    ]
+   ],
+   "causa": "A subpropriedade foi desligada trocando o filtro por um valor que nunca ocorre (economia de cota 360 é hipótese), sem mandar o totem para outro destino nem avisar quem usava.",
+   "efeito": "Desde junho não existe visão própria do totem: quem abre a subpropriedade vê zero, e quem abre a propriedade principal vê o totem somado ao site, com compras e conversões infladas (SF-DUP-01). Análises de venda por canal (site × totem × app) de jun a out/2026 estão vazias ou misturadas.",
+   "impacto": {
+    "formula": "Volume sem visão própria = Σ eventos /totem na principal, jun–set/2026; usuários afetados = leitores da subpropriedade após 10/06 (Data Access Report)",
+    "valor": "188,7 mi eventos de totem em 4 meses sem visão própria; 7 usuários consultando a subpropriedade vazia",
+    "premissa": "Motivo da pausa e operação dos totens a confirmar com a Smart Fit (Dependências)."
+   },
+   "reproduzir": [
+    "Admin API: subpropertyEventFilters da 175020184 → filtro aplicado à 345869561 (E-03)",
+    "Data API na 345869561: eventCount por yearMonth (E-23)",
+    "Data API na 175020184: eventCount por yearMonth com pagePath CONTAINS /totem (E-23, revalidação)",
+    "Data Access Report: acessos à 345869561 com mostRecentAccess depois de 10/06 (E-20)"
+   ],
+   "rec_raiz": "Decidir o destino do totem junto com A-006: (a) restaurar o filtro da subpropriedade (pagePath CONTAINS /totem) ou (b) mandar o totem para a propriedade própria 430511021 e tirá-lo da principal. Registrar a decisão e avisar os usuários.",
+   "rec_contorno": "Enquanto isso, renomear a subpropriedade como pausada e publicar um segmento /totem na principal para quem precisa do número.",
+   "pronto": "Admin API: destino do totem sem filtro fictício; Data API: eventos de totem > 0 no destino escolhido em 7 dias e, na opção (b), purchase de totem = 0 na principal.",
+   "acao": "A-006",
+   "deck": {
+    "oque": "A visão do totem no GA foi desligada em 10/06, mas os totens continuam ativos: os dados agora caem só na propriedade principal, misturados ao site.",
+    "quanto": "189 mi eventos de totem em 4 meses sem visão própria; 7 usuários seguiram abrindo a subpropriedade vazia. É o mesmo tráfego que gera 59% dos purchase sem ID (SF-DUP-01).",
+    "fazer": "Decidir o destino do totem (subpropriedade ou propriedade própria) junto com a correção do purchase e registrar a decisão.",
+    "titulo": "A visão do totem no GA foi pausada em 10/06, mas os totens seguem ativos: ~47 mi eventos/mês caem só na propriedade principal"
+   },
+   "vitrine": true,
+   "ordem_vitrine": 4
+  },
+  {
+   "id": "SF-FIN-03",
+   "pilar": "FIN",
+   "scores": {
+    "FIN": 3,
+    "INT": 1,
+    "PG": 2
+   },
+   "I": 3,
+   "P": 1,
+   "mods": [
+    "+1 se a fatura 360 confirmar cobrança da subpropriedade (a validar)"
+   ],
+   "crit": "MÉDIA",
+   "conf": "Alta (Data API + Admin API)",
+   "titulo": "A subpropriedade \"Smart System\" copiou a propriedade 360 inteira de jun/2025 a set/2026: 14,28 bi eventos potencialmente cobrados como subpropriedade, sem medir o Smart System",
+   "curto": "Subpropriedade Smart System = cópia da 360",
+   "deck_titulo": "A subpropriedade \"Smart System\" copiou o GA 360 inteiro por 16 meses: 14,3 bi eventos que podem ter sido cobrados",
+   "ativo": "GA4 360 subpropriedade 492149744 \"Smart System\" (criada por josue.domingues em 05/06/2025) · propriedade-fonte 175020184",
+   "evid": [
+    "E-23",
+    "E-03",
+    "E-20"
+   ],
+   "condicao": "Comparando a série mensal da subpropriedade com a da principal (Data API, yearMonth × eventCount): em 14 meses, de jul/2025 a ago/2026, a subpropriedade recebeu entre 99,98% e 100% dos eventos da 175020184 (ex.: mar/2026, 1.104.852.273 × 1.104.852.218). Nos 30 dias até 29/09 os streams nela eram os mesmos da principal: Smart Fit App, SmartFit App e Smartfit (web). Total: 14.282.940.538 eventos de 05/06/2025 a 29/09/2026 (média de 893 mi/mês). Em 29/09/2026 o filtro foi trocado para pagePath CONTAINS '__PAUSADO_SMARTSYSTEM_NAO_USAR__' e a coleta parou. 17 usuários consultaram essa subpropriedade em 24 meses.",
+   "obs_esp": [
+    [
+     "Subpropriedade \"Smart System\" = 100% da propriedade principal",
+     "Subpropriedade só com os eventos do Smart System"
+    ],
+    [
+     "14,28 bi eventos em 16 meses",
+     "Volume do Smart System (~95 mi/mês na 492578667)"
+    ]
+   ],
+   "criterio": "No GA4 360, eventos encaminhados a subpropriedades podem ser cobrados (regra de 0,5 evento por subpropriedade citada por revendedores; vale o contrato). Subpropriedade serve para recortar dados, não para duplicá-los.",
+   "fontes": [
+    [
+     "Subpropriedades: cobrança 0,5 (Adswerve, conforme contrato)",
+     "https://adswerve.com/blog/everything-you-need-to-know-about-ga4-360-subproperties"
+    ],
+    [
+     "GA Admin API: subpropertyEventFilters",
+     "https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/properties.subpropertyEventFilters"
+    ]
+   ],
+   "causa": "Filtro de subpropriedade que não recortava nada (deixava passar todo o tráfego), sem conferência de volume depois da criação.",
+   "efeito": "Se o contrato cobra 0,5 evento por evento de subpropriedade, foram ~7,1 bi eventos faturáveis a mais em 16 meses, cerca de 446 mi por mês, o equivalente a 65% dos 686 mi eventos faturáveis mensais da principal. Além disso, quem consultou \"Smart System\" viu o site e o app inteiros, e não o Smart System.",
+   "impacto": {
+    "formula": "E_fat_extra = 0,5 × Σ eventos da subpropriedade; por mês = 0,5 × média mensal",
+    "valor": "~7,1 bi eventos faturáveis em 16 meses (~446 mi/mês, +65% sobre os faturáveis da principal), se a regra de 0,5 se aplicar",
+    "premissa": "Regra e tarifa do contrato 360 a conferir na fatura jun/2025–set/2026 (pergunta 3). Custo já incorrido: a coleta parou em 29/09, por isso P = 1."
+   },
+   "reproduzir": [
+    "Data API: yearMonth × eventCount na 492149744 e na 175020184, desde 2015-08-14 (E-23)",
+    "Data API: streamName × eventCount, 30 dias, na 492149744 (E-23)",
+    "Admin API: subpropertyEventFilters (E-03)"
+   ],
+   "rec_raiz": "Conferir na fatura do 360 a cobrança da subpropriedade no período e, se houver, discutir com o revendedor. Arquivar a 492149744 e exigir, para toda subpropriedade nova, conferência de volume esperado × recebido em 48 h.",
+   "rec_contorno": "—",
+   "pronto": "Fatura 360 conferida e registrada; subpropriedade 492149744 arquivada; checklist de criação de subpropriedade publicado.",
+   "acao": "A-017",
+   "deck": {
+    "oque": "Uma subpropriedade chamada \"Smart System\" copiou o GA4 360 inteiro (site e app) por 16 meses, em vez de medir o Smart System.",
+    "quanto": "14,3 bi eventos. Se o contrato cobra meio evento por subpropriedade, são ~7,1 bi faturáveis a mais (+65% por mês). Parou em 29/09, sem registro.",
+    "fazer": "Conferir a fatura do período, arquivar a subpropriedade e conferir o volume de toda subpropriedade nova.",
+    "titulo": "A subpropriedade \"Smart System\" copiou o GA 360 inteiro por 16 meses: 14,3 bi eventos que podem ter sido cobrados"
+   },
+   "vitrine": true,
+   "ordem_vitrine": 5
+  },
+  {
+   "id": "SF-GOV-06",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Média (Change History + Data API; uso do Admin inferido, conta Standard)",
+   "titulo": "A única medição viva do Smart System está numa propriedade criada como \"[TESTE]\", em conta separada, cuja criadora e Admin não tem sinal no GA desde 21/07/2025",
+   "curto": "Smart System: 4 propriedades, dono ausente",
+   "ativo": "Conta GA 358023210 \"Smart Fit - Smart System\" · propriedade 492578667 \"Smart System [SS]\" (G-6KJEKYMBXM, Standard) · 383698944 · 492182981 · subpropriedade 492149744 · GTM-P5R85HR",
+   "evid": [
+    "E-21",
+    "E-23",
+    "E-24"
+   ],
+   "condicao": "O Smart System tem 4 propriedades: 492149744 (subpropriedade 360 que na verdade copiava a principal e foi pausada, SF-FIN-03), 492578667 (~95 mi eventos/30 d, stream \"smat system [prod]\" em app.smartfit.com.br/admin), 383698944 (2.751 eventos/30 d, residual) e 492182981 (sem dados desde o dia seguinte à criação, 06/06/2025). A conta 358023210 e a 492578667 foram criadas em 09/06/2025 por dara.medeiros com o nome \"Smart System [TESTE]\". Ela segue Admin, e o último sinal dela no GA (uso na 360 ou alteração na conta) é de 21/07/2025. Dos 3 Admins internos da conta, 1 tem sinal recente (12/10/2026), 1 está sem sinal desde 28/10/2025 e o terceiro é a criadora; há ainda 1 editor sem sinal desde 12/06/2025 e o Admin temporário da Monks. O ID G-6KJEKYMBXM não aparece em nenhum container da conta BR: o GTM-P5R85HR (1 tag, 2021) não alimenta essa propriedade.",
+   "obs_esp": [
+    [
+     "Propriedade oficial nascida como \"[TESTE]\"",
+     "Nome e dono definidos"
+    ],
+    [
+     "Criadora e Admin sem sinal desde 21/07/2025",
+     "≥ 2 Admins internos ativos"
+    ],
+    [
+     "4 propriedades para o mesmo sistema, 1 viva",
+     "1 propriedade oficial"
+    ]
+   ],
+   "criterio": "Governança: uma fonte de verdade por produto, com dono ativo; princípio de necessidade (LGPD art. 6º, III) para acessos sem uso.",
+   "fontes": [
+    [
+     "LGPD, Lei 13.709/2018",
+     "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    ]
+   ],
+   "causa": "Propriedade de teste promovida a produção sem formalizar dono, nome nem a desativação das versões anteriores.",
+   "efeito": "Se a criadora saiu da empresa, a governança da conta depende de um único Admin ativo; números do Smart System variam conforme a propriedade consultada; propriedades mortas seguem com acesso.",
+   "impacto": {
+    "formula": "Admins internos com sinal ≤ 90 dias / Admins internos; propriedades vivas / propriedades do produto",
+    "valor": "1 de 3 Admins internos ativos; 1 de 4 propriedades viva",
+    "premissa": "Se a dara.medeiros segue na empresa: pendência com a Smart Fit."
+   },
+   "reproduzir": [
+    "Admin API v1alpha: searchChangeHistoryEvents na conta 358023210 → CREATED account/property em 09/06/2025 (E-21)",
+    "Admin API: accessBindings da conta 358023210 (E-21)",
+    "Data API: série mensal das 4 propriedades (E-23)",
+    "Tag Manager API: busca de G-6KJEKYMBXM nos 16 containers (E-24)"
+   ],
+   "rec_raiz": "Oficializar a 492578667 (nome definitivo, dono interno e segundo Admin ativo), desativar 383698944 e 492182981 e decidir se o GTM-P5R85HR sai.",
+   "rec_contorno": "—",
+   "pronto": "Admin API: 492578667 com nome definitivo e ≥ 2 Admins internos com sinal ≤ 90 dias; 383698944 e 492182981 na lixeira.",
+   "acao": "A-018",
+   "deck": {
+    "oque": "O Smart System é medido numa propriedade que nasceu como teste, em conta separada, cuja criadora e Admin não usa o GA há 15 meses.",
+    "quanto": "4 propriedades para o mesmo sistema e só 1 viva; a conta depende de 1 Admin ativo.",
+    "fazer": "Oficializar a propriedade viva com dono e 2º Admin; desativar as outras."
+   }
+  },
+  {
+   "id": "SF-GOV-05",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [
+    "+1 se o domínio ainda for da Smart Fit (controle de DNS ou hospedagem perdido)"
+   ],
+   "crit": "MÉDIA",
+   "conf": "Alta (HTTP + whois + Tag Manager API)",
+   "titulo": "smartfit-go.com, domínio com a marca Smart Fit e container na conta BR, redireciona hoje para um site de terceiro",
+   "curto": "smartfit-go.com leva a site de terceiro",
+   "ativo": "smartfit-go.com e www.smartfit-go.com · GTM-W2B2WZK \"02 - smartfit-go.com\" (v2, 2021) · ID de destino G-SYM9X5SJ5D",
+   "evid": [
+    "E-25",
+    "E-24",
+    "E-23"
+   ],
+   "condicao": "Em 13/10/2026, em duas checagens, smartfit-go.com e www.smartfit-go.com respondem 301 para menuhunterai.com/cat/ethiopian/, que carrega outro container (GTM-PT7PC4, fora da conta Smart Fit). O whois mostra registro na GoDaddy sob Domains By Proxy (titular oculto), criado em 08/07/2020 e válido até 08/07/2027. Na conta BR, o GTM-W2B2WZK segue com versão live de 17/11/2021: 4 tags Universal Analytics e 1 GA4 \"Sandbox\" para G-SYM9X5SJ5D, ID que não está em nenhuma propriedade acessível. A propriedade [OLD] SmartFit Go (390464114, stream smartfitgo.com.br) não recebe dados desde 05/08/2024.",
+   "obs_esp": [
+    [
+     "Domínio com a marca → site de terceiro",
+     "Redireciona para smartfit.com.br ou deixa de existir"
+    ],
+    [
+     "Container órfão com versão live e 23 usuários",
+     "Container arquivado"
+    ]
+   ],
+   "criterio": "Proteção de marca e antiphishing: domínio com a marca não pode servir conteúdo de terceiro; ativo sem uso deve ser desativado.",
+   "fontes": [],
+   "causa": "Domínio de produto descontinuado sem plano de saída: ou o redirecionamento foi alterado por quem controla DNS/hospedagem, ou o domínio mudou de mãos (o titular está oculto).",
+   "efeito": "Quem segue um link antigo, QR code ou busca por \"Smart Fit GO\" cai num site alheio: risco de marca, de phishing e de confiança. Se o domínio ainda é da Smart Fit, alguém fora da empresa pode estar controlando o destino.",
+   "impacto": {
+    "formula": "Qualitativo (risco de marca); volume de visitas ao domínio desconhecido (propriedade sem dados desde 08/2024)",
+    "valor": "100% do tráfego do domínio vai para terceiro",
+    "premissa": "Titularidade do domínio a confirmar com a Smart Fit (jurídico/TI)."
+   },
+   "reproduzir": [
+    "curl -sIL https://www.smartfit-go.com (E-25)",
+    "whois smartfit-go.com (E-25)",
+    "Tag Manager API: versions:live do GTM-W2B2WZK (E-24)"
+   ],
+   "rec_raiz": "Confirmar o titular. Se for a Smart Fit: corrigir o redirecionamento para smartfit.com.br e revisar quem acessa registrador e DNS. Se não for: retirar links e QR codes e avaliar medida de marca. Nos dois casos, arquivar o GTM-W2B2WZK (export JSON).",
+   "rec_contorno": "—",
+   "pronto": "curl em smartfit-go.com termina em domínio da Smart Fit (ou não resolve, se descontinuado) e GTM-W2B2WZK arquivado.",
+   "acao": "A-019",
+   "deck": {
+    "oque": "O antigo endereço smartfit-go.com, com a marca Smart Fit, hoje leva o visitante para um site de cardápios de terceiro.",
+    "quanto": "Todo mundo que usa um link antigo cai fora da Smart Fit: risco de marca e de phishing. O titular do domínio está oculto no registro.",
+    "fazer": "Confirmar a titularidade; corrigir o redirecionamento ou retirar os links; arquivar o container."
+   },
+   "vitrine": true,
+   "ordem_vitrine": 3
+  },
+  {
+   "id": "SF-GOV-07",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 3
+   },
+   "I": 3,
+   "P": 3,
+   "mods": [],
+   "crit": "ALTA",
+   "conf": "Alta na conta 360 (Data Access Report); inferida nas contas Standard",
+   "titulo": "39 usuários com acesso à conta 360 são candidatos a remoção, 23 de fora da Smart Fit, e a Jellyfish mantém 2 Admins sem uso há 6 a 10 meses",
+   "curto": "Acessos sem uso e Admins externos",
+   "deck_titulo": "39 acessos à conta 360 são candidatos a remoção (23 externos), e 2 Admins de agência não usam o GA há meses",
+   "ativo": "Conta GA 9925058 (25 propriedades e subpropriedades) · contas Standard 314140441, 358023210, 305065292 · conta GTM 6003531403",
+   "evid": [
+    "E-20",
+    "E-21",
+    "E-22"
+   ],
+   "condicao": "Dos 154 usuários com permissão direta na conta 360, 80 usaram o GA nos últimos 90 dias e 39 são candidatos a remoção: 33 sem nenhum acesso no log de 24 meses, 5 com último acesso há mais de 365 dias e 1 conta pessoal @gmail (143 dias sem uso). A Admin do cliente nathalia.jcc.lima também não tem acesso registrado, mas fica fora da lista: provavelmente usa outro e-mail ou um grupo, e isso será validado com ela. 23 deles são de fora da Smart Fit (maiores grupos: wppmedia.com 7, temp.n2bbrasil.com 3, mirumagency.com 2) e 16 são da Smart Fit/Bioritmo. Outros 33 estão entre 91 e 365 dias sem uso (para revisar). A conta tem 12 Admins; 4 são externos: 2 da Monks (um é o acesso temporário desta auditoria) e 2 da Jellyfish, sem uso há 179 e 290 dias. No GTM, 34 dos 49 usuários são externos e 24 deles podem editar containers; 14 não têm uso do GA que permita inferir atividade.",
+   "obs_esp": [
+    [
+     "38 usuários sem uso há mais de 1 ano mantêm acesso",
+     "Acesso só para quem usa, com revisão trimestral"
+    ],
+    [
+     "4 Admins externos (2 sem uso há 6–10 meses)",
+     "Admin só interno; agência como Editor/Analista, com prazo"
+    ]
+   ],
+   "criterio": "LGPD art. 6º, III (necessidade) e art. 46 (segurança); menor privilégio e revisão periódica de acessos.",
+   "fontes": [
+    [
+     "LGPD, Lei 13.709/2018",
+     "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    ],
+    [
+     "GA Admin API: Data Access Reports",
+     "https://developers.google.com/analytics/devguides/config/admin/v1/access-api"
+    ]
+   ],
+   "causa": "Acessos concedidos por projeto ou agência e nunca revistos; não há revisão periódica nem prazo para acessos externos.",
+   "efeito": "Ex-agências e ex-colaboradores conseguem ver receita, conversões e públicos da Smart Fit; um Admin externo pode apagar propriedades ou mudar retenção e vínculos com Ads e BigQuery que sustentam a atribuição. Sem custo de licença, mas com exposição maior que a necessária.",
+   "impacto": {
+    "formula": "% candidatos = (sem acesso em 365+ dias + contas pessoais) / usuários com permissão direta",
+    "valor": "39/154 = 25,3% dos acessos diretos à conta 360 são candidatos a remoção; 4 de 12 Admins são externos",
+    "premissa": "\"Nunca usou\" pode ser acesso recente: o Change History não registra inclusão de usuários. Remoção só depois da validação da Smart Fit; acessos via grupo ficam fora desta conta (SF-GOV-08)."
+   },
+   "reproduzir": [
+    "Admin API v1beta: accounts/9925058:runAccessReport (E-20)",
+    "Admin API v1alpha: accessBindings da conta e das 25 propriedades (E-20)",
+    "Tag Manager API: accounts/6003531403/user_permissions (E-22)",
+    "Cruzar e-mail × último acesso × papel (§5.7)"
+   ],
+   "rec_raiz": "Validar com a Smart Fit a lista de remoção (§5.7, filtro \"Remover\"), remover em lote, rebaixar agências para Analista/Editor com prazo e instituir revisão trimestral de acessos no GA e no GTM.",
+   "rec_contorno": "Imediato: rebaixar os 2 Admins da Jellyfish sem uso. O Admin da auditoria Monks sai no encerramento.",
+   "pronto": "Data Access Report + accessBindings (mesmas consultas de E-20): 0 usuários com permissão direta e sem acesso há mais de 365 dias; Admins externos só com prazo registrado.",
+   "acao": "A-020",
+   "deck": {
+    "oque": "38 pessoas e agências têm acesso ao GA 360 sem usá-lo há mais de 1 ano, e há Admins de agência que não usam o GA há meses.",
+    "quanto": "Com 1 conta pessoal @gmail, são 39 candidatos à remoção (25,3% dos acessos diretos), 23 de fora da Smart Fit. Um Admin pode apagar a propriedade ou mudar os vínculos com Ads e BigQuery.",
+    "fazer": "Vocês validam a lista, removemos em lote e a revisão passa a ser trimestral.",
+    "titulo": "39 acessos à conta 360 são candidatos a remoção (23 externos), e 2 Admins de agência não usam o GA há meses"
+   },
+   "vitrine": true,
+   "ordem_vitrine": 6
+  },
+  {
+   "id": "SF-GOV-08",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 3,
+   "mods": [],
+   "crit": "ALTA",
+   "conf": "Média (log de uso da 360; grupos não visíveis pela API da conta)",
+   "titulo": "86 identidades leem dados da 360 sem permissão na conta: o acesso vem de fora dela (provável grupo da organização GMP) e não aparece na tela de usuários",
+   "curto": "Acessos via grupo fora do controle",
+   "ativo": "Conta GA 9925058 · organização Google Marketing Platform (não acessível à auditoria)",
+   "evid": [
+    "E-20"
+   ],
+   "condicao": "No Data Access Report aparecem 86 identidades que não constam nas permissões da conta nem das propriedades: 83 e-mails e 3 identidades de sistema (\"deleted user\", com 8.406 acessos, \"firebase linked user\" e \"google ads linked user\"). 35 usaram nos últimos 90 dias. 36 são de fora da Smart Fit (wppmediaservices.com.br 10, i-cherry.com.br 6, monks.com 4, dp6.com.br 3, ciandt.com 3) e 2 são contas @gmail.com de uso compartilhado. Entre eles há pessoas sem sinal desde 2025, como josue.domingues (21/07/2025) e dara.medeiros (13/06/2025).",
+   "obs_esp": [
+    [
+     "86 identidades com uso e sem permissão na conta",
+     "Toda identidade com acesso visível e revisável por um Admin"
+    ],
+    [
+     "\"deleted user\" com 8.406 acessos; 2 contas @gmail compartilhadas",
+     "Contas nominais corporativas ou de serviço"
+    ]
+   ],
+   "criterio": "LGPD art. 6º, III e art. 46; o inventário de acessos pedido (PEDIDO, P-10) precisa cobrir 100% de quem lê os dados.",
+   "fontes": [
+    [
+     "LGPD, Lei 13.709/2018",
+     "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    ],
+    [
+     "GA Admin API: Data Access Reports",
+     "https://developers.google.com/analytics/devguides/config/admin/v1/access-api"
+    ]
+   ],
+   "causa": "Acesso concedido fora da conta, provavelmente por grupos de usuários da organização Google Marketing Platform (único mecanismo que dá acesso sem permissão na conta). A auditoria não tem acesso à organização.",
+   "efeito": "Remover alguém na conta GA não corta esse acesso; o inventário de acessos não fecha em 100% e ex-colaboradores podem seguir lendo dados.",
+   "impacto": {
+    "formula": "Identidades fora do controle = e-mails no log sem permissão na conta",
+    "valor": "86 identidades (35 ativas em 90 dias), 35,8% das 240 identidades mapeadas",
+    "premissa": "Mecanismo (grupo GMP) a confirmar com a Smart Fit."
+   },
+   "reproduzir": [
+    "Data Access Report × accessBindings (E-20): e-mails no log sem permissão",
+    "Pedir leitura da organização GMP (marketingplatform.google.com → Administração → Grupos de usuários)"
+   ],
+   "rec_raiz": "Identificar a organização GMP e seus grupos, auditar membros (ex-colaboradores e contas @gmail) e incluir os grupos no inventário e na revisão trimestral (A-020).",
+   "rec_contorno": "—",
+   "pronto": "Data Access Report: toda identidade com uso nos últimos 90 dias tem permissão na conta ou está em grupo inventariado; 0 contas @gmail.",
+   "acao": "A-021",
+   "deck": {
+    "oque": "86 pessoas e sistemas leem o GA 360 sem aparecer na lista de usuários da conta: o acesso vem de fora dela.",
+    "quanto": "Remover alguém da conta não corta esse acesso; há contas @gmail e ex-colaboradores entre eles. O inventário de acessos não fecha em 100%.",
+    "fazer": "Vocês nos dão leitura da organização do Google Marketing Platform e auditamos os grupos."
+   },
+   "vitrine": true,
+   "ordem_vitrine": 7
+  },
+  {
+   "id": "SF-GOV-09",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Alta (Data Access Report)",
+   "titulo": "78,8% das leituras do GA 360 vêm de painéis e conectores autenticados com a credencial de uma pessoa: 5 credenciais respondem por 61,2%",
+   "curto": "Painéis dependem de credencial pessoal",
+   "ativo": "Conta GA 9925058 (log da 360) · Looker Studio, Supermetrics, Magrathea, SimilarWeb, Power BI e outros apps",
+   "evid": [
+    "E-20"
+   ],
+   "condicao": "Das 2.628.396 leituras registradas em 24 meses, 2.071.233 (78,8%) vieram de aplicativos (Looker Studio, Supermetrics, Magrathea, SimilarWeb, Power BI, liveSEO, TikTok Pixel, Meta GA Integration etc.). 70 usam a credencial de uma pessoa e só 2 são contas de serviço. As 5 credenciais com mais leituras somam 1.609.478 (61,2%): karent.rivera (602,5 mil), analytics.wms (327,0 mil), gustavo.trabulsi (269,7 mil), josue.domingues (260,6 mil), natane.nalin (149,7 mil). Só a primeira responde por 22,9% de todas as leituras. As leituras com a credencial de josue.domingues pararam em 21/07/2025 e as de gustavo.trabulsi em 05/05/2026.",
+   "obs_esp": [
+    [
+     "78,8% das leituras via conector com credencial pessoal",
+     "Fontes críticas em conta de serviço corporativa"
+    ],
+    [
+     "Ferramentas de terceiros (SimilarWeb, liveSEO, TikTok) lendo a 360",
+     "Lista de apps aprovados"
+    ]
+   ],
+   "criterio": "Continuidade e controle de acesso: integração de produção não depende de conta pessoal; LGPD art. 46.",
+   "fontes": [
+    [
+     "LGPD, Lei 13.709/2018",
+     "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    ],
+    [
+     "GA Admin API: Data Access Reports",
+     "https://developers.google.com/analytics/devguides/config/admin/v1/access-api"
+    ]
+   ],
+   "causa": "Painéis criados com a credencial do autor (padrão do Looker Studio e do Supermetrics), sem migração para conta de serviço.",
+   "efeito": "Quando a pessoa sai, perde o acesso ou tem a conta bloqueada, os painéis usados pela diretoria e pela mídia param sem aviso. Remover acessos sem uso (SF-GOV-07) sem olhar isso quebra relatórios.",
+   "impacto": {
+    "formula": "Concentração = leituras das 5 maiores credenciais pessoais / leituras totais (24 meses)",
+    "valor": "61,2% em 5 credenciais; 22,9% numa só",
+    "premissa": "Quais painéis cada credencial alimenta não aparece na API: inventário com os donos dos painéis."
+   },
+   "reproduzir": [
+    "Data Access Report: accessorAppName × userEmail × accessCount (E-20)"
+   ],
+   "rec_raiz": "Inventariar os painéis críticos (diretoria, mídia, CRM), migrar as fontes para conta de serviço corporativa e aprovar a lista de apps de terceiros com acesso.",
+   "rec_contorno": "Antes de qualquer remoção (A-020), checar se a pessoa alimenta conector.",
+   "pronto": "Data Access Report: ≥ 80% das leituras via conector feitas por conta de serviço; nenhuma credencial pessoal com mais de 10% das leituras.",
+   "acao": "A-022",
+   "deck": {
+    "oque": "Quase 4 em cada 5 leituras do GA 360 vêm de painéis ligados à conta pessoal de alguém.",
+    "quanto": "5 credenciais sustentam 61,2% das leituras; uma só, 22,9%. Se a pessoa sai ou perde o acesso, o painel para sem aviso. Duas dessas credenciais já pararam de ler (07/2025 e 05/2026).",
+    "fazer": "Migrar as fontes críticas para conta de serviço da empresa antes de qualquer limpeza de acessos."
+   },
+   "vitrine": true,
+   "ordem_vitrine": 8
+  },
+  {
+   "id": "SF-GOV-10",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 1
+   },
+   "I": 1,
+   "P": 3,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Alta (APIs + HTTP)",
+   "titulo": "14 de 33 propriedades GA e 8 de 16 containers podem sair, e o sGTM \"[DESATIVADO]\" ainda tem Cloud Run no ar",
+   "curto": "Ativos mortos e sGTM antigo no ar",
+   "ativo": "33 propriedades GA de 7 contas · 16 containers da conta GTM 6003531403 · GTM-TSFP4W8 em server-side-tagging-vm62hottfa-uc.a.run.app",
+   "evid": [
+    "E-23",
+    "E-24",
+    "E-25"
+   ],
+   "condicao": "GA: 14 das 33 propriedades acessíveis não têm uso: 7 paradas (último evento entre 2022 e 2025), 5 residuais (ruído de poucos eventos/mês ou versão antiga substituída), 2 nunca receberam dados. Outras 5 pedem decisão (UPD Teste; subpropriedade Totem e propriedade Totem 430511021; subpropriedade Smart System; [OLD] 360 ainda lida por conectores) e 2 de homologação têm streams sobrando. GTM: 3 containers vazios (TXS3GK8, TK5C6NRB, P9FLPGVT), 3 parados (smartnutriapp.com redireciona para smartfit.com.br, smartfit-go.com vai para terceiro, testesystem.com.br não resolve), GTM-P5R85HR com 1 tag de 2021 e o GTM-TSFP4W8 \"[DESATIVADO]\" com versão live de 4 tags ativas e tagging server ainda de pé (/healthy responde 500). Os containers mortos seguem com 17 a 23 usuários cada; o TSFP4W8 tem 7 com permissão de publicar e guarda tokens de mídia, que devem ser rotacionados antes da exclusão (A-001).",
+   "obs_esp": [
+    [
+     "Containers vazios/órfãos com versão live e usuários",
+     "Arquivados (export JSON) e sem usuários"
+    ],
+    [
+     "Cloud Run do sGTM \"desativado\" respondendo",
+     "Serviço excluído no GCP"
+    ],
+    [
+     "14 propriedades sem uso",
+     "Propriedades na lixeira do GA"
+    ]
+   ],
+   "criterio": "Governança: inventário só com ativos em uso e com dono; serviço Cloud Run ocioso pode ter custo de instância (depende da configuração).",
+   "fontes": [
+    [
+     "sGTM: planejamento de custos",
+     "https://developers.google.com/tag-platform/learn/sst-fundamentals/7-planning-infrastructure"
+    ]
+   ],
+   "causa": "Ativos criados por projeto (Smart Fit GO, Nutri, site novo, testes, sGTM antigo) sem processo de encerramento.",
+   "efeito": "Inventário confuso (16 containers para 7 em uso), acessos abertos em ativos que ninguém olha, credenciais esquecidas no sGTM antigo e possível custo de nuvem sem uso.",
+   "impacto": {
+    "formula": "Contagem (APIs); custo do Cloud Run antigo no billing",
+    "valor": "14/33 propriedades e 8/16 containers sem uso; custo do Cloud Run antigo a medir",
+    "premissa": "Propriedades Standard não têm log de leitura: alguém pode consultar histórico. Validar antes de excluir (o GA mantém a propriedade 35 dias na lixeira)."
+   },
+   "reproduzir": [
+    "Data API: eventCount por yearMonth em cada propriedade (E-23)",
+    "Tag Manager API: versions:live, workspaces e version_headers de cada container (E-24)",
+    "curl/dig nos domínios e no tagging server antigo (E-25)"
+   ],
+   "rec_raiz": "Validar a lista (§5.6) com a Smart Fit; exportar o JSON e desativar os containers mortos, tirar os usuários, excluir o serviço Cloud Run do GTM-TSFP4W8 depois de rotacionar os tokens (A-001) e mover as propriedades sem uso para a lixeira.",
+   "rec_contorno": "—",
+   "pronto": "Tag Manager API: containers da lista sem versão live nem usuários; GCP: serviço do TSFP4W8 excluído (URL sem resposta); Admin API: propriedades da lista na lixeira.",
+   "acao": "A-023",
+   "deck": {
+    "oque": "Quase metade das propriedades e dos containers não tem uso, e um servidor de tagging marcado como desativado continua no ar.",
+    "quanto": "14 de 33 propriedades e 8 de 16 containers; os containers mortos ainda têm 17 a 23 usuários e o servidor antigo guarda tokens de mídia. Custo de nuvem a medir.",
+    "fazer": "Vocês validam a lista; exportamos e desligamos, e o servidor antigo é excluído no GCP."
+   }
+  },
+  {
+   "id": "SF-FIN-04",
+   "pilar": "FIN",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 1
+   },
+   "I": 1,
+   "P": 2,
+   "mods": [
+    "Rebaixado de ALTA em 19/10/2026 com o TikTok Events Manager (E-31). Volta a MÉDIA se os logs do Cloud Run (pedidos ao fim das 3 fases) mostrarem fração relevante de sessões sem o checkout no sGTM"
+   ],
+   "crit": "BAIXA",
+   "conf": "Alta: navegador (Preview do GTM, código do service worker e contraprova em 16/10) e TikTok Events Manager × GA4 (13 a 19/10). A fração de sessões afetada depende dos logs do Cloud Run",
+   "titulo": "Em parte das sessões o checkout não chega ao sGTM, mas no tráfego real o TikTok recebe as conversões pelo servidor",
+   "curto": "sGTM sem checkout em parte das sessões",
+   "deck_titulo": "O checkout chega ao servidor de tagging: o bloqueio visto nos testes atinge só parte das sessões",
+   "ativo": "GTM-TCXTCQ5 · 16 tags GA4 com destino {{server ID GA4}} = G-BJ1233456 (envelope para o sGTM) · sGTM GTM-5J2HW2RB no Cloud Run server-side-tagging-…run.app (us-central1)",
+   "evid": [
+    "E-12",
+    "E-26",
+    "E-27",
+    "E-28",
+    "E-31"
+   ],
+   "condicao": "Nas sessões de teste, o checkout não chegou ao sGTM: na compra 46031495 (E-12) foram 4 hits, todos page_view/user_engagement, e no funil refeito em 13/10 (E-27) só o page_view do load do /addons. Nessas sessões, 9 das 16 tags com destino G-BJ1233456 ficaram sem envio no checkout (2398, 2657, 2680, 2684, 2689, 2691, 2698, 2702, 2715). Revisado em 19/10/2026 (E-31): no TikTok Events Manager, de 13 a 19/10, InitiateCheckout (61.977), AddPaymentInfo (37.463) e cadastroLoginSucesso (24.640) chegam pela Events API, com fonte primária servidor, entre 98% e 103% do volume do GA4 web no mesmo período. O cadastroLoginSucesso dispara depois do carregamento e só chega ao TikTok pela Events API; se o bloqueio valesse para todo visitante, ficaria perto de zero. O AddToCart fica em ~90% (240.504 × 266.750).",
+   "obs_esp": [
+    [
+     "Checkout fora do sGTM nas sessões de teste de 13 e 16/10",
+     "Toda sessão leva o checkout ao sGTM"
+    ],
+    [
+     "AddToCart no TikTok em ~90% do GA4",
+     "Cobertura de ~100%, como no InitiateCheckout"
+    ],
+    [
+     "Fração de sessões no braço do service worker desconhecida",
+     "Fração medida nos logs do Cloud Run"
+    ]
+   ],
+   "criterio": "Server-side tagging só se paga quando leva ao servidor os eventos que as mídias usam para otimizar (conversões), com deduplicação client × server.",
+   "fontes": [
+    [
+     "Google: server-side tagging",
+     "https://developers.google.com/tag-platform/tag-manager/server-side"
+    ],
+    [
+     "TikTok Events API",
+     "https://ads.tiktok.com/help/article/events-api"
+    ]
+   ],
+   "causa": "O envio do gtag passa pelo service worker do Google tag gateway (/txctcq5/_/service_worker), que só repassa pedidos para a mesma origem do site. Os hits do sGTM vão para server-side-tagging-…run.app, outra origem, e o service worker responde \"Cross-origin command blocked\". Nas sessões em que ele está ativo, o que dispara depois do carregamento, inclusive o checkout em SPA, se perde. Visto em 16/10/2026 no Preview (tag 2691 monta o hit para run.app/g/collect e nada sai) e na contraprova com o registro do service worker bloqueado (o begin_checkout sai direto). O dado do TikTok (E-31) mostra que isso não vale para todo visitante. Hipótese: o parâmetro sst.sw_exp=1 indica um braço de experimento do gateway, ativo só em parte das sessões.",
+   "efeito": "Impacto pequeno. O TikTok recebe as conversões do checkout pelo servidor com ~100% do volume do GA4, e a Meta recebe a CAPI pelo Conversions API Gateway (meta-api.smartfit.com.br). Perdem-se as conversões server-side das sessões no braço do service worker e parte do AddToCart (~10%). A leitura anterior (o sGTM só recebe page_view e o TikTok não recebe nenhuma conversão server-side) foi descartada em 19/10.",
+   "impacto": {
+    "formula": "Cobertura server-side = evento no TikTok (Events API) ÷ evento no GA4 web, 13 a 19/10",
+    "valor": "InitiateCheckout ~100%, AddPaymentInfo ~98%, cadastroLoginSucesso ~103%, AddToCart ~90%",
+    "premissa": "TikTok em UTC × GA4 no fuso da propriedade, todos os domínios. Falta descartar o sGTM antigo GTM-TSFP4W8 como origem, o que os logs do Cloud Run resolvem (pedido ao fim das 3 fases)."
+   },
+   "reproduzir": [
+    "TikTok Events Manager, pixel Smart_Fit, 13 a 19/10: setup e fonte primária por evento × Data API do GA4 web no mesmo período (E-31)",
+    "Chrome, funil da unidade Augusta até /checkout/wallet: filtrar a rede por run.app e por /txctcq5/ e comparar os eventos por etapa (E-27)",
+    "Preview do web + Tag Assistant: hit Begin Checkout do G-BJ1233456 montado para run.app/g/collect; repetir em sessão limpa com navigator.serviceWorker.register bloqueado (evidencias/chrome/2026-10-16/a024_sgtm/)",
+    "Tag Manager API: tags com measurementId {{server ID GA4}} e seus triggers (E-26)"
+   ],
+   "rec_raiz": "1) Ao fim das 3 fases, medir nos logs do Cloud Run (projeto 563505473543) a fração de sessões sem o checkout no sGTM e descartar o GTM-TSFP4W8 como origem. 2) Investigar a diferença de ~10% no AddToCart. 3) Só se a fração for relevante: publicar o sGTM na mesma origem do site (www.smartfit.com.br/<caminho> pelo CDN) e trocar o server_container_url, o que também resolve a A-015.",
+   "rec_contorno": "—",
+   "pronto": "Fração de sessões sem checkout no sGTM medida nos logs do Cloud Run e registrada; se relevante, compra de teste com begin_checkout, add_payment_info e purchase chegando ao sGTM (roteiro de E-27).",
+   "acao": "A-024",
+   "deck": {
+    "oque": "Nas sessões de teste, o checkout não chegava ao servidor de tagging. No tráfego real, o TikTok recebe as conversões pelo servidor com o mesmo volume do GA4.",
+    "quanto": "Cobertura de 98% a 103% no início do checkout, no pagamento e no cadastro (13 a 19/10); AddToCart em ~90%. O bloqueio atinge só parte das sessões.",
+    "fazer": "Medir a fração afetada nos logs do servidor ao fim das 3 fases e só mexer na infraestrutura se ela for relevante.",
+    "titulo": "O checkout chega ao servidor de tagging: o bloqueio visto nos testes atinge só parte das sessões"
+   },
+   "vitrine": true,
+   "ordem_vitrine": 11
+  },
+  {
+   "id": "SF-DUP-06",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 1
+   },
+   "I": 1,
+   "P": 3,
+   "mods": [
+    "Duplicidade nos lances descartada em 16/10 (2408 e ações por plano secundárias na meta Purchase da MCC). A tag de Franquias está em discussão com a Smart Fit (19/10): sobe para ALTA se a conversão for primária em campanha de franquia e não for intencional"
+   ],
+   "crit": "MÉDIA",
+   "conf": "Alta (compra real no Chrome + GTM API + Google Ads: meta Purchase da MCC 273-361-9377 conferida em 16/10/2026)",
+   "titulo": "A conta de Franquias do Google Ads recebe conversão a cada matrícula de aluno (em discussão); as duas ações de compra por matrícula são secundárias e não entram nos lances",
+   "curto": "Franquias recebe matrícula de aluno (em discussão)",
+   "deck_titulo": "A conta de Franquias do Google Ads recebe a matrícula de aluno como conversão: em discussão se é intencional",
+   "ativo": "GTM-TCXTCQ5 · tags 2408 \"Compra LTV (NOVA)\", 2483/2549/2593 \"Compra [plano]\" e 2417 (Franquias) · contas AW-998758695, AW-1005365543 e AW-962002638",
+   "evid": [
+    "E-12",
+    "E-27",
+    "E-04"
+   ],
+   "condicao": "Na compra 46031495 (plano Fit, R$ 149,90 + Smart Coach), a conta AW-998758695 recebeu duas conversões de compra: \"Compra LTV (NOVA)\" (tag 2408) e \"Compra [Fit]\" (tag 2483), ambas com value=1328. A AW-1005365543 recebeu outra com 1328, e a conta de Franquias AW-962002638 registrou conversão (tag 2417, value 0) para uma matrícula comum de aluno. O site teve 55.411 transações com transaction_id em 30 dias (E-04). No Google Ads (16/10/2026), na meta Purchase da MCC 273-361-9377, a \"Compra - Smart / Todos Planos | LTV (NOVA)\" (2408) e as ações por plano (Black, Fit, Smart) estão como secundárias; as primárias são o purchase do GA4 (web), os purchases do app e o import offline. O label da Compra plano Smart confere com o GTM.",
+   "obs_esp": [
+    [
+     "2 ações de compra na mesma conta por matrícula (2408 + a do plano), ambas secundárias",
+     "No máximo uma primária na meta (atendido)"
+    ],
+    [
+     "value = 1328 (LTV) nas duas",
+     "Valor único e coerente com o que o lance deve otimizar"
+    ],
+    [
+     "Conta de Franquias recebe conversão de matrícula de aluno, com value 0",
+     "Uso definido pela Smart Fit: só fluxo de franquia, ou matrícula de aluno de propósito (ex.: público/observação)"
+    ]
+   ],
+   "criterio": "No Google Ads, todas as ações primárias de uma meta entram na coluna Conversões e no Smart Bidding; duas ações primárias para o mesmo evento contam a venda duas vezes.",
+   "fontes": [
+    [
+     "Google Ads: conversões primárias e secundárias",
+     "https://support.google.com/google-ads/answer/11461796"
+    ],
+    [
+     "Google Ads: valores de conversão",
+     "https://support.google.com/google-ads/answer/3419241"
+    ]
+   ],
+   "causa": "As tags por plano (2483/2549/2593) são mutuamente exclusivas: cada compra dispara só a do plano comprado, e ter uma ação por plano está correto. A duplicidade vem da 2408 (LTV), que dispara em toda compra junto com a do plano, na mesma conta e com a mesma variável de valor {{WA || Tabela de Consulta - VBB}}. O Google Ads só deduplica pelo order ID dentro da mesma ação, então duas ações primárias na mesma meta viram duas conversões. A tag de Franquias (2417) dispara em todo purchase: o trigger \"Compras Novas Unidades Franqueadas\" não tem condição de franquia, e o valor vai como {{DL - Purchase - Plano}} (texto), que chega como 0.",
+   "efeito": "Como a 2408 e as ações por plano são secundárias, a matrícula não conta duas vezes nos lances; a contagem dupla aparece só na coluna Todas as conversões, o que afeta apenas relatórios que usam essa coluna. Na conta de Franquias, o efeito depende do uso: se a conversão for primária em campanha de franquia, a campanha otimiza para matrícula de aluno; se for intencional (outra conta que recebe os dados) ou secundária, não há problema. Em discussão com a Smart Fit desde 19/10/2026.",
+   "impacto": {
+    "formula": "Conversões de Franquias indevidas = purchases do site com a tag 2417 (todas as matrículas)",
+    "valor": "Toda matrícula do site gera conversão (valor 0) na conta de Franquias AW-962002638; nos lances da MCC, duplicidade = 0",
+    "premissa": "Meta Purchase conferida na MCC; as contas AW-1005365543 e AW-962002638 têm ações próprias, cujo status não foi conferido."
+   },
+   "reproduzir": [
+    "Chrome, compra 46031495: filtrar googleadservices/conversion e o gateway /txctcq5/ e agrupar por conta/label (E-12)",
+    "Tag Manager API: triggers e variável de valor das tags 2408, 2483, 2549, 2593 e 2417 (E-26)",
+    "Google Ads (MCC 273-361-9377): Metas → Conversões → Resumo → meta Purchase, status de cada ação (16/10/2026)"
+   ],
+   "rec_raiz": "A duplicidade nos lances está descartada: a 2408 e as ações por plano são secundárias na meta Purchase, e nada muda nelas. A tag de Franquias (2417) está em discussão com a Smart Fit: pode ser intencional (outra conta que recebe os dados). Confirmar o uso da conversão na conta AW-962002638; se ela for primária em campanha de franquia sem ser intencional, restringir ao fluxo de franquias ou pausar.",
+   "rec_contorno": "Nos relatórios, usar a coluna Conversões (só primárias), e não Todas as conversões.",
+   "pronto": "Google Ads: só uma ação de compra primária por meta (atendido na MCC em 16/10); uso da conversão de Franquias definido com a Smart Fit e, se for o caso, 0 conversões na conta de Franquias numa compra de teste.",
+   "acao": "A-025",
+   "deck": {
+    "oque": "As duas ações de compra por matrícula na conta principal estão como secundárias e não entram nos lances. A conta de Franquias também recebe a matrícula de aluno como conversão.",
+    "quanto": "Na conta principal, os lances não são afetados. Na de Franquias, só há impacto se essa conversão orientar campanha de franquia.",
+    "fazer": "Definir com a Smart Fit se a conta de Franquias deve receber essas conversões; ajustar a tag 2417 só se não for intencional.",
+    "titulo": "A conta de Franquias do Google Ads recebe a matrícula de aluno como conversão: em discussão se é intencional"
+   },
+   "vitrine": true,
+   "ordem_vitrine": 9
+  },
+  {
+   "id": "SF-PII-05",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 1,
+    "INT": 3,
+    "PG": 2
+   },
+   "I": 3,
+   "P": 3,
+   "mods": [
+    "+1 LGPD (dado pessoal a terceiro no exterior)"
+   ],
+   "crit": "ALTA",
+   "conf": "Alta (reproduzido no Chrome, request por request + GTM API)",
+   "titulo": "E-mail e telefone de quem compra vão em texto aberto para o New Relic e para outras 3 tags",
+   "curto": "PII em claro no New Relic e em 3 tags",
+   "ativo": "Checkout (/checkout/wallet) · New Relic Browser (bam.nr-data.net) · push add_person_info do dataLayer · tags 2578 \"Coach - Lead LP\" (GA4 principal), 2684 e 2698 (sGTM)",
+   "evid": [
+    "E-27",
+    "E-26"
+   ],
+   "condicao": "No /checkout/wallet, o New Relic Browser recebeu person_email e person_phone em texto aberto em 5 dos 21 POSTs do funil (endpoints events, browser/logs e ins), com valores iguais aos digitados. O agente lê o push add_person_info do dataLayer e passa a anexar e-mail e telefone como atributos globais em todo envio seguinte (E-27). No GTM, além da tag 2659 já reportada em SF-PII-04, a 2578 \"Coach - Lead LP\" manda phone_number para o GA4 principal e as 2684/2698 mandam e-mail e telefone em claro para o sGTM (E-26).",
+   "obs_esp": [
+    [
+     "person_email e person_phone em claro em 5 POSTs ao New Relic",
+     "Nenhum dado pessoal em ferramenta de monitoramento"
+    ],
+    [
+     "phone_number em claro na tag 2578 (GA4)",
+     "Sem PII em parâmetro do GA4"
+    ],
+    [
+     "E-mail e telefone em claro nas tags 2684/2698 (sGTM)",
+     "Mantido como está (decisão de 16/10/2026): alimenta as tags da Meta e do TikTok no sGTM"
+    ]
+   ],
+   "criterio": "LGPD: princípio da necessidade (art. 6º, III) e regras de transferência internacional (art. 33). Política do Google Analytics proíbe PII em parâmetros.",
+   "fontes": [
+    [
+     "LGPD, Lei 13.709/2018 (arts. 6º e 33)",
+     "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    ],
+    [
+     "Google Analytics: política de PII",
+     "https://support.google.com/analytics/answer/6366371"
+    ],
+    [
+     "New Relic Browser: obfuscation rules",
+     "https://docs.newrelic.com/docs/browser/new-relic-browser/configuration/obfuscate-browser-agent-data/"
+    ]
+   ],
+   "causa": "O site empurra e-mail e telefone em claro no dataLayer (add_person_info). O agente do New Relic captura os atributos do evento, e as tags reaproveitam as mesmas variáveis sem hash.",
+   "efeito": "Dado pessoal de quem está comprando vai para um terceiro (New Relic, EUA) sem necessidade, o que cria exposição LGPD e amplia SF-PII-04 (13,5% dos cadastroLoginSucesso com e-mail no GA4). Além disso, quando o gateway meta-api.smartfit.com.br falha (ERR_ABORTED na home), o evento é reenviado com timeout_retry para um endpoint AWS em ap-south-1 (Índia), que precisa ter dono confirmado.",
+   "impacto": {
+    "formula": "Exposição = compradores que chegam a /checkout/wallet × destinos que recebem e-mail/telefone em claro",
+    "valor": "100% dos compradores do site (e-mail e telefone a cada checkout); 4 tags e 1 ferramenta de terceiro",
+    "premissa": "Contagem por comprador depende do volume do checkout; o New Relic não expõe volume pela API que temos. Dono do endpoint ap-south-1 a confirmar (pergunta 7)."
+   },
+   "reproduzir": [
+    "Chrome, funil até /checkout/wallet com dados fictícios: filtrar a rede por bam.nr-data.net e procurar person_email/person_phone no corpo dos POSTs (E-27, b2_newrelic.json)",
+    "Tag Manager API: parâmetros das tags 2578, 2684, 2698 e 2659 (E-26)"
+   ],
+   "rec_raiz": "Tirar e-mail e telefone do push add_person_info (ou enviar só o hash SHA-256), configurar ofuscação de atributos no New Relic e remover o phone_number da tag 2578 (pronto no workspace 772, validado em Preview em 16/10/2026). As tags 2684 e 2698 ficam como estão (decisão de 16/10/2026): elas só vão ao sGTM GTM-5J2HW2RB, cujas tags \"API Meta\" e \"API Tik Tok\" leem email e phone do Event Data, e alterá-las pode quebrar a rota server-side.",
+   "rec_contorno": "Imediato: regra de ofuscação no New Relic para person_email e person_phone (configuração, sem deploy do site).",
+   "pronto": "Chrome (mesmo roteiro de E-27): 0 POSTs a bam.nr-data.net com person_email/person_phone; tag 2578 sem phone_number no hit ao GA4.",
+   "acao": "A-026",
+   "deck": {
+    "oque": "No pagamento, o e-mail e o telefone de quem está comprando vão em texto aberto para o New Relic (ferramenta de monitoramento, nos EUA) e para outras 3 tags.",
+    "quanto": "Acontece com todo comprador do site. É dado pessoal enviado a um terceiro no exterior sem necessidade (LGPD, arts. 6º e 33) e se soma ao e-mail que já chega ao GA4 (SF-PII-04).",
+    "fazer": "Ofuscar no New Relic já (configuração), tirar e-mail e telefone do dataLayer e o telefone da tag do Coach. As 2 tags que alimentam o servidor ficam como estão."
+   },
+   "vitrine": true,
+   "ordem_vitrine": 10
+  },
+  {
+   "id": "SF-DUP-07",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 2,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Alta (reproduzido no Chrome + Data API)",
+   "titulo": "19 tags têm o trigger quebrado por mudanças no site: busca, parceiros e lead de \"Quero ser aluno\" sem medição",
+   "curto": "Triggers quebrados pelo site",
+   "ativo": "GTM-TCXTCQ5 · triggers de /vantagens (parceiros), /quero-ser-aluno (2482 Ads, 2708 Meta), checkout (2441, 2432, 2607), busca (2406) e paths antigos (/carts, /checkout/person/, /checkout/address_and_wallet/)",
+   "evid": [
+    "E-27",
+    "E-29",
+    "E-30",
+    "E-26",
+    "E-33"
+   ],
+   "revisao": "19/10/2026 (E-33): a 2682 (Kwai contentView) e a 2785 (TikTok ViewContent) disparam e saíram da lista. Em 13/10 o beacon delas não foi capturado. A contagem passou de 21 para 19 tags; o restante do achado não muda.",
+   "condicao": "O site mudou e o GTM não acompanhou. 4 parceiros em /vantagens usam seletor em caixa alta ([data-id=\"AVON\"]), mas o site usa \"Avon\". O lead de /quero-ser-aluno espera form_submit e o site emite lead_form_success, então a conversão do Ads (2482) e o lead da Meta (2708) nunca disparam. cpf_validado/documento_validado viraram document_validation, click_addon_black virou click_upgrade_black, e a busca empurra click_search/buscas, que nenhuma tag escuta. Os triggers presos a /carts, /checkout/person/ (com barra) e /checkout/address_and_wallet/ também não casam, e o Kwai AddToCart (2439, 2545) não disparou com 2 add_to_cart.",
+   "obs_esp": [
+    [
+     "Trigger compara texto exato (seletor, evento, path)",
+     "Trigger tolerante a caixa e a barra final, ou contrato de dataLayer"
+    ],
+    [
+     "Lead de Quero ser aluno sem conversão no Ads e na Meta",
+     "Lead conta como conversão nas duas mídias"
+    ],
+    [
+     "Busca de academia sem evento no GA4",
+     "Primeira etapa do funil medida"
+    ]
+   ],
+   "criterio": "Cada etapa do funil e cada conversão de mídia precisa de evento confiável; mudança no site sem mudança no GTM quebra a medição em silêncio.",
+   "fontes": [
+    [
+     "Google Tag Manager: boas práticas de workspace e versões",
+     "https://support.google.com/tagmanager/answer/6107163"
+    ]
+   ],
+   "causa": "Os triggers comparam texto exato (seletor CSS, nome de evento ou path) e não foram atualizados nos deploys do site. Não existe contrato de dataLayer versionado entre o time do site e o de mídia.",
+   "efeito": "/vantagens teve 52.842 pageviews e 36 mil usuários em 30 dias sem medição de clique por parceiro, o que impede reportar resultado aos parceiros comerciais. A busca de academia, primeira etapa do funil, não tem evento no GA4. O lead de \"Quero ser aluno\" (1,6 mil pageviews em 30 dias) não chega ao Ads nem à Meta, e as campanhas desse formulário otimizam no escuro.",
+   "impacto": {
+    "formula": "Cobertura perdida = pageviews das páginas com trigger quebrado; conversões de mídia perdidas = leads de /quero-ser-aluno",
+    "valor": "52.842 pageviews de /vantagens sem clique por parceiro; 1,6 mil pageviews de /quero-ser-aluno sem conversão de mídia; busca sem evento",
+    "premissa": "Pageviews de 30 dias (E-29, E_paginas_lead_parceiros_30d.json). Leads reais do formulário dependem do CRM."
+   },
+   "reproduzir": [
+    "Chrome em /vantagens: clicar em \"Resgatar Cupom\" da Avon e filtrar /txctcq5/ (E-29, reqid 1203: só en=interaction)",
+    "Chrome em /quero-ser-aluno: enviar o formulário com dados fictícios e conferir AW-998758695 e Meta (E-29)",
+    "Chrome no checkout: ver os eventos do dataLayer contra os triggers (E-27)",
+    "Tag Manager API: filtros dos triggers (E-26)"
+   ],
+   "rec_raiz": "Corrigir os 19 triggers (seletor sem diferenciar caixa ou por data-id normalizado; trocar os nomes de evento; path com \"começa com\"). Criar um contrato de dataLayer (lista de eventos e parâmetros) validado em QA antes de cada deploy.",
+   "rec_contorno": "Priorizar o lead de /quero-ser-aluno (conversão de mídia) e a busca (funil).",
+   "pronto": "Chrome: clique em parceiro gera evento com o nome do parceiro; lead de /quero-ser-aluno gera conversão no Ads e lead na Meta; Data API: evento de busca > 0 em 7 dias.",
+   "acao": "A-027",
+   "deck": {
+    "oque": "O site mudou e 19 tags deixaram de disparar: a busca de academia, os cliques nos parceiros e o lead de \"Quero ser aluno\" não são medidos.",
+    "quanto": "52,8 mil visitas a /vantagens sem saber qual parceiro gerou clique; o lead de \"Quero ser aluno\" não chega ao Google Ads nem à Meta; a primeira etapa do funil (busca) não existe no GA4.",
+    "fazer": "Corrigir os triggers e combinar um contrato de dataLayer validado antes de cada deploy."
+   },
+   "vitrine": true,
+   "ordem_vitrine": 12
+  },
+  {
+   "id": "SF-GOV-11",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Alta (Chrome + Data API 90 dias + HTTP)",
+   "titulo": "65 das 268 tags ativas (24%) não têm efeito: páginas removidas, fornecedor sem SDK e triggers quebrados",
+   "curto": "1 em 4 tags ativas sem efeito",
+   "ativo": "GTM-TCXTCQ5 v597 · 44 tags órfãs, 10 tags Croct, 19 com trigger quebrado · 51 triggers sem tag ativa",
+   "evid": [
+    "E-26",
+    "E-27",
+    "E-29",
+    "E-30",
+    "E-14",
+    "E-33"
+   ],
+   "revisao": "19/10/2026 (E-33): 2682 e 2785 disparam (falsos positivos de 13/10) e saíram da lista; o total de tags sem efeito passou de 67 para 65.",
+   "condicao": "44 tags estão órfãs: a página ou o evento não existe mais. São Coach Online (10 tags; coach.smartfit.com faz 301), Vagas (7; /trabalhe-conosco foi para o 99jobs, onde o container não está), Indique e Ganhe/FitFriend (7; 404 ou 302), Férias Smart, LP de Jundiaí, 5 parceiros desativados e testes A/B encerrados. As 10 tags Croct não fazem nada, porque o SDK não carrega em nenhuma página: uma é só comentário (2613), outra gera ReferenceError: croct is not defined (2634) e a 2648 não tem trigger. 33 eventos GA4 tiveram zero volume em 90 dias. Somadas às tags com trigger quebrado (SF-DUP-07), são 65 das 268 tags ativas sem efeito.",
+   "obs_esp": [
+    [
+     "65 tags ativas sem efeito (24%)",
+     "Toda tag ativa com dono, finalidade e evidência de disparo"
+    ],
+    [
+     "51 triggers sem tag ativa",
+     "0 triggers órfãos"
+    ],
+    [
+     "Tag Croct gera ReferenceError no console",
+     "Nenhum erro de tag no console"
+    ]
+   ],
+   "criterio": "Higiene de container: tag sem página, sem SDK ou sem trigger útil só adiciona peso e risco; cada tag precisa de dono e data de revisão.",
+   "fontes": [
+    [
+     "Google Tag Manager: boas práticas de workspace e versões",
+     "https://support.google.com/tagmanager/answer/6107163"
+    ]
+   ],
+   "causa": "Campanhas, LPs e fornecedores saem do ar e as tags ficam. O container não tem rotina de revisão nem dono por tag.",
+   "efeito": "O gtm.js do container pesa 232 KB transferidos e 859 KB descomprimidos. Cada tag morta entra nesse peso e no tempo de avaliação de cada página, num site já reprovado em Core Web Vitals (SF-PERF-01). Também gera ruído na auditoria e risco de reativação acidental.",
+   "impacto": {
+    "formula": "% do container sem efeito = tags sem efeito ÷ tags ativas",
+    "valor": "65 de 268 (24%); 51 triggers sem tag",
+    "premissa": "Ganho de performance da limpeza não foi medido isoladamente; entra no reteste de SF-PERF-01."
+   },
+   "reproduzir": [
+    "Tabela por tag (§5.8): filtrar status ≠ dispara e motivo \"órfã\" ou \"trigger/seletor quebrado\" (E-26)",
+    "curl -sIL nas páginas dos triggers (Coach, Vagas, Indique e Ganhe) (E-29)",
+    "Chrome em /modalidades-treinos/smart-bike: console com ReferenceError croct (E-30)"
+   ],
+   "rec_raiz": "Pausar e depois remover as tags listadas como órfãs ou sem efeito na tabela por tag e os 51 triggers sem tag ativa. Criar um ritual trimestral de limpeza e uma convenção de nome com dono e data de expiração.",
+   "rec_contorno": "—",
+   "pronto": "Tag Manager API: 0 das 65 tags listadas ativas; 0 triggers sem tag; console sem ReferenceError de tag.",
+   "acao": "A-028",
+   "deck": {
+    "oque": "1 em cada 4 tags ativas do site não faz nada: a página saiu do ar, o fornecedor não carrega mais ou o gatilho quebrou.",
+    "quanto": "65 de 268 tags ativas. Todas pesam no gtm.js (232 KB) de um site já reprovado em velocidade, e uma delas gera erro no console.",
+    "fazer": "Pausar e remover a lista, com ritual trimestral de limpeza e dono por tag."
+   }
+  },
+  {
+   "id": "SF-DUP-08",
+   "pilar": "INT",
+   "scores": {
+    "FIN": 2,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Alta (Chrome + Data API; volume por host é amostrado)",
+   "titulo": "Outro container (LPs) e ambientes de staging escrevem na propriedade 360 em paralelo ao GTM principal",
+   "curto": "Outro container e staging na 360",
+   "ativo": "GA4 175020184 stream web G-BJP7473VFF · GTM-PS879FDQ (LPs) · hosts de staging (smartsite-staging.smartfit.cloud e outros 5)",
+   "evid": [
+    "E-29",
+    "E-26"
+   ],
+   "condicao": "8 eventos do www (~29.542 em 30 dias, como smartRun_souAluno, leads_run_sp e leads_visitante) não têm tag no GTM-TCXTCQ5. Vêm do GTM-PS879FDQ (LPs), que manda direto para analytics.google.com com debug_mode=true em produção. Em /quero-ser-aluno, /cupom-smart-fit e /visitante os dois containers rodam juntos e mandam page_view para a mesma propriedade. Os hosts de staging mandaram ~29 mil eventos para a 360 em 30 dias (amostra). O stream web recebe dados de 37 hosts, e o www responde por ~28% do volume.",
+   "obs_esp": [
+    [
+     "2 containers mandando page_view na mesma LP",
+     "1 container por página"
+    ],
+    [
+     "debug_mode=true em produção",
+     "debug_mode só em teste"
+    ],
+    [
+     "Staging escrevendo na 360",
+     "Staging em propriedade própria ou filtrado"
+    ]
+   ],
+   "criterio": "Uma fonte por página e por ambiente; tráfego de desenvolvimento fora dos relatórios (filtro de dados \"Developer traffic\").",
+   "fontes": [
+    [
+     "GA4: filtro de tráfego de desenvolvedor",
+     "https://support.google.com/analytics/answer/10108813"
+    ]
+   ],
+   "causa": "O ID G-BJP7473VFF está espalhado em containers e ambientes sem um dono central. Não há filtro de tráfego de desenvolvimento nem lista de hosts permitidos.",
+   "efeito": "Pageviews das LPs contados duas vezes, o que infla sessões e reduz a taxa de conversão das páginas de lead. Dados de staging se misturam aos de produção na 360, cuja cota é paga por evento.",
+   "impacto": {
+    "formula": "Eventos sem dono no GTM principal = Σ eventos do www sem tag; eventos de staging = Σ hosts *.smartfit.cloud",
+    "valor": "~29.542 eventos/30 d de outro container no www; ~29 mil eventos/30 d de staging",
+    "premissa": "Volume por host vem de consulta amostrada (~12%); a duplicação de page_view nas LPs foi observada em 3 páginas no Chrome."
+   },
+   "reproduzir": [
+    "Chrome na LP Smart Fit Run SP: request a analytics.google.com com ep.debug_mode=true (E-29, reqid 1685)",
+    "Data API: eventName × hostName no stream web (E-26)"
+   ],
+   "rec_raiz": "Definir um único container por página: nas LPs, remover o GA4 do PS879FDQ ou do TCXTCQ5. Tirar debug_mode de produção. Nos ambientes de staging, usar outra propriedade ou ativar o filtro de dados \"Developer traffic\".",
+   "rec_contorno": "Enquanto isso, filtro de host nos relatórios de LP.",
+   "pronto": "Chrome: 1 page_view por carga nas 3 LPs e nenhum debug_mode; Data API: 0 eventos de hosts de staging na 175020184 (7 dias).",
+   "acao": "A-029",
+   "deck": {
+    "oque": "Outro container (o das landing pages) e os ambientes de teste também escrevem na propriedade principal, em paralelo ao container do site.",
+    "quanto": "Visitas das LPs contadas duas vezes, o que derruba a taxa de conversão de lead. ~29,5 mil eventos/mês de outro container e ~29 mil de teste entram na cota paga.",
+    "fazer": "Um container por página, sem modo debug em produção e com o teste fora da 360."
+   }
+  },
+  {
+   "id": "SF-GOV-12",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 2,
+    "PG": 2
+   },
+   "I": 2,
+   "P": 2,
+   "mods": [],
+   "crit": "MÉDIA",
+   "conf": "Alta (Chrome + GTM API)",
+   "titulo": "Tags \"[TESTE]\" e \"UPD\" são o envio principal em produção: 17 ativas, 15 disparando",
+   "curto": "Tags [TESTE] como produção",
+   "ativo": "GTM-TCXTCQ5 · Meta (pixel 613873065426539, tag 2793 e outras 6), TikTok (2807 e outras 6), GA4 UPD (2918–2920 → propriedade 549057488)",
+   "evid": [
+    "E-27",
+    "E-28",
+    "E-26"
+   ],
+   "condicao": "17 tags com \"[TESTE]\" ou \"UPD\" no nome estão ativas: 7 da Meta, 7 do TikTok (incluindo o Base + PageView) e as 3 do GA4 UPD. 15 disparam hoje. O PageView de todas as páginas do pixel Meta 613873065426539 sai pela 2793 \"[TESTE] Pixel Meta - 01. All Pages\", porque a original (2672) está pausada. A base do TikTok ativa é a 2807 \"[TESTE] TikTok - Base + PageView\", e as duas All Pages \"oficiais\" (2678, 2782) estão pausadas. As 3 \"GA4 UPD\" mandam page_view, begin_checkout e purchase para a propriedade de teste 549057488 (SF-GOV-02).",
+   "obs_esp": [
+    [
+     "Produção em tags chamadas [TESTE]",
+     "Nome oficial, dono e registro no changelog"
+    ],
+    [
+     "Originais pausadas no lugar",
+     "Original substituída e removida"
+    ]
+   ],
+   "criterio": "Governança de container: o nome da tag precisa dizer o que ela é; teste tem prazo e não fica como produção.",
+   "fontes": [
+    [
+     "Google Tag Manager: boas práticas de workspace e versões",
+     "https://support.google.com/tagmanager/answer/6107163"
+    ]
+   ],
+   "causa": "Os testes viraram produção sem renomear nem documentar, e as versões antigas foram pausadas no lugar.",
+   "efeito": "Ninguém consegue distinguir com segurança o que é produção do que é teste. Pausar uma tag \"[TESTE]\" para limpar o container, que é o reflexo natural, derruba a principal fonte de conversão da Meta e a base do TikTok.",
+   "impacto": {
+    "formula": "Tags de mídia em produção com nome de teste ÷ tags de mídia que disparam",
+    "valor": "15 tags [TESTE]/UPD disparando, incluindo o PageView da Meta e a base do TikTok",
+    "premissa": "Risco operacional (não medido em R$): materializa-se numa limpeza sem esta lista."
+   },
+   "reproduzir": [
+    "Chrome na home: PageView do pixel 613873065426539 e base do TikTok (E-28, b5_5)",
+    "Tag Manager API: tags com \"TESTE\" ou \"UPD\" no nome e status (E-26)"
+   ],
+   "rec_raiz": "Renomear com a convenção oficial, registrar no changelog do container e encerrar o teste UPD com data definida (A-008). Fazer isso antes de qualquer limpeza (A-028).",
+   "rec_contorno": "Marcar as 14 tags como \"não pausar\" na descrição até a renomeação.",
+   "pronto": "Tag Manager API: 0 tags ativas com \"[TESTE]\" ou \"UPD\" no nome; versão publicada com o ID da ação.",
+   "acao": "A-030",
+   "deck": {
+    "oque": "As tags chamadas \"[TESTE]\" são, na prática, as que mandam os dados da Meta e do TikTok em produção. As originais estão pausadas.",
+    "quanto": "15 tags de teste disparando hoje. Quem pausar \"os testes\" para limpar o container derruba a principal fonte de conversão da Meta.",
+    "fazer": "Renomear e documentar antes de qualquer limpeza; encerrar o teste UPD com data."
+   },
+   "vitrine": true,
+   "ordem_vitrine": 13
+  },
+  {
+   "id": "SF-GOV-13",
+   "pilar": "PG",
+   "scores": {
+    "FIN": 1,
+    "INT": 1,
+    "PG": 1
+   },
+   "I": 1,
+   "P": 2,
+   "mods": [],
+   "crit": "BAIXA",
+   "conf": "Alta (Data API)",
+   "titulo": "Sondagem de injeção SQL/XSS chega como eventos na propriedade principal",
+   "curto": "Sondagem de injeção como evento",
+   "ativo": "GA4 175020184 stream web G-BJP7473VFF · gateway /txctcq5/",
+   "evid": [
+    "E-26"
+   ],
+   "condicao": "46 eventNames como (select 198766*667891 from DUAL), page_view'\" e @@xxxxx entraram em 12/10/2026, num total de 120 eventos, sem hostName.",
+   "obs_esp": [
+    [
+     "eventNames com payload de injeção",
+     "Só eventos do plano de medição"
+    ]
+   ],
+   "criterio": "O endpoint de coleta do GA4 aceita qualquer hit com o measurement ID; ruído desse tipo precisa ser monitorado.",
+   "fontes": [],
+   "causa": "Um scanner de segurança varreu os parâmetros e o endpoint de coleta aceitou os hits.",
+   "efeito": "O volume é pequeno, mas suja a lista de eventos e as dimensões dos relatórios, e é sinal de varredura ativa contra o domínio.",
+   "impacto": {
+    "formula": "eventNames de injeção ÷ eventNames do stream",
+    "valor": "46 eventNames, 120 eventos em 1 dia",
+    "premissa": "Sem impacto em receita; sinal de segurança."
+   },
+   "reproduzir": [
+    "Data API: eventName × hostName em 12/10/2026, eventos sem hostName (E-26)"
+   ],
+   "rec_raiz": "Não há correção no GA4. Criar alerta de eventNames novos e conferir no WAF/CDN se a varredura também atingiu o site e o gateway /txctcq5/.",
+   "rec_contorno": "—",
+   "pronto": "Alerta de eventName novo ativo; registro do time de segurança sobre a varredura de 12/10.",
+   "acao": "A-031",
+   "deck": {
+    "oque": "Um robô de varredura de segurança mandou tentativas de invasão que viraram \"eventos\" no GA4.",
+    "quanto": "46 nomes de evento falsos em 1 dia. Não afeta receita, mas é sinal de varredura ativa contra o site.",
+    "fazer": "Alerta de evento novo e checagem no WAF."
+   }
+  }
+ ],
+ "VERIFICADO_OK": [
+  {
+   "item": "purchase web com transaction_id não duplica",
+   "evid": "E-04",
+   "detalhe": "55.411 transações web em 30 dias, 0 com mais de um purchase."
+  },
+  {
+   "item": "Recarregar a confirmação não repete o purchase",
+   "evid": "E-12",
+   "detalhe": "purchase dispara 1× por propriedade em /checkout/wallet; reload de /checkout/resume gera só page_view; link de confirmação é de uso único."
+  },
+  {
+   "item": "id em base64 na URL do checkout não é dado pessoal",
+   "evid": "E-12",
+   "detalhe": "Decodifica para o checkout_id; o key de /checkout/resume = transaction_id."
+  },
+  {
+   "item": "Tags de validação CPF/E-mail/Nome não enviam o valor",
+   "evid": "E-01",
+   "detalhe": "[GA4] - Form Checkout - CPF/Email/Nome enviam só a indicação de preenchido."
+  },
+  {
+   "item": "Dados do usuário ao GA4 vão com hash",
+   "evid": "E-12",
+   "detalhe": "em=tv.1~em.<sha256>~pn.<sha256> (user-provided data)."
+  },
+  {
+   "item": "GA4 client via gateway first-party",
+   "evid": "E-12",
+   "detalhe": "/txctcq5/ag/g/c no próprio domínio."
+  },
+  {
+   "item": "Rota server-side não duplica o GA4",
+   "evid": "E-02",
+   "detalhe": "Tag de repasse ao GA4 no sGTM (\"Google Analytics GA4 (TESTE)\") pausada."
+  },
+  {
+   "item": "Streams de outras marcas não misturam dados",
+   "evid": "E-07",
+   "detalhe": "Nation e Bioritmo: 0 eventos em 30 dias (3 de 10 streams com dados)."
+  },
+  {
+   "item": "Telefone não chega em parâmetro do GA4",
+   "evid": "E-09",
+   "detalhe": "0 eventos com telefone em customEvent:phone em 30 dias."
+  },
+  {
+   "item": "GTM carrega uma vez só",
+   "evid": "E-14",
+   "detalhe": "A 2ª chamada a googletagmanager.com (gtg_health=1, 131 bytes) é o health check do Google tag gateway, e não um segundo container."
+  },
+  {
+   "item": "select_item dispara uma vez por clique",
+   "evid": "E-15",
+   "detalhe": "\"Começar agora\" gera 1 select_item com items; a tag \"[GA4] | Addons select_item\" só atua em /produtos-servicos."
+  },
+  {
+   "item": "Meta: mesmo event_id no pixel e no gateway CAPI",
+   "evid": "E-18",
+   "detalhe": "100% dos eventos dos 2 pixels levam event_id, via facebook.com/tr e Conversions API Gateway (meta-api.smartfit.com.br)."
+  },
+  {
+   "item": "Retenção e export configurados",
+   "evid": "E-03",
+   "detalhe": "Retenção 50 meses (eventos); BigQuery diário + fresh para o projeto 563505473543."
+  },
+  {
+   "item": "Subpropriedades Web, App e Espaço do Cliente com filtros coerentes",
+   "evid": "E-03",
+   "detalhe": "Web = platform web sem /totem e sem Espaço do Cliente; App = iOS + Android; EC = espacodocliente."
+  },
+  {
+   "item": "Admins internos ativos na conta 360",
+   "evid": "E-20",
+   "detalhe": "6 dos 8 Admins internos usaram o GA nos últimos 90 dias; analytics.nutri@ está há 112 dias sem uso e a Admin do cliente será validada."
+  },
+  {
+   "item": "154 das 268 tags ativas disparam",
+   "evid": "E-26",
+   "detalhe": "Com volume no GA4 em 30 dias ou request observado no navegador; 45 não testáveis (compra concluída de outros planos, login) estão com o motivo na tabela por tag (§5.8)."
+  }
+ ],
+ "A_VALIDAR": [
+  {
+   "id": "V-02",
+   "item": "ERR_NAME_NOT_RESOLVED no console",
+   "porque": "Script de terceiro apontando para domínio inexistente.",
+   "como": "Identificado (E-18): suite.linximpulse.net/impulse/impulse.js, fixo no <head> do app de checkout e fora do GTM (domínio desativado). Junto aparece um 404 em secure.adnxs.com da tag GTM \"HYPR - HomePage\" (All Pages). Falta confirmar com o dono do checkout e com a mídia HYPR se os scripts ainda são necessários."
+  },
+  {
+   "id": "V-03",
+   "item": "Pixel Meta client-side",
+   "porque": "2 pixels recebem Purchase (1831606917232556 e, via tag \"[TESTE] Pixel Meta (Facebook) - 07. Purchase\", 613873065426539); deduplicação com CAPI depende do par event_id/event_name.",
+   "como": "Parcial (E-18): todos os eventos levam event_id e passam pelo gateway CAPI; InitiateCheckout chega a cada pixel em momentos diferentes e CompleteRegistration só a um deles. Falta confirmar no Events Manager qual pixel otimiza as campanhas e a taxa de deduplicação."
+  },
+  {
+   "id": "V-05",
+   "item": "Queda do purchase do totem em 03/10",
+   "porque": "De ~7,1 mil/dia para ~880/dia sem mudança documentada.",
+   "como": "Confirmar com o time do totem o que foi publicado."
+  },
+  {
+   "id": "V-06",
+   "item": "Evento content (145,9 mi/30 d) no app",
+   "porque": "Perfil igual ao click (SF-FIN-01).",
+   "como": "Confirmar uso com o time de produto."
+  },
+  {
+   "id": "V-07",
+   "item": "/news envia dados para G-JEYJQXGSE3, fora das contas acessíveis",
+   "porque": "O GTM-T4NZ5JQD (5 tags ativas, em www.smartfit.com.br/news/) manda page_view e cliques para uma propriedade que não está em nenhuma conta GA BR acessível. G-SYM9X5SJ5D (smartfit-go) e G-PF6XYWPP2Y (testesystem) estão na mesma situação.",
+   "como": "Smart Fit informar a conta dona de cada ID (D-04)."
+  },
+  {
+   "id": "V-08",
+   "item": "Espaço do Cliente carrega 3 containers na mesma página",
+   "porque": "GTM-NKN2C4VQ + GTM-TCXTCQ5 + GTM-WCQLTN8G (fora da conta BR): risco de evento duplicado e de terceiro sem governança.",
+   "como": "Chrome no fluxo logado do Espaço do Cliente e dono do GTM-WCQLTN8G (D-04)."
+  },
+  {
+   "id": "V-09",
+   "item": "Tablet Professor medido fora da conta BR",
+   "porque": "A 304676393 (~20 mi eventos/mês) recebe via gtag G-B9MFP2RKKD e GTM-WC5Q663, de outra conta; o container da conta BR (GTM-TXS3GK8) está vazio.",
+   "como": "Smart Fit informar a conta do GTM-WC5Q663 (D-04)."
+  },
+  {
+   "id": "V-10",
+   "item": "\"smart contrata\" (GTM-WXP5BRK9) sem domínio identificado",
+   "porque": "5 tags ativas (GA4 principal + Meta), publicado em 02/01/2025; não sabemos onde está instalado, então não dá para dizer se está em uso.",
+   "como": "Smart Fit informar o domínio (D-05)."
+  }
+ ],
+ "ACOES": [
+  {
+   "id": "A-001",
+   "achados": [
+    "SF-GOV-10"
+   ],
+   "oque": "Rotacionar os tokens Meta CAPI e TikTok dos dois sGTM (GTM-5J2HW2RB e GTM-TSFP4W8) junto com a limpeza dos containers",
+   "R": "Martech SF",
+   "A": "Head de Martech SF",
+   "C": "Mídia",
+   "esforco": "P",
+   "horizonte": "Now",
+   "dep": "—",
+   "pronto": "Tokens antigos revogados no Events Manager e no TikTok; eventos CAPI chegando com o token novo em 24 h",
+   "metodo": "Events Manager (Meta e TikTok)",
+   "fase": "Fase 1 · 15 a 20/10"
+  },
+  {
+   "id": "A-002",
+   "achados": [
+    "SF-PII-04"
+   ],
+   "oque": "Tirar email/phone_number/nome da tag \"40. GA4 - Ecommerce CadastroLoginSucesso\", arquivar dimensões email/phone, redaction de query params, pedir exclusão do histórico",
+   "R": "Martech SF",
+   "A": "Head de Martech SF",
+   "C": "DPO/Jurídico",
+   "esforco": "P",
+   "horizonte": "Now",
+   "dep": "—",
+   "pronto": "0 eventos com \"@\" em customEvent:email e pageLocation (7 dias)",
+   "metodo": "Data API (E-09)",
+   "fase": "Fase 1 · 15 a 20/10"
+  },
+  {
+   "id": "A-003",
+   "achados": [
+    "SF-PII-01"
+   ],
+   "oque": "Desativar a tag \"Colta dados para bq\" e limpar cadastroLoginSucessoData; decidir se o pipeline de abandono volta via servidor",
+   "R": "Dev site",
+   "A": "Head de Martech SF",
+   "C": "DPO/Jurídico; CRM",
+   "esforco": "P",
+   "horizonte": "Now",
+   "dep": "—",
+   "pronto": "Console sem ReferenceError; localStorage sem a chave",
+   "metodo": "Chrome DevTools (E-13)",
+   "fase": "Fase 1 · 15 a 20/10"
+  },
+  {
+   "id": "A-005",
+   "achados": [
+    "SF-PII-03"
+   ],
+   "oque": "Decidir o modelo de consentimento e implantar CMP + Consent Mode v2",
+   "R": "Dev site; Martech SF",
+   "A": "DPO/Jurídico SF",
+   "C": "Mídia",
+   "esforco": "M",
+   "horizonte": "Now",
+   "dep": "Decisão jurídica",
+   "pronto": "Com rejeitar, 0 requests de mídia antes do aceite; gcs/gcd refletem a escolha",
+   "metodo": "Chrome DevTools (E-17)",
+   "fase": "Fase 1 · 15 a 20/10 (iniciar/decidir)"
+  },
+  {
+   "id": "A-006",
+   "achados": [
+    "SF-DUP-01",
+    "SF-DUP-05"
+   ],
+   "oque": "Totem: purchase com transaction_id/value e disparo único; decidir e registrar o destino próprio do totem (subpropriedade pausada em 10/06 ou propriedade 430511021); explicar a queda de 03/10",
+   "R": "Dev totem; Martech SF",
+   "A": "Head de Martech SF",
+   "C": "Mídia",
+   "esforco": "M",
+   "horizonte": "Fora",
+   "dep": "Pergunta 2; D-02",
+   "pronto": "0 purchase sem ID em app.smartfit.com.br (7 dias)",
+   "metodo": "Data API (E-05)",
+   "fase": "Fora do plano (desconsiderada pela Smart Fit em 14/10)"
+  },
+  {
+   "id": "A-007",
+   "achados": [
+    "SF-GOV-03",
+    "SF-DUP-01"
+   ],
+   "oque": "Revisar key events e conversões importadas nas 6 contas Ads",
+   "R": "Martech SF; Mídia",
+   "A": "Head de Mídia SF",
+   "C": "Monks",
+   "esforco": "P",
+   "horizonte": "Fora",
+   "dep": "Resposta à pergunta 1",
+   "pronto": "Key events = lista aprovada; screen_view sem keyEvents",
+   "metodo": "Admin + Data API (E-08)",
+   "fase": "Adiada pela Smart Fit em 14/10 (depois de 26/10)"
+  },
+  {
+   "id": "A-008",
+   "achados": [
+    "SF-GOV-02"
+   ],
+   "oque": "Definir o fim do teste UPD; pausar as 3 tags \"GA4 UPD\" e arquivar a 549057488 (ou documentar)",
+   "R": "Martech SF",
+   "A": "Head de Martech SF",
+   "C": "—",
+   "esforco": "P",
+   "horizonte": "Fora",
+   "dep": "—",
+   "pronto": "0 hits G-HSLN2EKMHS no funil",
+   "metodo": "Chrome DevTools (E-12)",
+   "fase": "Fora do plano (desconsiderada pela Smart Fit em 14/10)"
+  },
+  {
+   "id": "A-004",
+   "achados": [
+    "SF-PII-02"
+   ],
+   "oque": "Indigitall com identificador não pessoal no externalCode",
+   "R": "Dev site",
+   "A": "Head de CRM SF",
+   "C": "Indigitall; DPO",
+   "esforco": "M",
+   "horizonte": "Next",
+   "dep": "Fornecedor",
+   "pronto": "sessionStorage.indigitallExternalCode sem \"@\"",
+   "metodo": "Chrome DevTools (E-13)",
+   "fase": "Fase 2 · 21 a 23/10 (iniciar/decidir)"
+  },
+  {
+   "id": "A-009",
+   "achados": [
+    "SF-DUP-02"
+   ],
+   "oque": "App: purchase uma vez por transaction_id",
+   "R": "Time de app",
+   "A": "Product Owner do app SF",
+   "C": "Martech SF",
+   "esforco": "M",
+   "horizonte": "Next",
+   "dep": "Ciclo de release do app",
+   "pronto": "Transações app com eventCount > 1 ≤ 0,5% (7 dias com ≥ 80% da base atualizada)",
+   "metodo": "Data API (E-04)",
+   "fase": "Fase 2 · 21 a 23/10 (iniciar/decidir)"
+  },
+  {
+   "id": "A-010",
+   "achados": [
+    "SF-DUP-03"
+   ],
+   "oque": "Espaço do Cliente: transaction_id em todos os purchase",
+   "R": "Dev Espaço do Cliente",
+   "A": "Head de Martech SF",
+   "C": "Financeiro",
+   "esforco": "P",
+   "horizonte": "Next",
+   "dep": "—",
+   "pronto": "0 purchase sem ID em espacodocliente (7 dias)",
+   "metodo": "Data API (E-05)",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-011",
+   "achados": [
+    "SF-DUP-04"
+   ],
+   "oque": "Checkout: add_to_cart só com o item adicionado, promo e nomenclatura corretas, 1 page_view por etapa",
+   "R": "Dev site; Martech SF",
+   "A": "Head de Martech SF",
+   "C": "Monks",
+   "esforco": "M",
+   "horizonte": "Next",
+   "dep": "—",
+   "pronto": "Marcar 1 adicional → 1 add_to_cart de R$ 39,90 e nenhuma conversão Ads extra",
+   "metodo": "Chrome DevTools (E-16)",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-012",
+   "achados": [
+    "SF-FIN-01"
+   ],
+   "oque": "Filtrar click (e content, se validado) da subpropriedade App; depois remover/substituir no SDK",
+   "R": "Martech SF; Time de app",
+   "A": "Head de Martech SF",
+   "C": "Produto app",
+   "esforco": "M",
+   "horizonte": "Next",
+   "dep": "Resposta à pergunta 3",
+   "pronto": "click ≤ 5% dos faturáveis (7 dias); Admin → Uso em queda",
+   "metodo": "Data API (E-07) + Admin → Uso",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-013",
+   "achados": [
+    "SF-FIN-02"
+   ],
+   "oque": "Medir o Cloud Logging do Cloud Run no billing e, se relevante, filtrar os logs de requisição (logType=debug verificado em 16/10: só loga em Preview, sem mudança no GTM; as 16 tags de roteamento ficam e seguem na A-024)",
+   "R": "Infra SF",
+   "A": "Head de Martech SF",
+   "C": "Monks",
+   "esforco": "P",
+   "horizonte": "Next",
+   "dep": "Pergunta 5",
+   "pronto": "Billing conferido; filtro de exclusão aplicado se o Logging for relevante",
+   "metodo": "Tag Manager API (E-02) + billing",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-014",
+   "achados": [
+    "SF-PERF-01",
+    "SF-GOV-04"
+   ],
+   "oque": "Consolidar as 30 contas Google Ads, remover tags pausadas/triggers órfãos, adiar Clarity e pixels",
+   "R": "Martech SF; Dev site",
+   "A": "Head de Martech SF",
+   "C": "Mídia",
+   "esforco": "G",
+   "horizonte": "Later",
+   "dep": "A-007 (adiada)",
+   "pronto": "Trace do Chrome: INP ≤ 200 ms na home e na unidade; CrUX p75 confirma em 28 dias",
+   "metodo": "Chrome + Lighthouse (E-14)",
+   "fase": "Fase 3 · até 26/10 (iniciar/decidir)"
+  },
+  {
+   "id": "A-015",
+   "achados": [
+    "SF-PERF-02"
+   ],
+   "oque": "sGTM em subdomínio próprio e região southamerica-east1",
+   "R": "Infra; Martech SF",
+   "A": "Head de Martech SF",
+   "C": "Segurança",
+   "esforco": "G",
+   "horizonte": "Later",
+   "dep": "A-001",
+   "pronto": "sGTM em *.smartfit.com.br com cookie first-party via Set-Cookie",
+   "metodo": "Chrome DevTools",
+   "fase": "Fase 3 · até 26/10 (iniciar/decidir)"
+  },
+  {
+   "id": "A-016",
+   "achados": [
+    "SF-GOV-04"
+   ],
+   "oque": "Limpeza + checklist de publicação + monitor contínuo das regras-sentinela",
+   "R": "Martech SF; Monks",
+   "A": "Head de Martech SF",
+   "C": "—",
+   "esforco": "M",
+   "horizonte": "Later",
+   "dep": "A-014",
+   "pronto": "0 tags TESTE ativas; monitor semanal rodando",
+   "metodo": "Tag Manager API + Data API",
+   "fase": "Fase 3 · até 26/10"
+  },
+  {
+   "id": "A-017",
+   "achados": [
+    "SF-FIN-03"
+   ],
+   "oque": "Conferir na fatura 360 (jun/2025–set/2026) a cobrança da subpropriedade Smart System; arquivar a 492149744; checklist de criação de subpropriedade",
+   "R": "Martech SF; Compras",
+   "A": "Head de Martech SF",
+   "C": "Financeiro; revendedor GA 360",
+   "esforco": "P",
+   "horizonte": "Fora",
+   "dep": "Resposta à pergunta 3",
+   "pronto": "Fatura conferida e registrada; 492149744 arquivada; checklist publicado",
+   "metodo": "Fatura 360 + Admin API (E-23)",
+   "fase": "Fora do plano (desconsiderada pela Smart Fit em 14/10)"
+  },
+  {
+   "id": "A-019",
+   "achados": [
+    "SF-GOV-05"
+   ],
+   "oque": "Confirmar o titular de smartfit-go.com; corrigir o redirecionamento ou retirar links e QR codes; arquivar o GTM-W2B2WZK",
+   "R": "TI/Infra SF",
+   "A": "Head de TI SF",
+   "C": "Jurídico; Marketing",
+   "esforco": "P",
+   "horizonte": "Now",
+   "dep": "D-03",
+   "pronto": "curl termina em domínio da Smart Fit (ou não resolve); container arquivado",
+   "metodo": "HTTP/whois (E-25) + Tag Manager API",
+   "fase": "Fase 1 · 15 a 20/10"
+  },
+  {
+   "id": "A-020",
+   "achados": [
+    "SF-GOV-07"
+   ],
+   "oque": "Validar e remover os acessos sem uso há mais de 1 ano, rebaixar Admins externos e instituir revisão trimestral (GA e GTM)",
+   "R": "Martech SF; Monks",
+   "A": "Head de Martech SF",
+   "C": "DPO; agências",
+   "esforco": "P",
+   "horizonte": "Now",
+   "dep": "D-08; checar conectores (A-022)",
+   "pronto": "0 permissões diretas sem uso há mais de 365 dias; Admins externos só com prazo",
+   "metodo": "Admin API (E-20) + Tag Manager API (E-22)",
+   "fase": "Fase 1 · 15 a 20/10"
+  },
+  {
+   "id": "A-021",
+   "achados": [
+    "SF-GOV-08"
+   ],
+   "oque": "Dar leitura da organização GMP à auditoria; auditar os grupos (ex-colaboradores, @gmail) e incluí-los no inventário",
+   "R": "Martech SF",
+   "A": "Head de Martech SF",
+   "C": "TI/Segurança",
+   "esforco": "P",
+   "horizonte": "Now",
+   "dep": "D-01",
+   "pronto": "Toda identidade ativa tem permissão ou grupo inventariado; 0 contas @gmail",
+   "metodo": "Data Access Report (E-20) + organização GMP",
+   "fase": "Fase 1 · 15 a 20/10"
+  },
+  {
+   "id": "A-018",
+   "achados": [
+    "SF-GOV-06"
+   ],
+   "oque": "Oficializar a 492578667 (nome, dono, 2º Admin ativo) e desativar 383698944 e 492182981",
+   "R": "Martech SF",
+   "A": "Head de Martech SF",
+   "C": "Time Smart System",
+   "esforco": "P",
+   "horizonte": "Next",
+   "dep": "D-07",
+   "pronto": "≥ 2 Admins internos com sinal ≤ 90 dias; 2 propriedades na lixeira",
+   "metodo": "Admin API (E-21)",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-022",
+   "achados": [
+    "SF-GOV-09"
+   ],
+   "oque": "Inventariar os painéis críticos e migrar as fontes para conta de serviço corporativa; lista de apps de terceiros aprovados",
+   "R": "BI SF; Martech SF",
+   "A": "Head de Martech SF",
+   "C": "Donos dos painéis",
+   "esforco": "M",
+   "horizonte": "Next",
+   "dep": "Inventário de painéis",
+   "pronto": "≥ 80% das leituras de conector via conta de serviço",
+   "metodo": "Data Access Report (E-20)",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-023",
+   "achados": [
+    "SF-GOV-10"
+   ],
+   "oque": "Exportar e desativar containers mortos, excluir o Cloud Run do GTM-TSFP4W8 e mover as propriedades sem uso para a lixeira",
+   "R": "Martech SF; Infra",
+   "A": "Head de Martech SF",
+   "C": "—",
+   "esforco": "M",
+   "horizonte": "Next",
+   "dep": "A-001; D-08",
+   "pronto": "Containers sem versão live nem usuários; serviço excluído; propriedades na lixeira",
+   "metodo": "Tag Manager API (E-24) + Admin API (E-23) + HTTP (E-25)",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-024",
+   "achados": [
+    "SF-FIN-04"
+   ],
+   "oque": "Medir nos logs do Cloud Run, ao fim das 3 fases, a fração de sessões sem o checkout no sGTM e investigar o AddToCart em ~90%; levar o sGTM para a mesma origem do site só se a fração for relevante (TikTok Events Manager conferido em 19/10: checkout chega pelo servidor)",
+   "R": "Martech SF; Infra",
+   "A": "Head de Martech SF",
+   "C": "Mídia; Monks",
+   "esforco": "P",
+   "horizonte": "Next",
+   "dep": "D-09",
+   "pronto": "Fração medida e registrada; se relevante, compra de teste chega ao sGTM pelo servidor",
+   "metodo": "TikTok Events Manager × Data API (E-31) + logs do Cloud Run",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-025",
+   "achados": [
+    "SF-DUP-06"
+   ],
+   "oque": "Definir com a Smart Fit o uso da conversão de Franquias (2417, em stand-by desde 19/10) e ajustar só se não for intencional; 2408 e ações por plano conferidas em 16/10: secundárias na meta Purchase, sem mudança",
+   "R": "Mídia; Martech SF",
+   "A": "Head de Mídia SF",
+   "C": "Monks",
+   "esforco": "P",
+   "horizonte": "Now",
+   "dep": "Debate com a Smart Fit sobre a conta de Franquias",
+   "pronto": "Só uma ação de compra primária por meta; compra de teste: 0 conversões na conta de Franquias",
+   "metodo": "Chrome DevTools (E-12) + Google Ads",
+   "fase": "Fase 1 · 15 a 20/10"
+  },
+  {
+   "id": "A-026",
+   "achados": [
+    "SF-PII-05"
+   ],
+   "oque": "Ofuscar person_email/person_phone no New Relic; tirar e-mail e telefone do add_person_info e o phone_number da tag 2578; confirmar o dono do endpoint ap-south-1. As tags 2684 e 2698 ficam como estão (alimentam o sGTM)",
+   "R": "Dev site; Martech SF",
+   "A": "Head de Martech SF",
+   "C": "DPO/Jurídico",
+   "esforco": "P",
+   "horizonte": "Now",
+   "dep": "Pergunta 7",
+   "pronto": "0 POSTs ao New Relic com e-mail/telefone; tag 2578 sem PII",
+   "metodo": "Chrome DevTools (E-27) + Tag Manager API",
+   "fase": "Fase 1 · 15 a 20/10"
+  },
+  {
+   "id": "A-030",
+   "achados": [
+    "SF-GOV-12"
+   ],
+   "oque": "Renomear as 17 tags [TESTE]/UPD com a convenção oficial e registrar no changelog antes de qualquer limpeza",
+   "R": "Martech SF",
+   "A": "Head de Martech SF",
+   "C": "Mídia",
+   "esforco": "P",
+   "horizonte": "Next",
+   "dep": "A-008 (fora do plano)",
+   "pronto": "0 tags ativas com [TESTE]/UPD no nome",
+   "metodo": "Tag Manager API (E-26)",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-027",
+   "achados": [
+    "SF-DUP-07"
+   ],
+   "oque": "Corrigir os 19 triggers quebrados (parceiros, lead Quero ser aluno, checkout, busca) e criar um contrato de dataLayer validado em QA",
+   "R": "Martech SF; Dev site",
+   "A": "Head de Martech SF",
+   "C": "Mídia; Parcerias",
+   "esforco": "M",
+   "horizonte": "Next",
+   "dep": "—",
+   "pronto": "Lead de Quero ser aluno converte no Ads e na Meta; evento de busca > 0",
+   "metodo": "Chrome DevTools (E-29) + Data API",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-029",
+   "achados": [
+    "SF-DUP-08"
+   ],
+   "oque": "Um container por página nas LPs, sem debug_mode em produção; staging fora da 360 (propriedade própria ou filtro Developer traffic)",
+   "R": "Martech SF; Dev site",
+   "A": "Head de Martech SF",
+   "C": "Time de LPs",
+   "esforco": "M",
+   "horizonte": "Next",
+   "dep": "—",
+   "pronto": "1 page_view por carga nas LPs; 0 eventos de staging (7 dias)",
+   "metodo": "Chrome DevTools (E-29) + Data API (E-26)",
+   "fase": "Fase 2 · 21 a 23/10"
+  },
+  {
+   "id": "A-028",
+   "achados": [
+    "SF-GOV-11"
+   ],
+   "oque": "Pausar e remover as 65 tags sem efeito e os 51 triggers sem tag; ritual trimestral e convenção de nome com dono e validade",
+   "R": "Martech SF; Monks",
+   "A": "Head de Martech SF",
+   "C": "Mídia",
+   "esforco": "M",
+   "horizonte": "Later",
+   "dep": "A-030; A-027",
+   "pronto": "0 tags da lista ativas; 0 triggers sem tag",
+   "metodo": "Tag Manager API (E-26)",
+   "fase": "Fase 3 · até 26/10"
+  },
+  {
+   "id": "A-031",
+   "achados": [
+    "SF-GOV-13"
+   ],
+   "oque": "Alerta de eventName novo no GA4 e checagem do WAF/CDN sobre a varredura de 12/10",
+   "R": "Martech SF; Segurança",
+   "A": "Head de TI SF",
+   "C": "—",
+   "esforco": "P",
+   "horizonte": "Later",
+   "dep": "—",
+   "pronto": "Alerta ativo; registro do time de segurança",
+   "metodo": "Data API (E-26)",
+   "fase": "Fase 3 · até 26/10"
+  }
+ ],
+ "DOD": [
+  "Mudança publicada em versão nomeada do GTM com o ID da ação (ex.: \"A-002 / SF-PII-04\").",
+  "Testada em Preview/DebugView e em produção com o mesmo roteiro de reprodução do achado.",
+  "Evidência de reteste salva em evidencias/reteste/<ID>/<data>/.",
+  "Sem regressão nas regras-sentinela: contagem por etapa do funil, purchase = 1 por transação, nenhum dado pessoal em parâmetro ou URL."
+ ],
+ "PERGUNTAS": [
+  {
+   "n": 1,
+   "q": "Quais eventos são conversão primária no Google Ads (6 contas) e qual evento otimiza Meta e TikTok?",
+   "fecha": "SF-DUP-01, SF-DUP-06, SF-GOV-03 (modificador de lance)"
+  },
+  {
+   "n": 2,
+   "q": "Quem é o dono do totem (app.smartfit.com.br/totem) e o que mudou em 03/10?",
+   "fecha": "SF-DUP-01, V-05"
+  },
+  {
+   "n": 3,
+   "q": "Tarifa e uso do GA4 360 (Admin → Uso), regra de cobrança das subpropriedades no contrato e fatura de jun/2025 a set/2026.",
+   "fecha": "SF-FIN-01 em R$, SF-FIN-03"
+  },
+  {
+   "n": 4,
+   "q": "Receita real de backend em 30 dias (web, app e Espaço do Cliente).",
+   "fecha": "SF-DUP-02, SF-DUP-03, money slide"
+  },
+  {
+   "n": 5,
+   "q": "Billing do projeto GCP 563505473543 e do Cloud Run do sGTM antigo (GTM-TSFP4W8).",
+   "fecha": "SF-FIN-02, SF-GOV-10, SF-FIN-04"
+  },
+  {
+   "n": 6,
+   "q": "Estornar ou desconsiderar a compra de teste 46031495 (plano Fit, Augusta, 13/10) e o cadastro incompleto de teste do checkout 70332028 (13/10, sem compra).",
+   "fecha": "Higiene dos dados"
+  },
+  {
+   "n": 7,
+   "q": "O endpoint AWS em ap-south-1 (Índia), que recebe o reenvio dos eventos da Meta quando o gateway meta-api.smartfit.com.br falha, é da Smart Fit ou do fornecedor do gateway?",
+   "fecha": "SF-PII-05, A-026"
+  }
+ ],
+ "DECISOES": [
+  {
+   "d": "Aprovar este formato para escalar às demais contas e containers do Brasil",
+   "porque": "Foi o combinado de 09/10",
+   "senao": "Fase 2 sem padrão acordado"
+  },
+  {
+   "d": "Nomear o responsável (A) de cada ação da fase 1",
+   "porque": "Ações sem dono não saem do papel",
+   "senao": "Achados de LGPD e credencial seguem abertos"
+  },
+  {
+   "d": "Definir quem executa as mudanças (hoje a Monks tem só leitura) e a janela de publicação",
+   "porque": "Viabiliza as correções até 26/10",
+   "senao": "Plano fica em recomendação"
+  },
+  {
+   "d": "Validar as listas de remoção de acessos e de desativação de ativos",
+   "porque": "Só vocês conhecem o contexto de cada pessoa e ativo",
+   "senao": "Ex-agências e ativos mortos seguem abertos"
+  }
+ ],
+ "RTM": [
+  {
+   "id": "P-01",
+   "pedido": "Inventário total de containers (ativos, inativos, obsoletos)",
+   "onde": "§5.1; §5.6; SF-GOV-10; E-19; E-24",
+   "status": "Parcial",
+   "nota": "16 containers da conta Smart Fit Brasil classificados por uso (7 em uso, 8 para desligar, 1 a verificar); detalhe técnico de GTM-TCXTCQ5 e GTM-5J2HW2RB. Revisão interna dos demais na fase 2."
+  },
+  {
+   "id": "P-02",
+   "pedido": "Performance e volume: peso, tags, triggers redundantes, variáveis sem uso, Core Web Vitals",
+   "onde": "SF-PERF-01; SF-GOV-04; SF-GOV-11; §5.8",
+   "status": "Atendido",
+   "nota": "CWV de campo (CrUX) da home e da unidade; checkout é SPA."
+  },
+  {
+   "id": "P-03",
+   "pedido": "Server-side: clients, fluxo de dados, custo de nuvem",
+   "onde": "SF-FIN-02; SF-PERF-02; SF-GOV-10; SF-FIN-04",
+   "status": "Atendido",
+   "nota": "Custo exato depende do billing. O checkout chega ao sGTM no tráfego real (TikTok Events Manager, 19/10); a fração de sessões bloqueadas fica para os logs do Cloud Run (SF-FIN-04)."
+  },
+  {
+   "id": "P-04",
+   "pedido": "Inventário de propriedades BR e fluxo do Espaço do Cliente",
+   "onde": "§5.4; §5.6; SF-DUP-03",
+   "status": "Parcial",
+   "nota": "33 propriedades de 7 contas classificadas por uso; 175020184 e 8 subpropriedades detalhadas. Fluxo logado do Espaço do Cliente na fase 2 (V-08)."
+  },
+  {
+   "id": "P-05",
+   "pedido": "Ativas × inativas; Standard × 360",
+   "onde": "§5.6; SF-FIN-03; SF-DUP-05; SF-GOV-10",
+   "status": "Atendido",
+   "nota": "Nível 360/Standard e série mensal de uso das 33 propriedades acessíveis. Contas Smart Nutri e Autosserviço sem Admin (D-06)."
+  },
+  {
+   "id": "P-06",
+   "pedido": "Volume, eventos duplicados e redundância entre ativos",
+   "onde": "SF-DUP-01..04; SF-FIN-01; SF-GOV-02; SF-DUP-06..08; §5.8",
+   "status": "Atendido",
+   "nota": ""
+  },
+  {
+   "id": "P-07",
+   "pedido": "Firebase (iOS/Android) e paridade web × app",
+   "onde": "SF-DUP-02, SF-FIN-01",
+   "status": "Parcial",
+   "nota": "Link Firebase e duplicidade do app cobertos; paridade de eventos na fase 2."
+  },
+  {
+   "id": "P-08",
+   "pedido": "Vazamento de PII em URLs, parâmetros, dataLayer e tags",
+   "onde": "SF-PII-01..04; SF-PII-05",
+   "status": "Atendido",
+   "nota": "GA4 e navegador; payloads de mídia server-side em V-01/V-03."
+  },
+  {
+   "id": "P-09",
+   "pedido": "Scripts de terceiros (HTML personalizado) sem governança",
+   "onde": "SF-PII-01; SF-PII-02; SF-GOV-04; SF-GOV-11; SF-GOV-12; §5.8",
+   "status": "Parcial",
+   "nota": "268 tags ativas validadas uma a uma (navegador ou volume no GA4), inclusive as 56 HTML ativas (§5.8); revisão de código das HTML na fase 2."
+  },
+  {
+   "id": "P-10",
+   "pedido": "Acessos e permissões (admin/edição, ex-colaboradores)",
+   "onde": "§5.7; SF-GOV-07; SF-GOV-08; SF-GOV-09",
+   "status": "Parcial",
+   "nota": "GA 360 com log de uso; 3 contas Standard com uso inferido; GTM sem log de uso pela API. Grupos GMP e 2 contas sem Admin pendentes (D-01, D-06)."
+  },
+  {
+   "id": "P-11",
+   "pedido": "Matriz de Criticidade (Alta/Média/Baixa) nos 3 pilares",
+   "onde": "§6 Matriz",
+   "status": "Atendido",
+   "nota": ""
+  },
+  {
+   "id": "P-12",
+   "pedido": "Plano de recomendação técnica priorizado",
+   "onde": "§8 Plano de ação",
+   "status": "Atendido",
+   "nota": ""
+  }
+ ],
+ "REUNIAO": [
+  "\"Granularidade dos detalhes\"",
+  "\"As evidências técnicas\"",
+  "\"Focar nas contas ativas, que contêm dados\"",
+  "\"Conectar o técnico com o negócio e o estratégico\""
+ ],
+ "INVENTARIO": {
+  "secoes": [
+   {
+    "titulo": "Conta GTM",
+    "blocos": [
+     {
+      "tipo": "texto",
+      "texto": "Smart Fit Brasil: 16 containers (14 web, 2 server; GTM-TSFP4W8 \"[DESATIVADO]\")"
+     },
+     {
+      "tipo": "tabela",
+      "cab": [
+       "Container",
+       "Tipo",
+       "Nome",
+       "Rodada"
+      ],
+      "linhas": [
+       [
+        "GTM-TCXTCQ5",
+        "web",
+        "00 - smartfit.com.br",
+        "Rodada 1"
+       ],
+       [
+        "GTM-5J2HW2RB",
+        "server",
+        "server_smartfit.com.br",
+        "Rodada 1"
+       ],
+       [
+        "GTM-NKN2C4VQ",
+        "web",
+        "10 - espacodocliente.smartfit.com.br",
+        "Fase 2"
+       ],
+       [
+        "GTM-5C6DKGH",
+        "web",
+        "04 - Totem",
+        "Fase 2"
+       ],
+       [
+        "GTM-PS879FDQ",
+        "web",
+        "11 - landing pages smartfit",
+        "Fase 2"
+       ],
+       [
+        "GTM-T4NZ5JQD",
+        "web",
+        "08 - www.smartfit.com.br/news/",
+        "Fase 2"
+       ],
+       [
+        "GTM-TK5C6NRB",
+        "web",
+        "09 - SmartFit - Site (novo)",
+        "Fase 2"
+       ],
+       [
+        "GTM-P5R85HR",
+        "web",
+        "05 - Smart System",
+        "Fase 2"
+       ],
+       [
+        "GTM-TXS3GK8",
+        "web",
+        "06 - Tablet Professor",
+        "Fase 2"
+       ],
+       [
+        "GTM-M4BZJH7",
+        "web",
+        "01 - smartnutriapp.com",
+        "Fase 2"
+       ],
+       [
+        "GTM-W2B2WZK",
+        "web",
+        "02 - smartfit-go.com",
+        "Fase 2"
+       ],
+       [
+        "GTM-PS6BMZM",
+        "web",
+        "03 - edgardcorona.com.br",
+        "Fase 2"
+       ],
+       [
+        "GTM-P9FLPGVT",
+        "web",
+        "07 - GTM - Backup",
+        "Fase 2"
+       ],
+       [
+        "GTM-WXP5BRK9",
+        "web",
+        "smart contrata",
+        "Fase 2"
+       ],
+       [
+        "GTM-P75XMNN8",
+        "web",
+        "testesystem.com.br",
+        "Fase 2"
+       ],
+       [
+        "GTM-TSFP4W8",
+        "server",
+        "Smartfit - Servidor [DESATIVADO]",
+        "Fase 2"
+       ]
+      ]
+     }
+    ],
+    "evid": [
+     "E-19"
+    ]
+   },
+   {
+    "titulo": "GTM-TCXTCQ5 (web)",
+    "blocos": [
+     {
+      "tipo": "tabela",
+      "cab": [
+       "Item",
+       "Valor"
+      ],
+      "linhas": [
+       [
+        "Versão live",
+        "v597 \"Remoção do botão flutuante do whatsapp\""
+       ],
+       [
+        "Tags",
+        "332 (64 pausadas, 19%)"
+       ],
+       [
+        "Eventos GA4",
+        "108 (105 ativas)"
+       ],
+       [
+        "HTML personalizado",
+        "80 (56 ativas)"
+       ],
+       [
+        "Conversão Google Ads",
+        "30 (21 ativas)"
+       ],
+       [
+        "Google Tags",
+        "19 (11 ativas)"
+       ],
+       [
+        "Tags no trigger purchase",
+        "20 ativas"
+       ],
+       [
+        "Triggers",
+        "199 (30 sem uso)"
+       ],
+       [
+        "Variáveis",
+        "207"
+       ],
+       [
+        "Templates de terceiros",
+        "16 (Meta, TikTok, Kwai, Amazon, RTB House, Amplitude, Clarity, Afilio, Twitter…)"
+       ],
+       [
+        "Pastas",
+        "27"
+       ],
+       [
+        "Tags com rota ao sGTM",
+        "16 (G-BJ1233456)"
+       ]
+      ],
+      "kv": true
+     }
+    ],
+    "evid": [
+     "E-01"
+    ]
+   },
+   {
+    "titulo": "GTM-5J2HW2RB (server-side)",
+    "blocos": [
+     {
+      "tipo": "tabela",
+      "cab": [
+       "Item",
+       "Valor"
+      ],
+      "linhas": [
+       [
+        "Versão live",
+        "v28 \"Teste Volta\""
+       ],
+       [
+        "Clients",
+        "1 (GA4)"
+       ],
+       [
+        "Tags",
+        "5: \"API Meta\" e \"API Tik Tok\" ativas; \"Facebook Conversion API (TESTE)\", \"TikTok Events API (TESTE)\" e \"Google Analytics GA4 (TESTE)\" pausadas"
+       ],
+       [
+        "Triggers",
+        "4"
+       ],
+       [
+        "Hospedagem",
+        "Cloud Run, server-side-tagging-o5in4ns5xq-uc.a.run.app (us-central1); sfbrasil.smartfit.com.br já mapeado (/healthy 200), mas não usado pelas tags"
+       ],
+       [
+        "Acessos",
+        "28 usuários (23 externos), 5 publicam"
+       ]
+      ],
+      "kv": true
+     }
+    ],
+    "evid": [
+     "E-02"
+    ]
+   },
+   {
+    "titulo": "GA4 175020184",
+    "blocos": [
+     {
+      "tipo": "tabela",
+      "cab": [
+       "Item",
+       "Valor"
+      ],
+      "linhas": [
+       [
+        "Propriedade",
+        "175020184 \"Smartfit | GA4\" · criada em 2018 · BRL · America/Sao_Paulo"
+       ],
+       [
+        "Licença",
+        "Google Analytics 360"
+       ],
+       [
+        "Streams",
+        "10 (3 com dados em 30 d: web G-BJP7473VFF, iOS SmartFit App, Android Smart Fit App)"
+       ],
+       [
+        "Volume 30 d",
+        "826,6 mi eventos (686,2 mi faturáveis)"
+       ],
+       [
+        "Subpropriedades",
+        "8: Web 337385445, App 337426081, Espaço do Cliente 345869560, Totem 345869561 (pausada em 10/06/2026), Franquia 442880848, Smart System 492149744 (pausada em 29/09/2026; era cópia da principal), Landing Pages 500627883, Franqueados 547451141"
+       ],
+       [
+        "Key events",
+        "28"
+       ],
+       [
+        "Dimensões personalizadas",
+        "112 (100 de evento / limite 125; 12 de usuário) · 1 métrica"
+       ],
+       [
+        "Públicos",
+        "21"
+       ],
+       [
+        "Links",
+        "6 contas Google Ads · BigQuery diário + fresh (projeto 563505473543, US) · Firebase 287459638968"
+       ],
+       [
+        "Retenção",
+        "Eventos 50 meses · usuários 14 meses · Google Signals ligado"
+       ],
+       [
+        "Conta",
+        "\"Smart Fit - Brasil\": 25 propriedades (8 subpropriedades)"
+       ]
+      ],
+      "kv": true
+     }
+    ],
+    "evid": [
+     "E-03"
+    ]
+   }
+  ]
+ },
+ "COMBINADO": [
+  {
+   "titulo": "Conta principal primeiro",
+   "texto": "GTM-TCXTCQ5 + sGTM GTM-5J2HW2RB + GA4 360 175020184 e subpropriedades",
+   "on": true
+  },
+  {
+   "titulo": "Validar o formato com vocês",
+   "texto": "Hoje: cada achado com evidência, impacto no negócio e critério de pronto"
+  },
+  {
+   "titulo": "Escalar",
+   "texto": "Demais containers e propriedades do Brasil, no formato aprovado"
+  }
+ ],
+ "SUMARIO": {
+  "resposta_curta": "a propriedade 360 que orienta mídia e negócio registra mais compras e mais receita do que consegue provar, e recebe dado pessoal de clientes em texto aberto.",
+  "titulo_deck": "Só 85% da receita de compras do GA4 é verificável, e dado pessoal de cliente chega ao Google em texto aberto",
+  "kpis": [
+   {
+    "v": "84,7%",
+    "l": "da receita de compras do GA4 é verificável",
+    "d": "R$ 8,81 mi de R$ 10,40 mi em 30 dias",
+    "s": "SF-DUP-02 · SF-DUP-03"
+   },
+   {
+    "v": "27,1%",
+    "l": "dos eventos de compra são transações únicas identificáveis",
+    "s": "SF-DUP-01"
+   },
+   {
+    "v": "14,4 mil",
+    "l": "eventos com e-mail de cliente em texto aberto no GA4",
+    "s": "SF-PII-04",
+    "crit": true
+   },
+   {
+    "v": "28,2%",
+    "l": "da cota faturável do GA4 360 é um evento click do app sem uso",
+    "s": "SF-FIN-01"
+   }
+  ],
+  "destaque": {
+   "titulo": "As 2 exposições de dado pessoal de maior risco têm correção de esforço P até 20/10",
+   "acoes": [
+    "A-002",
+    "A-003"
+   ],
+   "nota": "Os outros dois Alta de dado pessoal correm em paralelo."
+  },
+  "top": [
+   "SF-DUP-01",
+   "SF-DUP-02",
+   "SF-PII-04",
+   "SF-FIN-01",
+   "SF-GOV-07",
+   "SF-PII-05"
+  ]
+ },
+ "COBERTURA": {
+  "itens": [
+   {
+    "v": "332",
+    "l": "tags do GTM web GTM-TCXTCQ5 (64 pausadas), 199 triggers e 207 variáveis"
+   },
+   {
+    "v": "5",
+    "l": "tags do server-side GTM-5J2HW2RB"
+   },
+   {
+    "v": "10",
+    "l": "streams da propriedade 360 175020184 (3 com dados)"
+   },
+   {
+    "v": "1",
+    "l": "compra real percorrendo os 9 passos do funil"
+   }
+  ],
+  "titulo_deck": "Lemos 100% da conta principal, fizemos uma compra real no funil e mapeamos acessos e uso de todos os ativos BR"
+ },
+ "MONEY": {
+  "titulo": "R$ 1,6 mi (15%) da receita de compras em 30 dias não é verificável, e só 27% dos eventos de compra são transações únicas",
+  "principal": {
+   "titulo": "Receita de compras (purchase) no GA4, 30 dias",
+   "itens": [
+    {
+     "label": "Receita purchase reportada",
+     "valor": 10403358.01,
+     "tipo": "total"
+    },
+    {
+     "label": "Duplicata no app (estimada)",
+     "valor": -807802.89,
+     "tipo": "neg",
+     "ref": "SF-DUP-02"
+    },
+    {
+     "label": "Sem transaction_id (não conciliável)",
+     "valor": -785949.96,
+     "tipo": "neg",
+     "ref": "SF-DUP-03"
+    },
+    {
+     "label": "Base verificável",
+     "valor": 8809605.16,
+     "tipo": "total"
+    }
+   ],
+   "fmt": "moeda"
+  },
+  "lateral": {
+   "titulo": "Eventos de compra → vendas únicas",
+   "itens": [
+    {
+     "label": "Eventos purchase",
+     "valor": 348652,
+     "tipo": "total"
+    },
+    {
+     "label": "Totem sem ID/valor",
+     "valor": -204518,
+     "tipo": "neg",
+     "ref": "SF-DUP-01"
+    },
+    {
+     "label": "Repetições no app",
+     "valor": -38623,
+     "tipo": "neg",
+     "ref": "SF-DUP-02"
+    },
+    {
+     "label": "Outros sem ID",
+     "valor": -11138,
+     "tipo": "neg",
+     "ref": "SF-DUP-03"
+    },
+    {
+     "label": "Transações únicas com ID",
+     "valor": 94373,
+     "tipo": "total"
+    }
+   ],
+   "fmt": "compacto",
+   "nota": "A duplicata do app é estimada pela repetição do mesmo transaction_id."
+  },
+  "ids": "SF-DUP-01, SF-DUP-02, SF-DUP-03"
+ },
+ "ESCOPO": {
+  "fontes": "Tag Manager API v2; GA Admin API; GA Data API; Chrome DevTools no funil de compra de 9 passos.",
+  "limitacoes": "Acesso somente leitura.",
+  "fora": "Demais containers (fase 2)."
+ },
+ "GLOSSARIO": [
+  [
+   "GA4 360",
+   "Versão paga do Google Analytics 4."
+  ],
+  [
+   "sGTM",
+   "Servidor de tagging."
+  ],
+  [
+   "transaction_id",
+   "Número do pedido no evento de compra."
+  ]
+ ],
+ "CHANGELOG": [
+  [
+   "v1.0",
+   "13/10/2026",
+   "Rodada 1: conta principal."
+  ]
+ ]
+}

@@ -1,0 +1,9 @@
+# Só as skills de auditoria entram neste repositório; as demais skills pessoais da pasta ficam fora.
+/*
+!/.gitignore
+!/README.md
+!/auditoria-mensuracao-pais/
+!/relatorios-execucao-pais/
+!/testes/
+__pycache__/
+.DS_Store

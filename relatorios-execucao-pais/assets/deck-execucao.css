@@ -1,0 +1,58 @@
+
+.st-pub{color:var(--accent-ink);background:var(--accent-soft);border:1.5px solid currentColor}
+.st-dec{color:var(--media);background:var(--media-bg)}
+.fases{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.fase{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px 28px;display:flex;flex-direction:column;gap:10px}
+.fase.on{border:2px solid var(--accent)}
+.fase-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.fase-h b{font-size:34px}
+.fase-h span{font-family:var(--mono);font-size:19px;color:var(--muted)}
+.fase p{font-size:22px;color:var(--muted);line-height:1.3}
+.fbar{display:flex;height:18px;border-radius:4px;overflow:hidden;gap:2px;margin-top:6px;background:var(--soft)}
+.fbar i{display:block}
+.fb-ok{background:var(--ok)}.fb-pub{background:var(--accent)}.fb-dec{background:var(--media)}.fb-and{background:var(--media);opacity:.55}.fb-nao{background:var(--line)}
+.fcount{list-style:none;font-size:20px;display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.fcount b{font-family:var(--mono);display:inline-block;min-width:34px}
+.board td{font-size:20px;padding:8px 12px;vertical-align:middle}
+.board th{font-size:15px}
+.board .st{font-size:16px}
+.board .px{font-size:17px;color:var(--muted)}
+.board-xl td{font-size:17px;padding:5px 10px}
+.board-xl .st{font-size:14px;padding:2px 8px}
+.board-xl .px{font-size:15px}
+.feito{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:6px}
+.feito .qb p{font-size:24px}
+.feito-pe{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;margin-top:22px;background:var(--soft);border-radius:8px;padding:16px 24px;font-size:21px}
+.feito-pe .mono{font-size:17px;color:var(--muted)}
+.kpi.big.ok{border-top-color:var(--ok)}
+.kpi.big.pub{border-top-color:var(--accent)}
+.kpi.big.rev{border-top-color:var(--media)}
+.ped td{font-size:22px;padding:12px 14px;vertical-align:middle}
+.ped small{display:block;font-size:18px;color:var(--muted);margin-top:2px}
+.ped .dn{width:42px;min-width:42px}
+.fcount li{display:flex;align-items:center;gap:10px}
+.fcount .sw{flex:0 0 14px;height:14px;border-radius:3px}
+.feito-pe{grid-template-columns:auto 1fr auto;gap:18px}
+.feito-pe .st{align-self:start}
+.kpis4 .kpi.big b{height:80px;line-height:1;white-space:nowrap;overflow:visible}
+.kpi span span.nw,.kpi em span.nw{font-size:inherit;font-weight:inherit}
+.board .chip{font-size:15px;padding:3px 10px}
+.evt td{font-size:16px;padding:3px 10px;vertical-align:middle;line-height:1.15}
+.evt th{font-size:15px}
+.evt tr.grp td{font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:14px;border-bottom:1px solid var(--ink)}
+.evt td.dt{white-space:nowrap}
+.ph{background:var(--soft);color:var(--muted);border:1px solid var(--line);font-family:var(--sans);font-weight:600;font-size:.82em;padding:2px 12px;border-radius:9999px;white-space:nowrap}
+.feito-pe .ref{font-size:17px;color:var(--muted);text-align:right;max-width:520px}
+.evl{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:var(--y,#ffc409);text-decoration-thickness:3px;text-underline-offset:3px}
+.nums{margin-top:22px}.nums .kpi b{font-size:56px}.nums .kpi span{font-size:20px;font-weight:500;color:var(--muted)}
+.nums .kpi.ok b{color:var(--ok)}
+.evt .st{font-size:14px;padding:2px 9px}
+.evt td.ov{font-size:16px;color:var(--muted)}
+.shots2{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.shots2 img{display:block;max-width:100%;max-height:560px;width:auto;border-radius:16px;border:1px solid var(--line)}
+.shots2 figcaption{font-size:19px;color:var(--muted);margin-top:12px;line-height:1.35}
+.shots2 figcaption b{color:var(--ink);margin-right:10px;font-family:var(--mono)}
+.shot{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;min-height:0}
+.shot img{display:block;max-height:412px;max-width:1150px;width:auto;height:auto;border-radius:16px;border:1px solid var(--line)}
+.shot figcaption{font-size:21px;color:var(--muted);line-height:1.35;max-width:560px}
+.shot figcaption b{display:block;color:var(--ink);font-size:16px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}

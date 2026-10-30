@@ -1,0 +1,107 @@
+/* =====================================================================
+   Monks: design tokens (--mk-*)
+   Pesquisa em 13/10/2026. Fontes: CSS de monks.com (main.css, manifest.json,
+   atributos data-*-color do HTML) e o brand book 2024 publicado no portfólio
+   do designer (mrchrisallen.me/work/monks, slide "Full color palette").
+   [site] = extraído do CSS/HTML de monks.com
+   [bb]   = lido no slide do brand book (imagem)
+   [inf]  = inferido / sugestão nossa (não é oficial)
+   ===================================================================== */
+
+:root {
+  /* ---------- Neutros núcleo (os mais usados no site) ---------- */
+  --mk-charcoal:        #2D2D2D; /* [site] 60x no CSS; cor de texto padrão e theme-color. [bb] "Tan Tinted" */
+  --mk-tan-pastel:      #EAE8E4; /* [site] 38x; fundo padrão (:root --themed-background). [bb] "Tan Pastel" */
+  --mk-white:           #FFFFFF; /* [site] / [bb] "White" */
+  --mk-black:           #000000; /* [bb] "Black" */
+  --mk-ink:             #191715; /* [site] fundo do menu overlay, footer e c2-links-list (não está no brand book) */
+  --mk-warm-grey:       #68655F; /* [site] texto secundário (m26-text-card, labels) */
+  --mk-steel-pastel:    #DEDFE5; /* [site] texto/ícone sobre #191715. [bb] "Steel Pastel" sem hex no slide: valor inferido do site */
+  --mk-steel-tinted:    #2C2D38; /* [site] fundo do favicon e manifest background_color. [bb] "Steel Tinted" */
+  --mk-light-grey:      #E4E4E5; /* [site] / [bb] "Light Grey" #E4E4E5 */
+
+  /* ---------- Paleta completa do brand book 2024 [bb] ---------- */
+  /* Pastel */
+  --mk-yellow-pastel:   #FFF0A9; /* também no site: tema da página /solutions/data */
+  --mk-orange-pastel:   #FFDDAB;
+  --mk-red-pastel:      #FFCACA; /* site: case Boomtown */
+  --mk-pink-pastel:     #FFB2E8; /* site: overlays, c11c-monk-quote, /what-we-do */
+  --mk-purple-pastel:   #DFBBFE; /* site: theme_color do manifest, favicon, formulário de contato */
+  --mk-blue-pastel:     #CBF6FF; /* o slide repete "#BCFFEF" (erro de rótulo); #CBF6FF aparece no HTML de /careers [inf] */
+  --mk-teal-pastel:     #BCFFEF; /* site: logo do chat de contato */
+  --mk-green-pastel:    #DCFF93;
+  /* --mk-tan-pastel e --mk-steel-pastel: ver neutros */
+
+  /* Vibrant */
+  --mk-yellow-vibrant:  #FFCB16;
+  --mk-orange-vibrant:  #FB961F;
+  --mk-red-vibrant:     #FF245B;
+  --mk-pink-vibrant:    #FF2CE4; /* magenta do letreiro .monks (og:image) */
+  --mk-purple-vibrant:  #7D26C9;
+  --mk-blue-vibrant:    #4F24EE; /* site: bolha de chat do servidor */
+  --mk-teal-vibrant:    #4DBAC1;
+  --mk-green-vibrant:   #00DC7C; /* site: indicador "online" do chat */
+  --mk-tan-vibrant:     #6C6962;
+  --mk-steel-vibrant:   #656982;
+
+  /* Tinted (escuros, para texto sobre o pastel do mesmo matiz) */
+  --mk-yellow-tinted:   #270F0F; /* site: par de #FFF0A9 */
+  --mk-orange-tinted:   #360E0B;
+  --mk-red-tinted:      #440035; /* site: par de #FFCACA */
+  --mk-pink-tinted:     #371534; /* o slide rotula "#3C0C60" (repetido do roxo). O site usa #371534 com #FFB2E8 e o logo no Wikimedia é #371534 [inf] */
+  --mk-purple-tinted:   #3C0C60; /* site: par de #DFBBFE */
+  --mk-blue-tinted:     #001D38; /* site: par de #FFB2E8 e #BCFFEF */
+  --mk-teal-tinted:     #0D3842; /* site: par de #BCFFEF em /careers */
+  --mk-green-tinted:    #002838; /* site: bolha de chat do cliente */
+  --mk-tan-tinted:      #2D2D2D; /* = --mk-charcoal */
+  /* --mk-steel-tinted: ver neutros */
+
+  /* ---------- Pares fundo/texto observados no site [site] ---------- */
+  /* Use como "temas" de seção: bg pastel + fg tinted do mesmo matiz.  */
+  --mk-theme-default-bg: var(--mk-tan-pastel);    --mk-theme-default-fg: var(--mk-charcoal);
+  --mk-theme-yellow-bg:  var(--mk-yellow-pastel); --mk-theme-yellow-fg:  var(--mk-yellow-tinted);
+  --mk-theme-pink-bg:    var(--mk-pink-pastel);   --mk-theme-pink-fg:    var(--mk-pink-tinted);
+  --mk-theme-purple-bg:  var(--mk-purple-pastel); --mk-theme-purple-fg:  var(--mk-purple-tinted);
+  --mk-theme-red-bg:     var(--mk-red-pastel);    --mk-theme-red-fg:     var(--mk-red-tinted);
+  --mk-theme-teal-bg:    var(--mk-teal-pastel);   --mk-theme-teal-fg:    var(--mk-teal-tinted);
+  --mk-theme-dark-bg:    var(--mk-ink);           --mk-theme-dark-fg:    var(--mk-tan-pastel);
+
+  /* ---------- Estados de UI [site] ---------- */
+  --mk-error:           #B81C21; /* validação de formulários */
+  --mk-focus-ring:      #2861C5; /* outline de foco (acessibilidade) */
+
+  /* ---------- Tipografia ---------- */
+  /* Fontes do site são proprietárias (Monotype / trial): NÃO usar em entregáveis.
+     Os fallbacks Google Fonts abaixo são sugestão nossa [inf].               */
+  --mk-font-display: "Helvetica Now Extended", "Archivo", "Helvetica Neue", Arial, sans-serif; /* site: 800 (.font-extended) */
+  --mk-font-sans:    "Helvetica Now", "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif; /* site: 400 / 500 */
+  --mk-font-serif:   "Morian Trial", "Instrument Serif", Georgia, serif;                       /* site: 400 / 400 italic (.font-serif) */
+  --mk-font-hand:    "Caveat", cursive;                                                         /* site: 400 (.font-handwritten), Google Fonts/OFL */
+  --mk-weight-regular: 400;
+  --mk-weight-medium:  500;
+  --mk-weight-display: 800;
+
+  /* Escala fluida do site (classes .fs-*) [site] */
+  --mk-fs-display-l: clamp(40px, calc(26.66667px + 2.77778vw), 80px);
+  --mk-fs-display-m: clamp(25px, calc(13.33333px + 2.43056vw), 60px);
+  --mk-fs-display-s: clamp(22px, calc(17.66667px + .90278vw), 35px);
+  --mk-fs-body-l:    clamp(20px, calc(18.66667px + .27778vw), 24px);
+  --mk-fs-body-m:    18px;
+  --mk-fs-label:     clamp(14px, calc(13.33333px + .13889vw), 16px);
+
+  /* ---------- Forma ---------- */
+  --mk-radius-circle: 50%;   /* [site] 51x: botões de ícone circulares, avatares (forma "dot") */
+  --mk-radius-xs:     4px;   /* [site] 18x */
+  --mk-radius-pill:   10rem; /* [site] botões/pílulas ("Open" + seta no brand book) */
+  --mk-radius-l:      2rem;  /* [site] cards */
+  --mk-radius-xl:     3rem;  /* [site] */
+
+  /* ---------- Layout [site] ---------- */
+  --mk-grid-columns-mobile: 4;
+  --mk-grid-columns-desktop: 8;
+  --mk-bp-tablet: 800px;
+  --mk-bp-desktop: 1200px;
+  --mk-bp-wide: 1440px;
+  --mk-bp-xwide: 1920px;
+  --mk-shadow-card: 0 30px 30px -16px rgba(0, 0, 0, .3); /* [site] o7-audio-quote */
+}
