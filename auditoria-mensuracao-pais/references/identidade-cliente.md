@@ -50,6 +50,7 @@ Referência completa: `Smart-Fit/design-system/smartfit/marca.json`. Caminhos re
 | `fontes[]` | `{familia, arquivo (.woff2), peso, estilo?, unicode_range?}`, uma por arquivo |
 | `fonte_display` | Família dos títulos com uma substituta: `"\"Marca Display\",\"Montserrat\""` |
 | `fonte_texto` | Família do texto: `"\"Inter\""` |
+| `pptx_fontes` | (para o .pptx) `{"<família web>": "<fonte do Google Fonts>", "mono": "Roboto Mono"}`: a fonte que entra no lugar de cada família no Google Slides, que só tem Google Fonts. Família que já é do Google Fonts mapeia para ela mesma. Para uma fonte proprietária, escolha a de largura mais próxima com `node SKILL_DIR/scripts/pptx/medir_fontes.js <deck-design.html> "<família>"` (prefira razão ≤ 1,00, para o título não estourar). Smart Fit: Muscle Display → Figtree (0,993) |
 | `cores.destaque` | Cor de marca usada no marca-texto dos títulos, KPIs, chip ativo e barra da capa |
 | `cores.destaque_2` | Fim do degradê da barra da capa (pode repetir o destaque) |
 | `cores.sobre_destaque` / `sobre_destaque_suave` | Texto sobre a cor de destaque (contraste ≥ 4,5:1) |
@@ -68,3 +69,4 @@ Regras de cor:
 1. `python3 SKILL_DIR/scripts/motor/build.py <pais> --forcar` com um `conteudo.json` mínimo (ou o exemplo) e abra a capa, um slide de vitrine e o topo do relatório no Chrome headless.
 2. Mostre os 3 prints ao usuário antes de seguir. Ajuste o `marca.json` até ele aprovar.
 3. Registre a aprovação no `auditoria-estado.md` (Decisões).
+4. Preencha `pptx_fontes` (campo acima) para o deck sair também em .pptx.

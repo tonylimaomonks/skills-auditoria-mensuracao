@@ -1,0 +1,6 @@
+{
+  "name": "auditoria-pptx",
+  "private": true,
+  "description": "Port do deck HTML do motor para .pptx (Google Slides / PowerPoint)",
+  "dependencies": { "pptxgenjs": "^4.0.1", "puppeteer-core": "^24.0.0" }
+}

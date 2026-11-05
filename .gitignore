@@ -7,3 +7,6 @@
 !/testes/
 __pycache__/
 .DS_Store
+node_modules/
+.venv/
+package-lock.json
