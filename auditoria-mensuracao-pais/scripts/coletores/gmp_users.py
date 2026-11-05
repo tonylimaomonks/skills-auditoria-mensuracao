@@ -1,7 +1,7 @@
 """Relação de usuários da organização GMP (Google Marketing Platform Admin API v1alpha). Só leitura.
 
 Exporta, para cada organização visível: admins (adminAccessBindings), grupos de usuários (userGroups)
-e membros de cada grupo, em evidencias/gmp/<data>/<org_id>/.
+e membros de cada grupo e contas GA vinculadas (analyticsAccountLinks), em evidencias/gmp/<data>/<org_id>/.
 
 Uso:  python3 scripts/gmp_users.py [org_id]
 Escopo do ADC: https://www.googleapis.com/auth/marketingplatformadmin.analytics.read
@@ -34,6 +34,12 @@ def main():
             print(f"{oid}: sem permissão para admins ({str(e)[:3]})")
             admins = None
         save(os.path.join(d, "adminAccessBindings.json"), admins)
+        try:  # contas GA vinculadas à org: pré-requisito do gmp_mapa_acessos.py
+            links = paged(f"{BASE}/{o['name']}/analyticsAccountLinks?pageSize=1000", "analyticsAccountLinks")
+        except RuntimeError as e:
+            print(f"{oid}: sem permissão para analyticsAccountLinks ({str(e)[:3]})")
+            links = None
+        save(os.path.join(d, "analyticsAccountLinks.json"), links)
         try:
             groups = paged(f"{BASE}/{o['name']}/userGroups?pageSize=1000", "userGroups")
         except RuntimeError as e:
