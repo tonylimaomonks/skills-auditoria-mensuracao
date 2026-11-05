@@ -15,6 +15,7 @@ Tarefa:
    - terceiros.json: domínios carregados por tags HTML/templates, com a tag
    - tokens.json: tags com parâmetro de credencial em texto aberto (só tagId, nome e nome do parâmetro; NUNCA o valor)
    - sgtm.json: clients, tags e destinos do server, versão live, logType, server_container_url usado pelas tags web
+   - google_tags.json (prontidão da experiência otimizada, R-GOV-10): googtag por ID {tagId, nome, pausada, gatilhos, é ponte do sGTM?}, gaawe com G- fixo no texto, awct/flc/gclidw por conta AW-/DC-, se existem tags dest_* ou gtag_config
 3. README.md com as contagens.
 Siga references/investigacao.md §1–2 (<SKILL_DIR>/references/investigacao.md). Não publique nem edite nada.
 ```
@@ -39,6 +40,7 @@ Para cada etapa (<etapas do funil do país, ex. Smart Fit: home → busca de uni
 - list_network_requests filtrado por collect? (GA4), domínio do sGTM, facebook, tiktok, googleadservices, doubleclick e outros pixels; salvar hits_<nn>_<etapa>.json com url, método, status e parâmetros decodificados (en, tid, ep.*, up.*, dl, pr*)
 - evaluate_script: window.dataLayer (datalayer_<nn>.json); chaves de localStorage/sessionStorage com e-mail/telefone/nome/documento (só NOME da chave e o tipo de dado, nunca o valor)
 - console: erros (console_<nn>.json)
+Na home: conte os scripts gtag/js carregados por ID (G-/AW-/DC-). Com Google tag gateway o loader vem de um caminho próprio do site, então leia o conteúdo do script para achar o ID (loaders_home.json; base do R-GOV-10).
 Na confirmação: purchase com transaction_id, value, currency e items; depois RECARREGUE a confirmação 2× e conte, por destino (GA4, Ads, Meta, TikTok, sGTM, demais pixels), quantos purchase saem (hits_<nn>_reload1.json, _reload2.json). Registre o número do pedido (é de teste).
 Verificar: evento esperado de cada etapa e parâmetros (items, value, currency); em que momento sai o add_payment_info; disparo duplicado (mesmo en para o mesmo tid na mesma página); dado pessoal em URL/dl/ep/pixel/monitoramento; parâmetro id/base64 na URL (decodificar e dizer o que contém, sem copiar dado real). Redija (<REDIGIDO>) os valores do teste nos arquivos salvos.
 Depois:

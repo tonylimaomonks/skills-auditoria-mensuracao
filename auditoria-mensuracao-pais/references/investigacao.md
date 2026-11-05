@@ -22,6 +22,13 @@ Fonte: `evidencias/gtm/<GTM-ID>/<data>/live_version.json` e `workspace_*/`.
 - **Conversões:** tags no trigger de compra/lead; se há duas tags enviando o mesmo evento para o mesmo destino (duplicidade).
 - **Tokens (GOV-10):** parâmetros `accessToken`, `apiKey`, `secret` em texto aberto. No conteúdo, só "token em texto aberto na tag X".
 - **Server container URL:** se as tags GA4 apontam para `*.run.app` (PERF-02) ou para subdomínio próprio.
+- **Experiência otimizada de tagging (Google tags/destinos, R-GOV-10):** a partir do export, monte a tabela de prontidão:
+  - Tags do Google (`googtag`) por ID, ativas e pausadas, com o gatilho de cada uma. Marque a que é **ponte para o sGTM** (ID `G-` fictício ou com `server_container_url`): ela fica legada e nunca é modelo.
+  - Tags de evento GA4 (`gaawe`) com o ID `G-` fixo no texto, em vez de variável.
+  - Tags `awct`/`flc` e `gclidw` por conta `AW-`/`DC-`, e quantos `gtag/js` próprios o site carrega. No Chrome, conte os scripts por ID; com Google tag gateway, o loader vem do caminho próprio.
+  - Se já existe tag `dest_ga` ou `gtag_config` no container. Se existe, a otimização já começou: confira se a detecção automática de dados do usuário ficou ligada.
+  - Settings, Destinations, na UI do GTM, com acesso de admin nas Tags do Google: contas `AW-` de terceiros (franqueados, agências) ligadas ao container. Isso vira inventário e pergunta ao cliente.
+  - No relatório, é uma recomendação de GOV/PERF (menos loaders e configuração única), nunca uma Alta por si só. A migração entra no plano como ação F3, com a decisão do cliente sobre consentimento, dados do usuário e leitura automática no Passo 0.
 
 ## 2. sGTM
 Fonte: export do container server.

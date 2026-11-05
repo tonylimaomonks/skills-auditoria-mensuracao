@@ -60,6 +60,7 @@ Modelo de entrada:
 | R-GOV-07 | Domínio com a marca levando a terceiro | BR SF-GOV-05 |
 | R-GOV-08 | eventNames estranhos (sondagem de injeção, SDK desconhecido) | BR SF-GOV-13, N-10 |
 | R-GOV-09 | Sem processo de publicação nem monitoramento | BR SF-GOV-04 (A-016) |
+| R-GOV-10 | Container fora da experiência otimizada de tagging (Google tags/destinos) | BR otimização (ws 783) |
 | P-01 a P-10 | Padrões transversais de execução | todos |
 
 ---
@@ -132,8 +133,10 @@ Modelo de entrada:
   - Antes de declarar quebrado, capture o beacon **na live e no Preview**: 2682 e 2785 eram falso positivo (A-027).
   - Corrigir o trigger de um lead pode duplicá-lo se outra rota já emite o mesmo evento. Na Data API, veja `linkUrl` e a origem antes (N-05).
   - LP com pouco tráfego: "0 conversões" em 4 dias não prova quebra. Informe as visitas/dia junto.
+  - "Exception thrown / Unknown error" no Tag Assistant numa tag de template: leia o código sandbox do template no export (`customTemplate[].templateData`). Variável DL com número em campo que o template trata como texto (`.trim()`) derruba a tag inteira (N-12).
 - **Casos:**
   - BR SF-DUP-07 → A-027 · concluída (v599, 22/10): search de 4 para 65,6 mil; parceiros de 0 para 156.
+  - BR N-12 → ws 784 · validada no Preview (05/11/2026): TikTok CompletePayment com exception desde a v599 porque o template faz `.trim()` no `external_id` e o `person_id` chega como número. Variável que devolve texto; `external_id` mantido sem hash por decisão do cliente.
 
 ### R-DUP-06 · Outro container, staging ou `debug_mode` na propriedade de produção
 - **Sintoma / detecção:** Data API Q05 (hosts que não são de produção). No Chrome, nas LPs: quantos `tid` iguais por página e se há `debug_mode`/`_dbg` nos hits.
@@ -386,6 +389,37 @@ Modelo de entrada:
 - **Casos:**
   - BR SF-GOV-04 → A-016 · concluída: 10 passos e 11 regras (`brasil/achados/2026-10-27_a016-checklist-publicacao-e-monitor.md`).
 
+### R-GOV-10 · Container fora da experiência otimizada de tagging (Google tags/destinos)
+- **Sintoma / detecção:** export do GTM com várias Tags do Google (`googtag`), algumas pausadas ou de teste. Tags GA4 de evento com `G-` fixo no texto. Um `gtag/js` próprio carregado por ID GA4/AW/DC (no Chrome: conte os loaders por ID). Nenhuma tag `dest_ga` e nenhum `gtag_config` no container. Em Settings → Destinations (UI), contas de terceiros ligadas sem dono claro. Roteiro em `investigacao.md` § 1. Referência: Simo Ahava, "Optimized tagging experience in Google Tag Manager".
+- **Causas comuns:** container anterior à funcionalidade; cada agência criou a sua Tag do Google; IDs copiados em texto nas tags; a Tag do Google da ponte do sGTM foi usada como "modelo".
+- **Resolução raiz:** o container passa a funcionar como Google tag. Cada ID GA4/Ads/Floodlight vira **destino** (tag `dest_*`), com as configurações num único lugar (`gtag_config` do container) e um só carregamento.
+- **O que a Monks faz (sempre em workspace NÃO PUBLICAR, em lotes):**
+  0. Decisões com o cliente, que precisa ter **admin nas Tags do Google**:
+     - dados do usuário: só hasheados, ou detecção automática;
+     - Manage data transmission (consentimento): normalmente desligado se não houver CMP;
+     - leitura automática (links de contas externas): manter ou não;
+     - qual Tag do Google fica legada. A ponte do sGTM **nunca** é modelo e fica separada.
+  1. Linha de base: export live, loaders por ID no Chrome, `page_view` por página, e-commerce do funil, PII nos hits.
+  2. Limpeza via API: exclui as `googtag` pausadas e de teste, troca o `G-` fixo por variável nas `gaawe` e documenta a ponte do sGTM em nota na tag.
+  3. Lotes pela UI: GA4 principal → Ads → Floodlight. *Settings → Add destination* **cria uma tag nova** (gatilho Initialization) e **não converte a legada**. Para não duplicar o page_view:
+     - copie os parâmetros da legada para a `dest_*` (configSettings, eventSettings, `user_data`, `send_page_view`);
+     - mantenha o gatilho original (ex.: All Pages);
+     - exclua a legada.
+  4. Confira o `gtag_config` criado: a "medição otimizada" deve ficar igual ao stream, e os **dados do usuário vêm com detecção automática de e-mail, telefone, nome e endereço ligada** (desligue, se a decisão foi só hasheado). `userProperties` não entram na `dest_ga`: use uma variável Event Settings (`gtes`) em `eventSettingsVariable`.
+  5. Preview com compra de teste ("Data Test"), feito por subagent: `page_view` único por página, loader próprio do ID sumiu, parâmetros e user properties presentes, e-commerce completo incluindo `purchase`, nada de PII em texto e o sGTM continua recebendo. Compare com a produção no mesmo roteiro.
+- **Pronto quando:** em produção, depois da publicação pelo cliente:
+  - o mesmo roteiro do Chrome mostra 1 `page_view` por página e nenhum `gtag/js` próprio do ID migrado;
+  - a Data API não mostra queda nem pico de `page_view`/`session_start` na semana seguinte (P-05);
+  - o Tag Assistant mostra a tag de destino como Succeeded, sem PII em texto.
+- **Típico:** F3 · M (um lote por tipo de destino) · R = Monks / A = Head de Martech; quem publica é o cliente.
+- **Lições:**
+  - Não há assistente de conversão no fluxo atual, ao contrário do que o artigo sugere: é tag nova + cópia + exclusão (BR, 05/11/2026).
+  - A UI da tag de destino carrega devagar. Confira pela API ou espere antes de tirar o print, ou os campos parecem vazios.
+  - O hit para o sGTM first-party pode não aparecer no CDP do navegador (o site usa `sw_iframe`). Confirme no painel da mídia ou no Preview do sGTM antes de declarar falha.
+  - Aproveite o Preview com compra para ver as tags de terceiros no `purchase`: no BR, ele revelou a exception do TikTok CompletePayment (N-12, R-DUP-05).
+- **Casos:**
+  - BR otimização Google tag → ws 783 (lote 1: G-BJP7473VFF → `dest_ga`) · validada no Preview (05/11/2026, compra 46494243), aguarda publicação. Lotes Ads e Floodlight pendentes. Nota: `2026-11-03_GTM-experiencia-otimizada-tagging-BR.md`.
+
 ---
 
 ## P · Padrões transversais de execução
@@ -407,4 +441,5 @@ Modelo de entrada:
 
 ## Changelog
 
+- 05/11/2026 · R-GOV-10 (experiência otimizada de tagging / destinos) e caso + lição N-12 em R-DUP-05.
 - 29/10/2026 · v1: criado a partir do BR (diagnóstico v1.0–v1.5, execução até a v1.7, N-01 a N-11).
