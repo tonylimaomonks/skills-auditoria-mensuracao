@@ -37,30 +37,32 @@ Modelo de entrada:
 |---|---|---|
 | R-DUP-01 | `purchase` sem `transaction_id` ou sem valor | BR SF-DUP-01, SF-DUP-03 |
 | R-DUP-02 | `purchase` repetido para o mesmo `transaction_id` | BR SF-DUP-02 |
-| R-DUP-03 | Payload de e-commerce errado (carrinho inteiro, `value` de outro preço, promo errada) | BR SF-DUP-04, N-09 |
-| R-DUP-04 | Conversão de mídia contada mais de uma vez ou na conta errada | BR SF-DUP-06, N-02, N-03 |
-| R-DUP-05 | Trigger quebrado por mudança no site | BR SF-DUP-07 |
-| R-DUP-06 | Outro container, staging ou `debug_mode` escrevendo na propriedade de produção | BR SF-DUP-08 |
-| R-FIN-01 | Evento genérico consumindo a cota 360 | BR SF-FIN-01 |
+| R-DUP-03 | Payload de e-commerce errado (carrinho inteiro, `value` de outro preço, promo errada) | BR SF-DUP-04, N-09 · MX SF-DUP-01, SF-DUP-06 |
+| R-DUP-04 | Conversão de mídia contada mais de uma vez ou na conta errada | BR SF-DUP-06, N-02, N-03 · MX SF-DUP-07, V-06 |
+| R-DUP-05 | Trigger quebrado por mudança no site | BR SF-DUP-07 · MX SF-DUP-04, SF-DUP-05 |
+| R-DUP-06 | Outro container, staging ou `debug_mode` escrevendo na propriedade de produção | BR SF-DUP-08 · MX SF-DUP-08 |
+| R-DUP-07 | Área logada ou outro produto global no stream do site | MX SF-DUP-03 |
+| R-FIN-01 | Evento genérico consumindo a cota 360 | BR SF-FIN-01 · MX SF-FIN-02 |
 | R-FIN-02 | Subpropriedade com filtro errado (copia tudo ou foi "pausada" com filtro fictício) | BR SF-FIN-03, SF-DUP-05 |
-| R-FIN-03 | sGTM: versão sem nome, logging e custo não medidos | BR SF-FIN-02 |
-| R-PII-01 | Dado pessoal em parâmetro de tag (GA4 ou mídia) | BR SF-PII-04, SF-PII-05, N-07 |
-| R-PII-02 | Dado pessoal gravado no navegador (localStorage/sessionStorage) | BR SF-PII-01, SF-PII-02 |
-| R-PII-03 | Dado pessoal indo para ferramenta de terceiro ou exposto pelo código do site | BR SF-PII-05, N-08 |
-| R-PII-04 | Consentimento: banner implícito, mídia antes do aceite, sem Consent Mode | BR SF-PII-03 |
-| R-PII-05 | Credencial (token CAPI/Events API) em texto aberto no sGTM | BR SF-GOV-10 (A-001) |
-| R-PERF-01 | Peso de tags piora INP/LCP | BR SF-PERF-01 |
+| R-FIN-03 | sGTM: versão sem nome, logging e custo não medidos | BR SF-FIN-02 · MX SF-FIN-01 |
+| R-FIN-04 | Limite do export diário do BigQuery (Standard) forçando a exclusão de eventos | MX SF-FIN-03 |
+| R-PII-01 | Dado pessoal em parâmetro de tag (GA4 ou mídia) | BR SF-PII-04, SF-PII-05, N-07 · MX SF-PII-03 |
+| R-PII-02 | Dado pessoal gravado no navegador (localStorage/sessionStorage) | BR SF-PII-01, SF-PII-02 · MX SF-PII-02 |
+| R-PII-03 | Dado pessoal indo para ferramenta de terceiro ou exposto pelo código do site | BR SF-PII-05, N-08 · MX SF-PII-02, SF-GOV-04 |
+| R-PII-04 | Consentimento: banner implícito, mídia antes do aceite, sem Consent Mode | BR SF-PII-03 · MX SF-PII-01 |
+| R-PII-05 | Credencial (token CAPI/Events API) em texto aberto no sGTM | BR SF-GOV-10 (A-001) · MX SF-GOV-01 |
+| R-PERF-01 | Peso de tags piora INP/LCP | BR SF-PERF-01 · MX SF-PERF-01 |
 | R-PERF-02 | sGTM fora do domínio próprio ou fora da região | BR SF-PERF-02, SF-FIN-04 |
-| R-GOV-01 | Higiene do container: pausadas, triggers/variáveis sem uso, tags sem efeito | BR SF-GOV-04, SF-GOV-11 |
+| R-GOV-01 | Higiene do container: pausadas, triggers/variáveis sem uso, tags sem efeito | BR SF-GOV-04, SF-GOV-11 · MX SF-GOV-03 |
 | R-GOV-02 | Tags "[TESTE]"/"UPD" em produção ou propriedade de teste recebendo produção | BR SF-GOV-12, SF-GOV-02 |
-| R-GOV-03 | Key events sem significado de negócio | BR SF-GOV-03 |
-| R-GOV-04 | Acessos sem uso, Admins externos, acesso via grupo GMP | BR SF-GOV-07, SF-GOV-08 |
+| R-GOV-03 | Key events sem significado de negócio | BR SF-GOV-03 · MX SF-DUP-02 |
+| R-GOV-04 | Acessos sem uso, Admins externos, acesso via grupo GMP | BR SF-GOV-07, SF-GOV-08 · MX SF-GOV-05 |
 | R-GOV-05 | Painéis e conectores com credencial pessoal | BR SF-GOV-09 |
-| R-GOV-06 | Ativos mortos ou sem dono (propriedades, containers, Cloud Run) | BR SF-GOV-10, SF-GOV-06 |
+| R-GOV-06 | Ativos mortos ou sem dono (propriedades, containers, Cloud Run) | BR SF-GOV-10, SF-GOV-06 · MX SF-GOV-02, SF-GOV-04 |
 | R-GOV-07 | Domínio com a marca levando a terceiro | BR SF-GOV-05 |
 | R-GOV-08 | eventNames estranhos (sondagem de injeção, SDK desconhecido) | BR SF-GOV-13, N-10 |
-| R-GOV-09 | Sem processo de publicação nem monitoramento | BR SF-GOV-04 (A-016) |
-| R-GOV-10 | Container fora da experiência otimizada de tagging (Google tags/destinos) | BR otimização (ws 783) |
+| R-GOV-09 | Sem processo de publicação nem monitoramento | BR SF-GOV-04 (A-016) · MX SF-GOV-03 |
+| R-GOV-10 | Container fora da experiência otimizada de tagging (Google tags/destinos) | BR otimização (ws 783) · MX A-004 |
 | P-01 a P-10 | Padrões transversais de execução | todos |
 
 ---
@@ -106,6 +108,8 @@ Modelo de entrada:
 - **Casos:**
   - BR SF-DUP-04 → A-011 · workspace 776 aguardando publicação: /carts R$ 1.103,50 → R$ 444,40 no Preview.
   - BR N-09 (adicional com o preço do plano no `value`): na lista viva, a reportar no fim das fases.
+  - Smart Fit MX SF-DUP-01 → A-003 · planejada (05/11/2026): value do purchase 2,6× o 1º cobro (preço cheio + inscrição exibida como grátis), igual em GA4 e em toda a mídia.
+  - Smart Fit MX SF-DUP-06 → A-012 · planejada (05/11/2026): o mesmo plano com 3 nomes e 726 itens de plano (not set).
 
 ### R-DUP-04 · Conversão de mídia contada mais de uma vez ou na conta errada
 - **Sintoma / detecção:** no Chrome, requests a `googleadservices`/`facebook`/`tiktok` na compra, contados por conta e por label. No Google Ads, as metas da MCC (primária × secundária). No Events Manager do TikTok/Meta, vários eventos de compra no mesmo pixel e a faixa "Server & browser".
@@ -118,9 +122,12 @@ Modelo de entrada:
   - Tags por plano mutuamente exclusivas não são duplicidade. Confira as condições antes de contar (SF-DUP-06).
   - Outra conta recebendo a compra pode ser intencional (Franquias no BR): pergunte antes de "corrigir".
   - Sem acesso ao Ads/Events Manager, o achado fica "a validar".
+  - `event_Id` no web × `event_id` no sGTM não prova falta de deduplicação: no MX a CAPI saía por um gateway próprio (mpc-prod-28) com o mesmo `event_id` do pixel. Sem Events Manager, fica "a validar" (Smart Fit MX V-06).
 - **Casos:**
   - BR SF-DUP-06 → A-025 · concluída (16/10): a duplicidade nos lances foi descartada (2408 e ações por plano são secundárias); a tag 2417 de Franquias ficou em stand-by para conversar.
   - BR N-02, N-03 (TikTok): na lista viva, faltam o Ads Manager e o Event breakdown.
+  - Smart Fit MX SF-DUP-07 → A-013 · planejada (05/11/2026): compra em 4 contas Ads, 2 de franqueados sem filtro de location_id (intenção a confirmar).
+  - Smart Fit MX V-06 (dedup Meta/TikTok) · a validar (05/11/2026): sem Events Manager.
 
 ### R-DUP-05 · Trigger quebrado por mudança no site
 - **Sintoma / detecção:** validação tag a tag (P-08): tag ativa no GTM × evento na Data API × hit no Chrome. No TikTok/Meta, "último recebimento há N dias".
@@ -133,10 +140,13 @@ Modelo de entrada:
   - Antes de declarar quebrado, capture o beacon **na live e no Preview**: 2682 e 2785 eram falso positivo (A-027).
   - Corrigir o trigger de um lead pode duplicá-lo se outra rota já emite o mesmo evento. Na Data API, veja `linkUrl` e a origem antes (N-05).
   - LP com pouco tráfego: "0 conversões" em 4 dias não prova quebra. Informe as visitas/dia junto.
+  - Tag configurada não é tag que dispara: no MX, as 5 tags que levavam o e-commerce ao sGTM (com e-mail e telefone sem hash) não dispararam no funil, e um "2º pixel TikTok" estava comentado no HTML. Rode a validação tag a tag antes de escrever o achado de PII, duplicidade ou terceiros (Smart Fit MX, E-33, V-07).
   - "Exception thrown / Unknown error" no Tag Assistant numa tag de template: leia o código sandbox do template no export (`customTemplate[].templateData`). Variável DL com número em campo que o template trata como texto (`.trim()`) derruba a tag inteira (N-12).
 - **Casos:**
   - BR SF-DUP-07 → A-027 · concluída (v599, 22/10): search de 4 para 65,6 mil; parceiros de 0 para 156.
   - BR N-12 → ws 784 · validada no Preview (05/11/2026): TikTok CompletePayment com exception desde a v599 porque o template faz `.trim()` no `external_id` e o `person_id` chega como número. Variável que devolve texto; `external_id` mantido sem hash por decisão do cliente.
+  - Smart Fit MX SF-DUP-04 → A-010 · planejada (05/11/2026): page_view em History Change no checkout SPA e experiment_site 4× por página.
+  - Smart Fit MX SF-DUP-05 → A-011 · planejada (05/11/2026): 3 leads das LPs com 0 eventos; add_payment_info só no clique final.
 
 ### R-DUP-06 · Outro container, staging ou `debug_mode` na propriedade de produção
 - **Sintoma / detecção:** Data API Q05 (hosts que não são de produção). No Chrome, nas LPs: quantos `tid` iguais por página e se há `debug_mode`/`_dbg` nos hits.
@@ -149,6 +159,19 @@ Modelo de entrada:
   - Meça antes de afirmar duplicidade de `page_view`. No BR não duplicava; o problema era o `debug_mode`, que **tira os eventos dos relatórios** (metade dos page_view e todos os leads das LPs).
 - **Casos:**
   - BR SF-DUP-08 → A-029 · workspace 63 (GTM-PS879FDQ) aguardando publicação; lista de 60 hosts entregue.
+  - Smart Fit MX SF-DUP-08 → A-018 · planejada (05/11/2026): 378 eventos de staging em 30 dias.
+
+### R-DUP-07 · Área logada ou outro produto global no stream do site
+- **Sintoma / detecção:** Data API Q05/X01: `hostName` de área logada, app em webview ou produto de outro domínio (ex.: `espacodocliente.*`, `coach.*`) com volume relevante no stream do site; X01 por país mostra se é contaminação (outro país) ou o público do próprio país. Site check por curl para achar o container que envia.
+- **Causas comuns:** container global (de outra conta/país) escolhe o measurement ID por país e usa o stream do site; compras de renovação ou de adicionais na área logada sem `items`.
+- **Resolução raiz:** stream próprio (ou propriedade) para a área logada, ou no mínimo uma dimensão/segmento padrão "site × área logada" nos relatórios e nas importações; `items` preenchidos nas compras da área logada.
+- **O que a Monks faz:** mede o peso (eventos, usuários, compras, efeito na taxa de conversão) e entrega a recomendação ao dono do container global. Se a Monks não administra o container, não mexe nele (P-09).
+- **Pronto quando:** relatórios padrão do site filtrados por host; Data API 7 dias com compras da área logada com `itemName`.
+- **Típico:** F2 · M · R = Martech + Produto da área logada / A = Head de Martech.
+- **Lições:**
+  - Antes de chamar de contaminação, cruze por país: no MX, 99% dos usuários do Espaço do Cliente eram do México (Smart Fit MX SF-DUP-03).
+- **Casos:**
+  - Smart Fit MX SF-DUP-03 → A-008 · planejada (05/11/2026): 24% dos eventos e 16% dos usuários do "site" são o Espaço do Cliente; a conversão aparece 13% menor.
 
 ## FIN · Financeiro e licenciamento
 
@@ -160,9 +183,11 @@ Modelo de entrada:
 - **Pronto quando:** Data API: o evento ≤ 5% dos faturáveis em 7 dias; Admin → Uso mostra a queda.
 - **Típico:** F2 · M · R = Martech + app / A = Head de Martech.
 - **Lições:**
+  - Em país com GA4 Standard, procure o tráfego dele na 360 de outro país (app e áreas logadas globais): no MX, 21,5% do faturável da 360 do BR era México (Smart Fit MX SF-FIN-02).
   - **Pergunte o uso antes de propor o filtro.** No BR o cliente usa o `click` para uma métrica, e a ação parou esperando o OK (A-012). O catálogo de parâmetros vira o anexo da decisão.
 - **Casos:**
   - BR SF-FIN-01 → A-012 · em andamento: catálogo entregue (19 a 25/10); falta o Martech confirmar a métrica dependente.
+  - Smart Fit MX SF-FIN-02 → A-020 · planejada (05/11/2026): o México gera 21,5% dos eventos faturáveis da 360 do BR (app e Espaço do Cliente); 55,8 mi/mês são o click do app (recorte do A-012) e 6,9 mi são o Espaço do Cliente medido em dobro por um container global (GTM-WCQLTN8G).
 
 ### R-FIN-02 · Subpropriedade com filtro errado
 - **Sintoma / detecção:** Admin API `subpropertyEventFilters` e a série mensal do `uso_ativos`. Volume da subpropriedade ≈ volume da principal → copia tudo (cobrança dupla). Volume 0 com o canal ativo → "pausada" com filtro que nunca casa, e o canal cai só na principal.
@@ -189,6 +214,20 @@ Modelo de entrada:
   - Logs do Cloud Run: pedir **uma vez, no fim das 3 fases** (D-09).
 - **Casos:**
   - BR SF-FIN-02 → A-013 · concluída (16/10): sem mudança no GTM; billing em espera.
+  - Smart Fit MX SF-FIN-01 → A-017 · planejada (05/11/2026): GA4 do sGTM pausado, stream "Server Side" vazio e TikTok com logType=debug.
+
+### R-FIN-04 · Limite do export diário do BigQuery (GA4 Standard) forçando a exclusão de eventos
+- **Sintoma / detecção:** Admin API `bigQueryLinks`: `excludedEvents` com eventos de navegação (`page_view`, `first_visit`). Data API: eventos por dia × evento em 90 dias, simulando o conjunto exportado contra 1 mi/dia (Standard). Leitura de metadados do dataset (`tables.list`) para achar dias faltando.
+- **Causas comuns:** volume inflado por eventos sem uso (experimento disparando várias vezes, medição otimizada ligada sem necessidade) e por tráfego de outro produto no mesmo stream; o corte foi feito no export em vez da origem.
+- **Resolução raiz:** catálogo de eventos (origem, uso, recomendação), cortar na origem e devolver os eventos de navegação ao export. Se o cliente quer tudo já: ligar o export por streaming (sem limite de volume, cobrado por GB, normalmente poucos dólares por mês).
+- **O que a Monks faz:** o catálogo, a simulação e as mudanças no GTM em workspace. Export, streaming e medição otimizada ficam com o cliente (P-06).
+- **Pronto quando:** `page_view` fora da lista de excluídos (ou streaming ligado); Data API 30 dias com o conjunto exportado abaixo de 1 mi/dia com folga; uma tabela `events_` por dia.
+- **Típico:** F2 · M · R = Martech + Dados/BI / A = Head de Martech.
+- **Lições:**
+  - Em propriedade Standard o "evento lixo" não tem fatura, mas ocupa o teto do export: é esse o argumento financeiro (Smart Fit MX SF-FIN-03).
+  - Passar do limite de forma consistente pausa o export e os dias anteriores não são reprocessados: page_view excluído é histórico perdido.
+- **Casos:**
+  - Smart Fit MX SF-FIN-03 → A-021 · planejada (05/11/2026): 14 eventos excluídos desde 07/04/2026 (62% do volume, inclusive page_view); 39% dos eventos sem uso; streaming estimado em US$ 1–2/mês.
 
 ## PII · Dado pessoal e credenciais
 
@@ -204,10 +243,12 @@ Modelo de entrada:
   - Tag que alimenta o sGTM para CAPI/Events API precisa do e-mail/telefone: não remova. Confirme a rota no sGTM e se há hash (2684/2698 no BR ficaram como estavam).
   - Depois de corrigir uma tag, rode a Q19 em **todos** os parâmetros: no BR apareceu outra rota pelo `cta_button` (N-07).
   - Telefone: procure com o DDI do país; documento: CPF (BR), CURP/RFC (MX).
+  - CURP/RFC (MX): o regex solto (4 letras + 6 dígitos em qualquer trecho) casou com 250 mil page_view de `/gimnasios`. Procure o documento como valor inteiro de parâmetro ou segmento, case-sensitive, e confira por pagePath antes de afirmar (Smart Fit MX, E-10).
 - **Casos:**
   - BR SF-PII-04 → A-002 · concluída (v598, 20/10): 0 de 19 hits pós-lead com PII na live.
   - BR SF-PII-05 (tag 2578) → A-026 · parte GTM concluída (v598).
   - BR N-07 (`cta_button`): na lista viva.
+  - Smart Fit MX SF-PII-03 → A-019 · planejada (05/11/2026): JWT de redefinição de senha do Espaço do Cliente em pageLocation (431 eventos/30 d) e CURP dentro do token do link da confirmação.
 
 ### R-PII-02 · Dado pessoal gravado no navegador
 - **Sintoma / detecção:** Chrome → Application (localStorage, sessionStorage, cookies) depois do lead e da compra; console com `ReferenceError`.
@@ -221,6 +262,7 @@ Modelo de entrada:
 - **Casos:**
   - BR SF-PII-01 → A-003 · concluída (v598): chave `null`, 0 envios; o código saiu do `gtm.js`.
   - BR SF-PII-02 → A-004 · fora do escopo (23/10).
+  - Smart Fit MX SF-PII-02 (parte) → A-002 · planejada (05/11/2026): SDK Indigitall grava o e-mail no sessionStorage (confirmar o dono antes, como no BR).
 
 ### R-PII-03 · Dado pessoal para terceiro ou exposto pelo código do site
 - **Sintoma / detecção:** Chrome: corpo dos POSTs do funil filtrado pelos valores fictícios digitados (APM, monitoramento, chat); console (`console.log` de dado); query string das APIs do próprio site.
@@ -232,6 +274,8 @@ Modelo de entrada:
 - **Casos:**
   - BR SF-PII-05 (New Relic) → A-026 · com o dev (ofuscação e `add_person_info`).
   - BR N-08 (data de nascimento no console, CPF na URL): na lista viva.
+  - Smart Fit MX SF-PII-02 → A-002 · planejada (05/11/2026): add_person_info em claro → New Relic, meli() do Mercado Libre e sGTM (sem uso).
+  - Smart Fit MX SF-GOV-04 (Voxus → api.ipify.org, IP do visitante) → A-015 · planejada (05/11/2026).
 
 ### R-PII-04 · Consentimento
 - **Sintoma / detecção:** Chrome em janela anônima: contar requests de mídia antes de qualquer escolha e depois de "rejeitar"; parâmetros `gcs`/`gcd` nos hits.
@@ -245,6 +289,7 @@ Modelo de entrada:
   - Cite a lei e o regulador do país (BR: LGPD/ANPD; MX: `04-lei-dados-pessoais-mexico.md`) como teto, nunca como previsão.
 - **Casos:**
   - BR SF-PII-03 → A-005 · em espera (decisão do jurídico).
+  - Smart Fit MX SF-PII-01 → A-001 · planejada (05/11/2026): banner só informativo, 158 de 159 tags notSet, 20+ plataformas antes do clique, opt-ins pré-marcados.
 
 ### R-PII-05 · Credencial em texto aberto no sGTM
 - **Sintoma / detecção:** export do sGTM: `tokens.json` (só a tag e o nome do parâmetro, **nunca o valor**).
@@ -253,8 +298,11 @@ Modelo de entrada:
 - **O que a Monks faz:** explica o risco e recomenda. A rotação é do cliente.
 - **Pronto quando:** tokens antigos revogados; eventos chegando com o token novo em 24 h.
 - **Típico:** F1 · P · R = Martech / A = Head de Martech · +1 nível.
+- **Lições:**
+  - Nem todo `token` em tag é credencial: as tags da Inngage (MX) liam o `app_token` do localStorage por variável. Conte só valor literal, não `{{variável}}` (Smart Fit MX v1.2: 18 → 17).
 - **Casos:**
   - BR SF-GOV-10 → A-001 · em espera (rotação depois da próxima rodada de remoção de acessos).
+  - Smart Fit MX SF-GOV-01 → A-005 · planejada (05/11/2026): 16 parâmetros no sGTM (Meta/TikTok) + apiKey da Maze no web.
 
 ## PERF · Performance
 
@@ -269,6 +317,7 @@ Modelo de entrada:
   - Fica parado na decisão do cliente sobre o que manter. Mande a planilha cedo.
 - **Casos:**
   - BR SF-PERF-01 → A-014 · aguardando decisão: 75 tags para o cliente marcar.
+  - Smart Fit MX SF-PERF-01 → A-009 · planejada (05/11/2026): LCP lab 12,7 s na unidade, GTM ~2 s de main thread, 7 gtag.js.
 
 ### R-PERF-02 · sGTM fora do domínio próprio ou fora da região
 - **Sintoma / detecção:** export (`server_container_url` das tags web, URL declarada no container server); Chrome (destino dos hits e `Set-Cookie` first-party); região do Cloud Run.
@@ -298,6 +347,7 @@ Modelo de entrada:
   - O que depende de decisão do cliente vai para uma lista separada (R-PERF-01) e não trava o resto.
 - **Casos:**
   - BR SF-GOV-11 → A-028 · workspace 777 aguardando publicação: 69 tags, 30 triggers e 13 variáveis.
+  - Smart Fit MX SF-GOV-03 → A-014 · planejada (05/11/2026): 63 triggers sem tag ativa, 46 variáveis sem uso, 85 tags sem pasta.
 
 ### R-GOV-02 · Tags "[TESTE]"/"UPD" em produção ou propriedade de teste recebendo produção
 - **Sintoma / detecção:** export (nomes com [TESTE], UPD, OLD e se disparam); Chrome (`tid` de propriedade de teste no funil).
@@ -319,6 +369,7 @@ Modelo de entrada:
 - **Típico:** F2 · P · R = Martech + Mídia / A = Head de Mídia.
 - **Casos:**
   - BR SF-GOV-03 → A-007 · adiada pelo cliente (14/10).
+  - Smart Fit MX SF-DUP-02 → A-006 · planejada (05/11/2026): add_to_cart e begin_checkout como key events e add_to_cart como conversão Ads em 3 contas (primária a confirmar).
 
 ### R-GOV-04 · Acessos sem uso, Admins externos, acesso via grupo GMP
 - **Sintoma / detecção:** `ga_users.py`/`ga_users_analise.py`, `gtm_dump.py --users`, `gmp_users.py`/`gmp_mapa_acessos.py`, Data Access Report × accessBindings (quem lê sem permissão na conta = grupo da org GMP).
@@ -334,6 +385,7 @@ Modelo de entrada:
 - **Casos:**
   - BR SF-GOV-07 → A-020 · concluída: 60 identidades da WPP removidas, verificação pós-remoção sem acesso.
   - BR SF-GOV-08 → A-021 · concluída: grupos da org GMP mapeados.
+  - Smart Fit MX SF-GOV-05 → A-016 · planejada (05/11/2026): acessos externos e pessoais no GA e no GTM, sem log de uso (Standard).
 
 ### R-GOV-05 · Painéis e conectores com credencial pessoal
 - **Sintoma / detecção:** Data Access Report por app e por usuário (fatia de leituras por credencial).
@@ -354,6 +406,8 @@ Modelo de entrada:
 - **Casos:**
   - BR SF-GOV-10 → A-023 · lista entregue (24 ativos), cliente desativa.
   - BR SF-GOV-06 → A-018 · decisão do cliente: Smart System só na propriedade principal.
+  - Smart Fit MX SF-GOV-02 → A-007 · planejada (05/11/2026): propriedade 456689336 sem dono, ligada pela Google tag do Ads (fora do GTM).
+  - Smart Fit MX SF-GOV-04 (gateway Meta CAPI mpc-prod-28 em Cloud Run sem dono) → A-015 · planejada (05/11/2026).
 
 ### R-GOV-07 · Domínio com a marca levando a terceiro
 - **Sintoma / detecção:** `curl -sIL` nos domínios dos containers; whois.
@@ -388,6 +442,7 @@ Modelo de entrada:
   - Inclua no checklist um marcador de teste (nome "Data Test") que as tags de mídia bloqueiem: o Preview dispara conversões reais (P-04).
 - **Casos:**
   - BR SF-GOV-04 → A-016 · concluída: 10 passos e 11 regras (`brasil/achados/2026-10-27_a016-checklist-publicacao-e-monitor.md`).
+  - Smart Fit MX SF-GOV-03 (contexto) → A-014 · planejada (05/11/2026): 52 de 228 versões sem nome, versão "Teste…" publicada (v224), live com nome de pessoa e 3 workspaces abertos.
 
 ### R-GOV-10 · Container fora da experiência otimizada de tagging (Google tags/destinos)
 - **Sintoma / detecção:** export do GTM com várias Tags do Google (`googtag`), algumas pausadas ou de teste. Tags GA4 de evento com `G-` fixo no texto. Um `gtag/js` próprio carregado por ID GA4/AW/DC (no Chrome: conte os loaders por ID). Nenhuma tag `dest_ga` e nenhum `gtag_config` no container. Em Settings → Destinations (UI), contas de terceiros ligadas sem dono claro. Roteiro em `investigacao.md` § 1. Referência: Simo Ahava, "Optimized tagging experience in Google Tag Manager".
@@ -419,6 +474,7 @@ Modelo de entrada:
   - Aproveite o Preview com compra para ver as tags de terceiros no `purchase`: no BR, ele revelou a exception do TikTok CompletePayment (N-12, R-DUP-05).
 - **Casos:**
   - BR otimização Google tag → ws 783 (lote 1: G-BJP7473VFF → `dest_ga`) · validada no Preview (05/11/2026, compra 46494243), aguarda publicação. Lotes Ads e Floodlight pendentes. Nota: `2026-11-03_GTM-experiencia-otimizada-tagging-BR.md`.
+  - Smart Fit MX SF-PERF-01/SF-GOV-02 → A-004 · planejada (05/11/2026): 7 googtag, nenhum destino; G-GBENNS665B entra pela Google tag GT-KT4ZZCCH do Ads.
 
 ---
 
@@ -441,5 +497,6 @@ Modelo de entrada:
 
 ## Changelog
 
+- 05/11/2026 · Smart Fit MX: R-FIN-04 (limite do export BigQuery no Standard), casos dos 20 achados da v1.3 (ações planejadas), R-DUP-07 (área logada no stream do site), lições de CURP/RFC (regex), Inngage (token lido por variável), event_Id × event_id (V-06) e tag configurada × tag que dispara (R-DUP-05).
 - 05/11/2026 · R-GOV-10 (experiência otimizada de tagging / destinos) e caso + lição N-12 em R-DUP-05.
 - 29/10/2026 · v1: criado a partir do BR (diagnóstico v1.0–v1.5, execução até a v1.7, N-01 a N-11).

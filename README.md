@@ -3,6 +3,7 @@
 Skills do Claude Code instaladas em `~/.claude/skills/`, que valem em qualquer projeto:
 
 - `auditoria-mensuracao-pais/`: auditoria de GTM/GA4/Firebase de qualquer cliente, país a país (diagnóstico, relatório técnico e deck executivo). Inclui o catálogo de resoluções (`references/catalogo-resolucoes.md`), que é compartilhado por todos os clientes.
+  O deck também sai em .pptx para Google Slides (`build.py <pais> --pptx`, scripts em `scripts/pptx/`; `node_modules/` e `.venv/` ficam fora do git).
 - `relatorios-execucao-pais/`: deck de execução e relatório de evidências das Fases 1–3.
 
 Cada cliente fica numa pasta própria com `cliente.json` e `design-system/<marca>/marca.json` (ver `auditoria-mensuracao-pais/references/cliente-schema.md`). A primeira cliente é a Smart Fit.

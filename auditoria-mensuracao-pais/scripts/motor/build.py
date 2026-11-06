@@ -4,6 +4,7 @@ Uso:
   python3 build.py <pasta-do-pais>                 # valida, gera os 2 HTML base e as cópias -design
   python3 build.py <pasta-do-pais> --entrega v1.0  # idem + copia as versões -design para entregas/entrega-cliente-<hoje>_v1.0/
   python3 build.py <pasta-do-pais> --forcar        # gera mesmo com ERRO na validação (só para rascunho)
+  python3 build.py <pasta-do-pais> --pptx          # idem + apresentacao-executiva-<slug>-<cc>.pptx (Google Slides), ver scripts/pptx/
 
 O país fica dentro da pasta do cliente, que tem cliente.json e design-system/<marca>/marca.json (Etapa 0 da skill).
 Saída em <pais>/entregas/: relatorio-tecnico-<slug>-<cc>[-design].html e apresentacao-executiva-<slug>-<cc>[-design].html.
@@ -25,6 +26,7 @@ def main():
     ap.add_argument("pais")
     ap.add_argument("--entrega", help="versão, ex.: v1.0")
     ap.add_argument("--forcar", action="store_true")
+    ap.add_argument("--pptx", action="store_true", help="gera também o .pptx do deck -design (Google Slides)")
     a = ap.parse_args()
     root = Path(a.pais).resolve()
     import cliente
@@ -63,11 +65,22 @@ def main():
     src, out = design.deck(dk, dk_d, C["META"]["escopo_curto"])
     print(f"design deck: {dk_d.name} ok")
 
+    dk_p = ent / f"apresentacao-executiva-{sl}-{cc}.pptx"
+    if a.pptx:
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "pptx"))
+        import port_pptx as port
+        res = port.gerar(dk_d, dk_p, os.environ["MARCA_DIR"])
+        for x in res["avisos"]:
+            print("AVISO", x)
+        print(f"pptx: {dk_p.name} · {res['slides']} slides · {dk_p.stat().st_size / 1e6:.1f} MB")
+
     if a.entrega:
         pasta = ent / f"entrega-cliente-{datetime.date.today().isoformat()}_{a.entrega}"
         pasta.mkdir(parents=True, exist_ok=True)
         shutil.copy(rel_d, pasta / rel.name)
         shutil.copy(dk_d, pasta / dk.name)
+        if a.pptx:
+            shutil.copy(dk_p, pasta / dk_p.name)
         print(f"entrega: {pasta}")
 
 

@@ -83,7 +83,8 @@ def gerar(root, C):
         fonte="Tag Manager API v2, GA Admin API e Data API, Chrome DevTools", ids="—")
 
     # 2 · o que combinamos
-    if C.get("REUNIAO") or C.get("COMBINADO"):
+    SEM = set(M.get("deck_sem", []))  # slides que o cliente já dispensou (ex.: "combinado", "decisoes_previa")
+    if (C.get("REUNIAO") or C.get("COMBINADO")) and "combinado" not in SEM:
         quotes = "".join(f'<blockquote class="quote"><span class="qn">{k + 1}</span>{t(q)}</blockquote>' for k, q in enumerate(C.get("REUNIAO", [])))
         steps = "".join(f'<li class="{"on" if s.get("on") else ""}"><b>{t(s["titulo"])}</b><span>{t(s["texto"])}</span></li>' for s in C.get("COMBINADO", []))
         add(M.get("titulo_combinado", "Combinamos começar pela conta principal, com evidência e impacto no negócio em cada achado"), f"""
@@ -119,7 +120,7 @@ def gerar(root, C):
         notas=NOT.get("bluf", S.get("resposta_curta", "")), fonte=S.get("fonte", "GA Data API, Tag Manager API, Chrome DevTools"), ids=", ".join(S.get("top", [])))
 
     # 5 · decisões (prévia)
-    if C.get("DECISOES"):
+    if C.get("DECISOES") and "decisoes_previa" not in SEM:
         dec = "".join(f'<div class="drow"><span class="dn">{k + 1}</span><b>{t(x["d"])}</b><p class="dwhy">{t(x["porque"])}</p><p class="drisk">{t(x["senao"])}</p></div>' for k, x in enumerate(C["DECISOES"]))
         prazo = ""
         if M.get("decisoes_ate"):

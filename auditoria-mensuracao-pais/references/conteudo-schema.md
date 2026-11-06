@@ -26,6 +26,7 @@ Arquivo: `<pais>/entregas/_fonte/conteudo.json`. O motor (`scripts/motor/build.p
 
 ## Abertura
 - `REUNIAO`: frases do cliente no alinhamento (aspas). `COMBINADO`: `[{titulo, texto, on}]`, os passos do slide 2.
+- `META.deck_sem`: lista de slides do deck a omitir. `"combinado"` tira o slide 2 (o que combinamos) e `"decisoes_previa"` tira a prévia de decisões (slide 5); o relatório e o slide final de decisões continuam. A Smart Fit dispensou os dois desde o Brasil: use `["combinado", "decisoes_previa"]` em todo país da Smart Fit.
 - `RTM`: `[{id: "P-01", pedido, onde, status: Atendido|Parcial|Pendente, nota}]`, um por item do `PEDIDO.md` (o BR teve 12).
 - `SUMARIO`: `{resposta_curta, titulo_deck, kpis: [{v, l, d?, s, crit?}] (até 4), destaque?: {titulo, acoes: [A-…], nota}, top: [SF-…], paragrafos: [texto], nota_escopo, fonte}`. `titulo_deck` é a frase que o executivo leva se só vir um slide.
 - `COBERTURA`: `{titulo_deck, itens: [{v, l}]}`, o "o que lemos" (nº de tags, streams, eventos analisados, passos do funil).
